@@ -30,7 +30,7 @@ namespace DMSRupObk
             FormularClear();
         }
 
-        // Konstruktor der für bestehende Dokumente aufgerufen wird
+        /// Konstruktor der für bestehende Dokumente aufgerufen wird
         public frmDokBearbeiten(Dokument dok) : this()    //this ruft Hauptkonstruktor auf u. wird für bestehende Dok. aufgerufen
         {
             FelderZuweisen(dok);

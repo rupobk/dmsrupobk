@@ -71,12 +71,10 @@ namespace DMSRupObk
         {
             if (PrgPrm == null)
             {
-                PrgPrm = new ProgParam();
+                //PrgPrm = new ProgParam();  nicht notwendig wird durch Json-Lesen automatisch ausgeführt
                 // wird PrgPrm erstellt, dann müssen natürlich alle Parameter auch mit eingelesen werden:
                 JsonDateiParamLesen();
                 PrgPrm.VerzeichnisseEinrichten();
-                //Lizenz für Dokumentenviewer-Objekt einmal aktivieren
-                Gnostice.Documents.Framework.ActivateLicense("E851-06B8-F97A-E39A-69AD-014C-F7C4-D3FD-55CE-ECBA-D607-941D");
             }
             return PrgPrm;
         }

@@ -17,12 +17,10 @@ namespace DMSRupObk
         //Singleton Klasse für Datenbehälter
         public List<Dokument> alleDokumente { get; set; } = new List<Dokument>();
         [JsonIgnore]
-        public List<Dokument> alleRechnungen { get; set; } = new List<Dokument>();  // um schneller bei der Suche zu sein, weil das Meiste Rechnungen sind
+        public List<Dokument> alleRechnungen { get; set; } = new List<Dokument>(); // um schneller bei der Suche zu sein, weil das Meiste Rechnungen sind
 
         private Archiv()
-        {
-
-        }
+        {}
 
         public static Archiv Erstellen()
         {
@@ -30,7 +28,6 @@ namespace DMSRupObk
             {
                 DokArchiv = new Archiv();
                 PfadJsonMetadaten = Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiMetadaten);
-                DatenLaden();
             }
             return DokArchiv;
         }

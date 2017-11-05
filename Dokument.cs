@@ -27,10 +27,11 @@ namespace DMSRupObk
 
         public Dokument(int DokID, int DokumentenartKey, string DokumentenartName, string Pfad, string Dateiname, string Dateityp, string Verschlagwortung,
                         int Jahr, string Dokumentenstatus, DateTime Archivierungsdatum, DateTime Aenderungsdatum, int LieferantKey, string LieferantName,
-                        string Periode, string PfadOrgDatei)
+                        string Periode)
         // nur Pflichtfelder werden übergeben, optionale Felder werden in Klasse DokBearbeiten gesetzt, weil diese könnten auch leer bzw. null sein
         {
-            ProgParam Parm = ProgParam.Erstellen();
+            Archiv DokArchiv = Archiv.Erstellen();
+
             this.DokID = DokID;
             this.Pfad = Pfad;
             this.Dateiname = Dateiname;
@@ -46,26 +47,10 @@ namespace DMSRupObk
             this.Verschlagwortung = Verschlagwortung;
             this.Dokumentenstatus = Dokumentenstatus;
 
-            try
-            {
-                // verschiebt Dokument in richtigen Ordner -> Pfad setzen 
-                string zielpfad = Path.Combine(Parm.RootVerzeichnisDok, Pfad, Dateiname);
-                File.Copy(PfadOrgDatei, zielpfad);
+            DokArchiv.alleDokumente.Add(this);
 
-                Archiv DokArchiv = Archiv.Erstellen();
-                DokArchiv.alleDokumente.Add(this);
-
-                if (this.DokumentenartName == "Rechnung")
-                    DokArchiv.alleRechnungen.Add(this);
-
-                DokArchiv.DatenSpeichern();   // im Hauptverzeichnis speichern
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Kann neues Dokument nicht archivieren. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
-                Environment.Exit(1);
-            }
-
+            if (this.DokumentenartName == "Rechnung")
+                DokArchiv.alleRechnungen.Add(this);
         }
 
         public void OpenDokument()

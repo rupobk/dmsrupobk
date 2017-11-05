@@ -174,8 +174,6 @@ namespace DMSRupObk
             if (FelderPruefungOk())
             {
                 int DokID = int.Parse(lblDokID.Text);
-                //DateTime dt1 = DateTime.Parse(txtArchivierDatum.Text);
-                //DateTime dt2 = DateTime.Parse(txtAenderDatum.Text);
                 int LiefKey = 0;
                 string LiefName = "";
                 if (!string.IsNullOrEmpty(cbLieferant.Text))
@@ -188,20 +186,24 @@ namespace DMSRupObk
                 if (!string.IsNullOrEmpty(txtPeriode.Text))
                     Per = txtPeriode.Text;
 
-
-
                 // Dokumentenviewer schliessen, damit das Dokument verschoben werden kann
                 if (documentViewer1.Created)
                     documentViewer1.CloseDocument();
 
                 Dokument dok = new Dokument(DokID, (int)cbDokArt.SelectedValue, cbDokArt.Text, cbZielpfad.Text, neuerDateiname, extension,
                                             txtVerschlagwort.Text, int.Parse(txtJahr.Text), cbStatus.Text, dtpArchivierung.Value, 
-                                            dtpAenderung.Value, LiefKey, LiefName, Per, pfadOrgDatei);
+                                            dtpAenderung.Value, LiefKey, LiefName, Per);
+
+                // verschiebt Dokument in richtigen Ordner -> Pfad setzen 
+                string zielpfad = Path.Combine(PrgPrm.RootVerzeichnisDok, dok.Pfad, dok.Dateiname);
+                File.Copy(pfadOrgDatei, zielpfad);
 
                 if (!string.IsNullOrEmpty(txtVolltext.Text))
                 {
                     Volltextindex vti = new Volltextindex(DokID, txtVolltext.Text, cbZielpfad.Text, neuerDateiname, extension);
                 }
+
+                Archiv.Erstellen().DatenSpeichern();
 
                 FormularClear();
             }

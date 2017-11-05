@@ -1,5 +1,7 @@
 {
-  "RootVerzeichnisDok": "c:\\temp\\dmsrupobk",
+  "AnwendungsPfad": "D:\\daten\\rupi\\Dokumente\\Visual Studio 2017\\Projects\\Private Tools\\dmsrupobk\\DMSRupObk\\bin\\Debug",
+  "PfadJSONDateiParam": "D:\\daten\\rupi\\Dokumente\\Visual Studio 2017\\Projects\\Private Tools\\dmsrupobk\\DMSRupObk\\bin\\Debug\\dmsrupobk.json",
+  "RootVerzeichnisDok": "c:\\temp\\dmsrupobk_Archiv",
   "PfadJSONDateiMetadaten": "metadaten.json",
   "ImportVerzeichnisDok": "import",
   "ImportVerzeichnisFehler": "import\\fehler",
@@ -8,7 +10,7 @@
   "AnzDokProVerzeichnis": 10000,
   "AnzahlArchivierteDokumente": 0,
   "DatengroesseInMB": 0,
-  "DokID": 76,
+  "DokID": 51,
   "Dokumentenstatus": [
     "erledigt",
     "bearbeitung"
@@ -207,14 +209,6 @@
     {
       "Key": 31,
       "Name": "wind infostrada"
-    },
-    {
-      "Key": 32,
-      "Name": "notebooksbilliger.de"
-    },
-    {
-      "Key": 33,
-      "Name": "innerhofer"
     }
   ],
   "Ordner": [

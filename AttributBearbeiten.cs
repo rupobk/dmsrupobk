@@ -34,13 +34,13 @@ namespace DMSRupObk
             {
                 case "Dokumentenart":
                     this.Text = "Dokumentenarten-Attribute bearbeiten";
-                    dgAttribute.DataSource = PrgPrm.AlleDokumentenarten;
+                    dgAttribute.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
                     dgAttribute.Columns[0].Width = 30;
                     dgAttribute.Columns[1].Width = 172;
                     break;
                 case "Lieferant":
                     this.Text = "Lieferanten-Attribute bearbeiten";
-                    dgAttribute.DataSource = PrgPrm.AlleLieferanten;
+                    dgAttribute.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
                     dgAttribute.Columns[0].Width = 30;
                     dgAttribute.Columns[1].Width = 172;
                     break;
@@ -49,7 +49,10 @@ namespace DMSRupObk
                     // eine einfache Liste kann nicht an ein Datagrid übergeben werden, dann wird nämlich die Länge jedes beinhalteten Strings angezeigt
                     // man muss eine anonymous Liste daraus machen
                     var values = from data in PrgPrm.Ordner select new { Value = data };
-                    dgAttribute.DataSource = (from data in PrgPrm.Ordner select new { Value = data }).ToList();
+                    //dgAttribute.DataSource = (from data in PrgPrm.Ordner select new { Value = data }).ToList();
+                    dgAttribute.DataSource = (from data in PrgPrm.Ordner
+                                              orderby data
+                                              select new { Value = data }).ToList();
                     dgAttribute.Columns[0].Width = 185;
                     break;
             }
@@ -88,6 +91,7 @@ namespace DMSRupObk
             }
             lblName.Enabled = true;
             txtName.Enabled = true;
+            txtName.Focus();
             btnSpeichern.Visible = true;
             btnNeu.Visible = false;
         }
@@ -108,7 +112,10 @@ namespace DMSRupObk
                             doppelt = true;
                     }
                     if (!string.IsNullOrEmpty(txtName.Text) && !doppelt)
+                    {
                         PrgPrm.NeueDokumentenart(int.Parse(lblKeyCalc.Text), txtName.Text);
+                        dgAttribute.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
+                    }
                     else
                         MessageBox.Show("Das Attribut kann nicht doppelt angelegt werden!");
                     break;
@@ -122,13 +129,22 @@ namespace DMSRupObk
                             doppelt = true;
                     }
                     if (!string.IsNullOrEmpty(txtName.Text) && !doppelt)
+                    {
                         PrgPrm.NeuerLieferant(int.Parse(lblKeyCalc.Text), txtName.Text);
+                        dgAttribute = null;
+                        dgAttribute.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
+                    }
                     else
                         MessageBox.Show("Das Attribut kann nicht doppelt angelegt werden!");
                     break;
                 default:
                     if (!string.IsNullOrEmpty(txtName.Text) && !PrgPrm.Ordner.Contains(txtName.Text))
+                    {
                         PrgPrm.NeuerOrdner(txtName.Text);
+                        dgAttribute.DataSource = (from data in PrgPrm.Ordner
+                                                  orderby data
+                                                  select new { Value = data }).ToList();
+                    }
                     else
                         MessageBox.Show("Das Attribut kann nicht doppelt angelegt werden!");
                     break;

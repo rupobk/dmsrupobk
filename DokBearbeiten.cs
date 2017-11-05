@@ -36,12 +36,12 @@ namespace DMSRupObk
             FelderZuweisen(dok);
         }
 
+        //TODO: muss noch gemacht werden
         private void FelderZuweisen(Dokument dok)
         {
-            /// Bestehendes Dokument Felder zuweisen
+            /// Wenn ein bestehendes Dokument geöffnet wird, dann Felder zuweisen u. Dokument anzeigen
             //
             //
-
         }
 
         private void FormularClear()
@@ -215,20 +215,6 @@ namespace DMSRupObk
                 return false;
             }
 
-            //if (!DateTime.TryParse(txtAenderDatum.Text, out DateTime dt))
-            //{
-            //    MessageBox.Show("Feld Änderungsdatum bitte richtig füllen");
-            //    txtAenderDatum.Focus();
-            //    return false;
-            //}
-
-            //if (!DateTime.TryParse(txtArchivierDatum.Text, out DateTime dt2))
-            //{
-            //    MessageBox.Show("Feld Archivierdatum bitte richtig füllen");
-            //    txtArchivierDatum.Focus();
-            //    return false;
-            //}
-
             if (string.IsNullOrEmpty(txtDateiname.Text))
                 neuerDateiname = PrgPrm.NeuerDateiname() + extension;
             else
@@ -239,12 +225,6 @@ namespace DMSRupObk
                     neuerDateiname = txtDateiname.Text + extension;
             }
             return true;
-        }
-
-        private void txtJahr_Enter(object sender, EventArgs e)
-        {
-            if (!int.TryParse(txtPeriode.Text, out int jj))
-                txtJahr.Text = txtPeriode.Text.Substring(0, 4);
         }
 
         private void hinzufügenToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -268,16 +248,20 @@ namespace DMSRupObk
         private void btnDokuartBearbeiten_Click(object sender, EventArgs e)
         {
             new frmAttributBearbeiten("Dokumentenart").ShowDialog();
+            cbDokArt.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
         }
 
         private void btnZielpfadBearbeiten_Click(object sender, EventArgs e)
         {
             new frmAttributBearbeiten("Ordner").ShowDialog();
+            PrgPrm.Ordner.Sort();
+            cbZielpfad.DataSource = PrgPrm.Ordner;
         }
 
         private void btnLiefBearbeiten_Click(object sender, EventArgs e)
         {
             new frmAttributBearbeiten("Lieferant").ShowDialog();
+            cbLieferant.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
         }
 
         private void btnClear_Click(object sender, EventArgs e)

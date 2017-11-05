@@ -689,7 +689,6 @@
             this.txtJahr.Name = "txtJahr";
             this.txtJahr.Size = new System.Drawing.Size(48, 20);
             this.txtJahr.TabIndex = 70;
-            this.txtJahr.Enter += new System.EventHandler(this.txtJahr_Enter);
             // 
             // frmDokBearbeiten
             // 

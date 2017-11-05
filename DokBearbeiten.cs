@@ -34,14 +34,35 @@ namespace DMSRupObk
         public frmDokBearbeiten(Dokument dok) : this()    //this ruft Hauptkonstruktor auf u. wird für bestehende Dok. aufgerufen
         {
             FelderZuweisen(dok);
+            this.ShowDialog();
         }
 
-        //TODO: muss noch gemacht werden
+        //TODO: muss noch getestet werden
         private void FelderZuweisen(Dokument dok)
         {
-            /// Wenn ein bestehendes Dokument geöffnet wird, dann Felder zuweisen u. Dokument anzeigen
-            //
-            //
+            lblDokID.Text = dok.DokID.ToString();
+            txtVerschlagwort.Text = dok.Verschlagwortung;
+            txtPeriode.Text = dok.Periode;
+            txtJahr.Text = dok.Jahr.ToString();
+            txtDateiname.Text = dok.Dateiname;
+            dtpArchivierung.Text = dok.Archivierungsdatum.ToString("dd.MM.yyyy");
+            dtpAenderung.Text = dok.Aenderungsdatum.ToString("dd.MM.yyyy");
+
+            ComboboxenAufbauen();
+            cbDokArt.SelectedIndex = dok.DokumentenartKey;
+            cbLieferant.SelectedIndex = dok.LieferantKey;
+            cbLieferant.Text = dok.Pfad;
+            cbDokArt.Text = dok.Dokumentenstatus;
+
+            string pfad = Path.Combine(PrgPrm.RootVerzeichnisDok, dok.Pfad, dok.Dateiname);
+            documentViewer1.LoadDocument(pfad);
+
+            btnSpeichern.Enabled = true;
+            btnOCRScan.Enabled = true;
+            btnLaden.Enabled = true;
+            btnClear.Enabled = true;
+
+            tableLayoutPanelLinks.Enabled = true;
         }
 
         private void FormularClear()

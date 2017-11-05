@@ -34,14 +34,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.dgvDokumente = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanelRechts = new System.Windows.Forms.FlowLayoutPanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHauptfenster)).BeginInit();
             this.splitContainerHauptfenster.Panel1.SuspendLayout();
             this.splitContainerHauptfenster.Panel2.SuspendLayout();
             this.splitContainerHauptfenster.SuspendLayout();
             this.flowLayoutPanelLinks.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDokumente)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -76,7 +76,7 @@
             this.flowLayoutPanelLinks.Controls.Add(this.label1);
             this.flowLayoutPanelLinks.Controls.Add(this.textBox1);
             this.flowLayoutPanelLinks.Controls.Add(this.checkBox1);
-            this.flowLayoutPanelLinks.Controls.Add(this.dataGridView1);
+            this.flowLayoutPanelLinks.Controls.Add(this.dgvDokumente);
             this.flowLayoutPanelLinks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelLinks.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelLinks.Name = "flowLayoutPanelLinks";
@@ -110,6 +110,16 @@
             this.checkBox1.Text = "Volltext";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // dgvDokumente
+            // 
+            this.dgvDokumente.AllowUserToOrderColumns = true;
+            this.dgvDokumente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDokumente.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvDokumente.Location = new System.Drawing.Point(13, 39);
+            this.dgvDokumente.Name = "dgvDokumente";
+            this.dgvDokumente.Size = new System.Drawing.Size(670, 734);
+            this.dgvDokumente.TabIndex = 3;
+            // 
             // flowLayoutPanelRechts
             // 
             this.flowLayoutPanelRechts.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -117,16 +127,6 @@
             this.flowLayoutPanelRechts.Name = "flowLayoutPanelRechts";
             this.flowLayoutPanelRechts.Size = new System.Drawing.Size(772, 781);
             this.flowLayoutPanelRechts.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 39);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(670, 734);
-            this.dataGridView1.TabIndex = 3;
             // 
             // frmHauptfenster
             // 
@@ -144,7 +144,7 @@
             this.splitContainerHauptfenster.ResumeLayout(false);
             this.flowLayoutPanelLinks.ResumeLayout(false);
             this.flowLayoutPanelLinks.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDokumente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,6 +159,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelRechts;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvDokumente;
     }
 }

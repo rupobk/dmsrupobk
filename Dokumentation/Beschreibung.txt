@@ -1,0 +1,89 @@
+﻿10. Verzeichnisstruktur der Dokumente in der ini-Datei ablegen:
+dokumentation
+rechnung
+rechnung~arzt
+rechnung~energie
+l_g
+steuer
+versicherung
+bestätigung
+garantie
+lizenz
+sport
+gesundheit
+vertrag
+vertrag~energie
+vertrag~versicherung
+vertrag~kommunikation
+sonstiges
+hans
+hans~rechnung
+hans~vertrag
+hans~sonstiges
+
+20. Andere Verzeichnisse:
+Siehe ini-Datei
+- Für Import
+- Für Importfehler
+- Für Verschlagwortung
+
+25. Textdatei mit Lieferantenschlüssel führen als json-File
+
+30. Dokumentenarten in .ini-Datei pflegen. Beispiel: Rechnung, Quittung, Zahlungsaufforderung, Arztbescheinigung usw.
+
+35. Dokumentenvoransicht mit Webbrowsercontrol testen od. sonst externe Library od. mit nuget-Paket xtreme dotnet scheisse free
+
+
+40. Verschlagwortung:
+Die erste Verschlagwortung findet bereits im Dateinamen statt u. wird eingelesen im Falle vom Import
+a) über Import
+- Beim Start von DMS wird als erstes das Importverzeichnis (laut ini-Datei) geprüft u. eventuelle Dokumente archiviert
+- Menüpunkt "Dokumene importieren" löst denselben Vorgang aus
+- Wenn Fehler bei der Verschlagwortung vorliegen, dann werden die entsprechenden fehlerhaften Dokumente in das Fehlerverzeichnis kopiert 
+  u. eine Datei mit den Fehlermeldungen generiert
+- Datei wird in das entsprechende Verzeichnis kopiert
+- Die Verschlagwortungsfelder werden am Bildschirm automatisch gefüllt u. können dann noch bearbeitet werden. Bei Bestätigung wird das Dokument archiviert
+Verpflichtende Verschlagwortungskriterien:
+- Verzeichnis
+- Jahr
+- Dokumententyp
+- Lieferant
+- Dokumentenart
+- Periode (JJJJMM)
+- Betreff
+- Verschlagwortung
+- Dokumentenstatus
+Zusätzliche automatisch vergebene Verschlagwortungskriterien:
+- Fortlaufende Nummer
+- Archivierungsdatum
+- Änderungsdatum
+- Text Volltextindizierung
+
+
+Dokumentenstatus wird automatisch auf "erledigt" (siehe ini-Datei) gesetzt
+Aufgabe: Modul programmieren, das die Dateien einliest und verschlagwortet
+Fragen: - wie wird sichergestellt, in welchem Verzeichnis sie landen u. welche Fixverschlagwortung
+
+b) über händischen Aufruf
+Dokumentenstatus wird automatisch auf "In Bearbeitung" (siehe ini-Datei) gesetzt
+
+
+50. Verschlagwortung speichern als json
+
+
+60. Dokumentensuche
+- über BinarySearchTree
+- kombiniert mit Fuzzy Suchlogic oder Soundex Suchlogic
+- Nuget Paket elasticsearch
+
+Volltextindizierung über OCR
+
+
+Objekte
+Dokument
+
+
+
+Menüpunkte:
+- Dokumente importieren
+- Dokument archivieren

@@ -1,0 +1,10 @@
+The license key can be activated in your application by calling the
+following static method:
+
+  Gnostice.Documents.Framework.ActivateLicense("E851-06B8-F97A-E39A-69AD-014C-F7C4-D3FD-55CE-ECBA-D607-941D");
+
+For more advanced functionality such as document conversion, ASP.NET
+and HTML5 document viewing, document creation, mail-merge, and other
+document processing functionality, please try XtremeDocumentStudio .NET
+ViewPrintConvert and Ultimate editions. You can know more on the other
+editions here: http://www.gnostice.com/xdoc-dot-net

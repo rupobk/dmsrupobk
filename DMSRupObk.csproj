@@ -96,6 +96,7 @@
     <Compile Include="Hilfsklassen.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Volltext.cs" />
     <Content Include="Dokumentation\Gnostice Lizenzkey.txt" />
     <Content Include="Dokumentation\IronOcrBeispiel.cs.txt" />
     <Compile Include="Hauptfenster.cs">

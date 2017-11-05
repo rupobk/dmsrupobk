@@ -201,9 +201,11 @@ namespace DMSRupObk
                 if (!string.IsNullOrEmpty(txtVolltext.Text))
                 {
                     Volltextindex vti = new Volltextindex(DokID, txtVolltext.Text, cbZielpfad.Text, neuerDateiname, extension);
+                    Volltext.Laden();
+                    Volltext.Erstellen().Speichern();
                 }
 
-                Archiv.Erstellen().DatenSpeichern();
+                Archiv.Erstellen().ArchivSpeichern();
 
                 FormularClear();
             }
@@ -239,7 +241,7 @@ namespace DMSRupObk
             }
 
             if (string.IsNullOrEmpty(txtDateiname.Text))
-                neuerDateiname = PrgPrm.NeuerDateiname() + extension;
+                neuerDateiname = PrgPrm.NeuerDateiname(lblDokID.Text) + extension;
             else
             {
                 if (txtDateiname.Text.IndexOf(".") > 0)

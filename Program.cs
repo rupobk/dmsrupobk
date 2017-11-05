@@ -27,7 +27,7 @@ namespace DMSRupObk
             //TODO: Laurin fragen: warum Methode DatenLaden, ansonsten Endlosschleife u. wohin damit
             ProgParam PrgPrm = ProgParam.Erstellen();
             Archiv DokArchiv = Archiv.Erstellen();
-            Archiv.DatenLaden();
+            Archiv.Laden();
 
             Application.Run(new frmDokBearbeiten());
         }

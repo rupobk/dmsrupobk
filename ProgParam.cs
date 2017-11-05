@@ -24,6 +24,8 @@ namespace DMSRupObk
         [JsonProperty] // ins json-File schreiben.
         public string PfadJSONDateiMetadaten { get; set; }
         [JsonProperty] // ins json-File schreiben.
+        public string PfadJSONDateiVolltext { get; set; }
+        [JsonProperty] // ins json-File schreiben.
         public string ImportVerzeichnisDok { get; set; }
         [JsonProperty] // ins json-File schreiben.
         public string ImportVerzeichnisFehler { get; set; }
@@ -165,9 +167,9 @@ namespace DMSRupObk
 
         }
 
-        public string NeuerDateiname()
+        public string NeuerDateiname(string id)
         {
-            return "doc_" + DateTime.Now.ToString("yyyyMMdd_hhmmss");
+            return "d_"+id+"_"+ DateTime.Now.ToString("yyyyMMdd");
         }
     }
 

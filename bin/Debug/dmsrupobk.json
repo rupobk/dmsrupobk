@@ -8,7 +8,7 @@
   "AnzDokProVerzeichnis": 10000,
   "AnzahlArchivierteDokumente": 0,
   "DatengroesseInMB": 0,
-  "DokID": 68,
+  "DokID": 76,
   "Dokumentenstatus": [
     "erledigt",
     "bearbeitung"
@@ -207,6 +207,14 @@
     {
       "Key": 31,
       "Name": "wind infostrada"
+    },
+    {
+      "Key": 32,
+      "Name": "notebooksbilliger.de"
+    },
+    {
+      "Key": 33,
+      "Name": "innerhofer"
     }
   ],
   "Ordner": [

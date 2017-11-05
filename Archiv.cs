@@ -11,6 +11,7 @@ namespace DMSRupObk
 {
     class Archiv
     {
+        public static string PfadJsonMetadaten;
         private static Archiv DokArchiv = null;
 
         //Singleton Klasse für Datenbehälter
@@ -20,7 +21,7 @@ namespace DMSRupObk
 
         private Archiv()
         {
-            DatenLaden();
+
         }
 
         public static Archiv Erstellen()
@@ -28,7 +29,8 @@ namespace DMSRupObk
             if (DokArchiv == null)
             {
                 DokArchiv = new Archiv();
-                //readJson
+                PfadJsonMetadaten = Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiMetadaten);
+                DatenLaden();
             }
             return DokArchiv;
         }
@@ -41,17 +43,26 @@ namespace DMSRupObk
         {
             try
             {
-                string pfadjsondatei = Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiMetadaten);
-                File.WriteAllText(pfadjsondatei, JsonConvert.SerializeObject(this, Formatting.Indented));
+                File.WriteAllText(Archiv.PfadJsonMetadaten, JsonConvert.SerializeObject(this, Formatting.Indented));
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ProgParam.Erstellen().PfadJSONDateiMetadaten+" kann nicht geschrieben werden. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
+                MessageBox.Show(PfadJsonMetadaten + " kann nicht geschrieben werden. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
                 Environment.Exit(1);
             }
         }
 
-        public void DatenLaden()
-        { }
+        public static void DatenLaden()
+        {
+            try
+            {
+                DokArchiv = JsonConvert.DeserializeObject<Archiv>(File.ReadAllText(Archiv.PfadJsonMetadaten));
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                MessageBox.Show("metadaten.json nicht gefunden. Programm wird beendet ...");
+                Environment.Exit(1);
+            }
+        }
     }
 }

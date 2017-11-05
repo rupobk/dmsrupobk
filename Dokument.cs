@@ -70,7 +70,7 @@ namespace DMSRupObk
 
         public void OpenDokument()
         {
-            //Hei du Dokument, zeige dich !! Hier wird ausprogrammiert, mit welchem Programm ein Dokument sinnvoll angezeigt werden kann!!! Pdf mit Adobe Reader
+            //Hei du, Dokument, zeige dich !! Hier wird ausprogrammiert, mit welchem Programm ein Dokument sinnvoll angezeigt werden kann!!! Pdf mit Adobe Reader
             //z. B. Process.Start(Dateiname) ungefähr;
         }
 

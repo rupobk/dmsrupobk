@@ -131,7 +131,6 @@ namespace DMSRupObk
                     if (!string.IsNullOrEmpty(txtName.Text) && !doppelt)
                     {
                         PrgPrm.NeuerLieferant(int.Parse(lblKeyCalc.Text), txtName.Text);
-                        dgAttribute = null;
                         dgAttribute.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
                     }
                     else

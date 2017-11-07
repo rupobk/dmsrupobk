@@ -81,6 +81,9 @@ namespace DMSRupObk
             this.Pfad = Pfad;
             this.Dateiname = Dateiname;
             this.Dateityp = Dateityp;
+
+            Volltext vt = Volltext.Erstellen();
+            vt.alleVolltexte.Add(this);
         }
     }
 

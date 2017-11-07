@@ -12,7 +12,6 @@ namespace DMSRupObk
     class Archiv
     {
         public static string PfadJsonMetadaten;
-        public static string PfadJsonVolltext;
         private static Archiv DokArchiv = null;
 
         //Singleton Klasse für Datenbehälter
@@ -29,7 +28,6 @@ namespace DMSRupObk
             {
                 DokArchiv = new Archiv();
                 PfadJsonMetadaten = Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiMetadaten);
-                PfadJsonVolltext = Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiVolltext);
             }
             return DokArchiv;
         }
@@ -38,24 +36,11 @@ namespace DMSRupObk
 
         //public Searchtree Suchbaum { get; set; }
 
-        public void ArchivSpeichern()
-        {
-            try
-            {
-                File.WriteAllText(Archiv.PfadJsonMetadaten, JsonConvert.SerializeObject(this, Formatting.Indented));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(PfadJsonMetadaten + " kann nicht geschrieben werden. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
-                Environment.Exit(1);
-            }
-        }
-
         public void Speichern()
         {
             try
             {
-                File.WriteAllText(Archiv.PfadJsonVolltext, JsonConvert.SerializeObject(this, Formatting.Indented));
+                File.WriteAllText(Archiv.PfadJsonMetadaten, JsonConvert.SerializeObject(this, Formatting.Indented));
             }
             catch (Exception ex)
             {

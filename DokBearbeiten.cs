@@ -201,11 +201,18 @@ namespace DMSRupObk
                 if (!string.IsNullOrEmpty(txtVolltext.Text))
                 {
                     Volltextindex vti = new Volltextindex(DokID, txtVolltext.Text, cbZielpfad.Text, neuerDateiname, extension);
-                    Volltext.Laden();
                     Volltext.Erstellen().Speichern();
                 }
 
-                Archiv.Erstellen().ArchivSpeichern();
+                PrgPrm.AnzahlArchivierteDokumente++;
+                FileInfo fi = new FileInfo(pfadOrgDatei);
+                PrgPrm.DokDatengroesseInMB += Convert.ToInt32(fi.Length / 1048576);
+
+                FileInfo fi2 = new FileInfo(Volltext.PfadJsonVolltext);
+                PrgPrm.VolltextDatengroesseInMB += Convert.ToInt32(fi2.Length / 1048576);
+
+                Archiv.Erstellen().Speichern();
+                PrgPrm.Schreiben();
 
                 FormularClear();
             }

@@ -7,9 +7,10 @@
   "IndexVerzeichnis": "index",
   "VolltextindizierungDefault": false,
   "AnzDokProVerzeichnis": 10000,
-  "AnzahlArchivierteDokumente": 0,
-  "DatengroesseInMB": 0,
-  "DokID": 52,
+  "AnzahlArchivierteDokumente": 3,
+  "DokDatengroesseInMB": 0,
+  "VolltextDatengroesseInMB": 0,
+  "DokID": 3,
   "Dokumentenstatus": [
     "erledigt",
     "bearbeitung"

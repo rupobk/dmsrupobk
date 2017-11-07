@@ -38,7 +38,9 @@ namespace DMSRupObk
         [JsonProperty] // ins json-File schreiben.
         public int AnzahlArchivierteDokumente { get; set; }
         [JsonProperty] // ins json-File schreiben.
-        public int DatengroesseInMB { get; set; }
+        public int DokDatengroesseInMB { get; set; }
+        [JsonProperty] // ins json-File schreiben.
+        public int VolltextDatengroesseInMB { get; set; }
         [JsonProperty] // ins json-File schreiben.
         public int DokID { get; set; }
 
@@ -75,7 +77,7 @@ namespace DMSRupObk
             {
                 //PrgPrm = new ProgParam();  nicht notwendig wird durch Json-Lesen automatisch ausgeführt
                 // wird PrgPrm erstellt, dann müssen natürlich alle Parameter auch mit eingelesen werden:
-                JsonDateiParamLesen();
+                Lesen();
                 PrgPrm.VerzeichnisseEinrichten();
             }
             return PrgPrm;
@@ -85,7 +87,7 @@ namespace DMSRupObk
         {
             DokID++;
             //iniDatenAktualisieren(DokID);
-            JsonDateiParamSchreiben();
+            Schreiben();
             return DokID;
         }
 
@@ -109,7 +111,7 @@ namespace DMSRupObk
             }
         }
 
-        public static void JsonDateiParamLesen()
+        public static void Lesen()
         {
             try
             {
@@ -122,7 +124,7 @@ namespace DMSRupObk
             }
         }
 
-        public void JsonDateiParamSchreiben()
+        public void Schreiben()
         {
             try
             {
@@ -138,13 +140,13 @@ namespace DMSRupObk
         public void NeuerLieferant(int Key, string Name)
         {
             AlleLieferanten.Add(new Lieferant(Key, Name));
-            JsonDateiParamSchreiben();
+            Schreiben();
         }
 
         public void NeueDokumentenart(int Key, string Name)
         {
             AlleDokumentenarten.Add(new Dokumentenart(Key, Name));
-            JsonDateiParamSchreiben();
+            Schreiben();
         }
 
         public void NeuerOrdner(string Name)
@@ -157,7 +159,7 @@ namespace DMSRupObk
                 {
                     Directory.CreateDirectory(ordner);
                     this.Ordner.Add(Name);
-                    JsonDateiParamSchreiben();
+                    Schreiben();
                 }
             }
             catch (Exception ex)
@@ -274,8 +276,8 @@ namespace DMSRupObk
 //        DatengroesseInMB = int.Parse(iniFile.GetValue("Archivstatistik", "DatengroesseInMB"));
 
 //        // Dokumentenarten, Lieferanten, Ordner einlesen
-//        //JsonDateiParamLesen2();
-//        JsonDateiParamSchreiben();
+//        //Lesen2();
+//        Schreiben();
 //        VerzeichnisseEinrichten();
 //    }
 //    catch (System.IO.FileNotFoundException)

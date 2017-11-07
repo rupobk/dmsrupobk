@@ -11,7 +11,8 @@
   "AnzDokProVerzeichnis": 10000,
   "AnzahlArchivierteDokumente": 0,
   "DatengroesseInMB": 0,
-  "DokID": 51,
+  "VolltextgroesseInMB": 0,
+  "DokID": 0,
   "Dokumentenstatus": [
     "erledigt",
     "bearbeitung"

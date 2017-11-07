@@ -7,10 +7,10 @@
   "IndexVerzeichnis": "index",
   "VolltextindizierungDefault": false,
   "AnzDokProVerzeichnis": 10000,
-  "AnzahlArchivierteDokumente": 3,
-  "DokDatengroesseInMB": 0,
-  "VolltextDatengroesseInMB": 0,
-  "DokID": 3,
+  "AnzahlArchivierteDokumente": 6,
+  "DokDatengroesseInMB": 0.0,
+  "VolltextDatengroesseInMB": 0.0,
+  "DokID": 6,
   "Dokumentenstatus": [
     "erledigt",
     "bearbeitung"
@@ -209,6 +209,14 @@
     {
       "Key": 31,
       "Name": "wind infostrada"
+    },
+    {
+      "Key": 32,
+      "Name": "notebookbilliger.de"
+    },
+    {
+      "Key": 33,
+      "Name": "innerhofer"
     }
   ],
   "Ordner": [

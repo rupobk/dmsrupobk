@@ -1,6 +1,4 @@
 {
-  "AnwendungsPfad": "D:\\daten\\rupi\\Dokumente\\Visual Studio 2017\\Projects\\Private Tools\\dmsrupobk\\DMSRupObk\\bin\\Debug",
-  "PfadJSONDateiParam": "D:\\daten\\rupi\\Dokumente\\Visual Studio 2017\\Projects\\Private Tools\\dmsrupobk\\DMSRupObk\\bin\\Debug\\dmsrupobk.json",
   "RootVerzeichnisDok": "c:\\temp\\dmsrupobk_Archiv",
   "PfadJSONDateiMetadaten": "metadaten.json",
   "PfadJSONDateiVolltext": "volltext.json",
@@ -11,7 +9,7 @@
   "AnzDokProVerzeichnis": 10000,
   "AnzahlArchivierteDokumente": 0,
   "DatengroesseInMB": 0,
-  "DokID": 51,
+  "DokID": 52,
   "Dokumentenstatus": [
     "erledigt",
     "bearbeitung"

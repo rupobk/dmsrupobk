@@ -38,9 +38,9 @@ namespace DMSRupObk
         [JsonProperty] // ins json-File schreiben.
         public int AnzahlArchivierteDokumente { get; set; }
         [JsonProperty] // ins json-File schreiben.
-        public int DokDatengroesseInMB { get; set; }
+        public float DokDatengroesseInMB { get; set; }
         [JsonProperty] // ins json-File schreiben.
-        public int VolltextDatengroesseInMB { get; set; }
+        public float VolltextDatengroesseInMB { get; set; }
         [JsonProperty] // ins json-File schreiben.
         public int DokID { get; set; }
 

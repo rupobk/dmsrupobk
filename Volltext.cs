@@ -53,7 +53,7 @@ namespace DMSRupObk
             {
                 try
                 {
-                    DokVolltext = JsonConvert.DeserializeObject<Volltext>(File.ReadAllText(Volltext.PfadJsonMetadaten));
+                    DokVolltext = JsonConvert.DeserializeObject<Volltext>(File.ReadAllText(Volltext.PfadJsonVolltext));
                 }
                 catch (System.IO.FileNotFoundException)
                 {

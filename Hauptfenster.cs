@@ -17,6 +17,12 @@ namespace DMSRupObk
         public frmHauptfenster()
         {
             InitializeComponent();
+            FormularClear();
+        }
+
+        private void FormularClear()
+        {
+            
         }
     }
 }

@@ -227,5 +227,6 @@ namespace DMSRupObk
         {
                 MessageBox.Show(e.RowIndex.ToString());
         }
+
     }
 }

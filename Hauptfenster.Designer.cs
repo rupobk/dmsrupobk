@@ -28,6 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Gnostice.Documents.FormatterSettings formatterSettings1 = new Gnostice.Documents.FormatterSettings();
+            Gnostice.Documents.Spreadsheet.SpreadSheetFormatterSettings spreadSheetFormatterSettings1 = new Gnostice.Documents.Spreadsheet.SpreadSheetFormatterSettings();
+            Gnostice.Documents.PageSettings pageSettings1 = new Gnostice.Documents.PageSettings();
+            Gnostice.Documents.Margins margins1 = new Gnostice.Documents.Margins();
+            Gnostice.Documents.Spreadsheet.SheetOptions sheetOptions1 = new Gnostice.Documents.Spreadsheet.SheetOptions();
+            Gnostice.Documents.Spreadsheet.SheetOptions sheetOptions2 = new Gnostice.Documents.Spreadsheet.SheetOptions();
+            Gnostice.Documents.TXTFormatterSettings txtFormatterSettings1 = new Gnostice.Documents.TXTFormatterSettings();
+            Gnostice.Documents.PageSettings pageSettings2 = new Gnostice.Documents.PageSettings();
+            Gnostice.Documents.Margins margins2 = new Gnostice.Documents.Margins();
+            Gnostice.Graphics.RenderingSettings renderingSettings1 = new Gnostice.Graphics.RenderingSettings();
+            Gnostice.Graphics.ImageRenderingSettings imageRenderingSettings1 = new Gnostice.Graphics.ImageRenderingSettings();
+            Gnostice.Graphics.LineArtRenderingSettings lineArtRenderingSettings1 = new Gnostice.Graphics.LineArtRenderingSettings();
+            Gnostice.Graphics.ResolutionSettings resolutionSettings1 = new Gnostice.Graphics.ResolutionSettings();
+            Gnostice.Graphics.TextRenderingSettings textRenderingSettings1 = new Gnostice.Graphics.TextRenderingSettings();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dokumentHinzufügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dokumenteImportierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,17 +52,22 @@
             this.txtSucheAlles = new System.Windows.Forms.TextBox();
             this.chboVolltext = new System.Windows.Forms.CheckBox();
             this.btnSuche = new System.Windows.Forms.Button();
-            this.cbDokArt = new System.Windows.Forms.ComboBox();
-            this.txtVerschlagwortSuche = new System.Windows.Forms.TextBox();
-            this.txtPerSuche = new System.Windows.Forms.TextBox();
-            this.dgvListeDok = new System.Windows.Forms.DataGridView();
-            this.flowLayoutPanelRechts = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
+            this.cbDokArt = new System.Windows.Forms.ComboBox();
             this.cbLieferant = new System.Windows.Forms.ComboBox();
+            this.txtVerschlagwortSuche = new System.Windows.Forms.TextBox();
+            this.txtPerSuche = new System.Windows.Forms.TextBox();
             this.txtPeriode = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dgvListeDok = new System.Windows.Forms.DataGridView();
+            this.btnLoeschen = new System.Windows.Forms.Button();
+            this.btnBearbeiten = new System.Windows.Forms.Button();
+            this.flowLayoutPanelRechts = new System.Windows.Forms.FlowLayoutPanel();
+            this.documentViewer1 = new Gnostice.Documents.Controls.WinForms.DocumentViewer();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnDetails = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHauptfenster)).BeginInit();
             this.splitContainerHauptfenster.Panel1.SuspendLayout();
@@ -56,6 +75,7 @@
             this.splitContainerHauptfenster.SuspendLayout();
             this.flowLayoutPanelLinks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeDok)).BeginInit();
+            this.flowLayoutPanelRechts.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -102,6 +122,10 @@
             // 
             // splitContainerHauptfenster.Panel2
             // 
+            this.splitContainerHauptfenster.Panel2.Controls.Add(this.btnDetails);
+            this.splitContainerHauptfenster.Panel2.Controls.Add(this.btnExport);
+            this.splitContainerHauptfenster.Panel2.Controls.Add(this.btnLoeschen);
+            this.splitContainerHauptfenster.Panel2.Controls.Add(this.btnBearbeiten);
             this.splitContainerHauptfenster.Panel2.Controls.Add(this.flowLayoutPanelRechts);
             this.splitContainerHauptfenster.Size = new System.Drawing.Size(1634, 826);
             this.splitContainerHauptfenster.SplitterDistance = 1009;
@@ -168,50 +192,6 @@
             this.btnSuche.Text = "ok";
             this.btnSuche.UseVisualStyleBackColor = true;
             // 
-            // cbDokArt
-            // 
-            this.cbDokArt.DropDownWidth = 140;
-            this.cbDokArt.FormattingEnabled = true;
-            this.cbDokArt.Location = new System.Drawing.Point(107, 42);
-            this.cbDokArt.Name = "cbDokArt";
-            this.cbDokArt.Size = new System.Drawing.Size(136, 21);
-            this.cbDokArt.TabIndex = 10;
-            // 
-            // txtVerschlagwortSuche
-            // 
-            this.txtVerschlagwortSuche.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtVerschlagwortSuche.Location = new System.Drawing.Point(400, 42);
-            this.txtVerschlagwortSuche.Name = "txtVerschlagwortSuche";
-            this.txtVerschlagwortSuche.Size = new System.Drawing.Size(243, 20);
-            this.txtVerschlagwortSuche.TabIndex = 7;
-            // 
-            // txtPerSuche
-            // 
-            this.txtPerSuche.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtPerSuche.Location = new System.Drawing.Point(649, 42);
-            this.txtPerSuche.Name = "txtPerSuche";
-            this.txtPerSuche.Size = new System.Drawing.Size(93, 20);
-            this.txtPerSuche.TabIndex = 9;
-            // 
-            // dgvListeDok
-            // 
-            this.dgvListeDok.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dgvListeDok.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListeDok.Location = new System.Drawing.Point(13, 69);
-            this.dgvListeDok.Name = "dgvListeDok";
-            this.dgvListeDok.Size = new System.Drawing.Size(978, 747);
-            this.dgvListeDok.TabIndex = 5;
-            this.dgvListeDok.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListeDok_CellCont​entDoubleClick);
-            this.dgvListeDok.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvListeDok_RowHeaderDoubleClick);
-            // 
-            // flowLayoutPanelRechts
-            // 
-            this.flowLayoutPanelRechts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelRechts.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanelRechts.Name = "flowLayoutPanelRechts";
-            this.flowLayoutPanelRechts.Size = new System.Drawing.Size(617, 822);
-            this.flowLayoutPanelRechts.TabIndex = 0;
-            // 
             // textBox1
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -229,6 +209,15 @@
             this.txtID.Size = new System.Drawing.Size(46, 20);
             this.txtID.TabIndex = 13;
             // 
+            // cbDokArt
+            // 
+            this.cbDokArt.DropDownWidth = 140;
+            this.cbDokArt.FormattingEnabled = true;
+            this.cbDokArt.Location = new System.Drawing.Point(107, 42);
+            this.cbDokArt.Name = "cbDokArt";
+            this.cbDokArt.Size = new System.Drawing.Size(136, 21);
+            this.cbDokArt.TabIndex = 10;
+            // 
             // cbLieferant
             // 
             this.cbLieferant.DropDownWidth = 140;
@@ -237,6 +226,22 @@
             this.cbLieferant.Name = "cbLieferant";
             this.cbLieferant.Size = new System.Drawing.Size(145, 21);
             this.cbLieferant.TabIndex = 10;
+            // 
+            // txtVerschlagwortSuche
+            // 
+            this.txtVerschlagwortSuche.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtVerschlagwortSuche.Location = new System.Drawing.Point(400, 42);
+            this.txtVerschlagwortSuche.Name = "txtVerschlagwortSuche";
+            this.txtVerschlagwortSuche.Size = new System.Drawing.Size(243, 20);
+            this.txtVerschlagwortSuche.TabIndex = 7;
+            // 
+            // txtPerSuche
+            // 
+            this.txtPerSuche.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtPerSuche.Location = new System.Drawing.Point(649, 42);
+            this.txtPerSuche.Name = "txtPerSuche";
+            this.txtPerSuche.Size = new System.Drawing.Size(93, 20);
+            this.txtPerSuche.TabIndex = 9;
             // 
             // txtPeriode
             // 
@@ -262,6 +267,151 @@
             this.textBox2.Size = new System.Drawing.Size(74, 20);
             this.textBox2.TabIndex = 16;
             // 
+            // dgvListeDok
+            // 
+            this.dgvListeDok.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dgvListeDok.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListeDok.Location = new System.Drawing.Point(13, 69);
+            this.dgvListeDok.Name = "dgvListeDok";
+            this.dgvListeDok.Size = new System.Drawing.Size(978, 747);
+            this.dgvListeDok.TabIndex = 5;
+            this.dgvListeDok.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListeDok_CellContentDoubleClick);
+            this.dgvListeDok.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvListeDok_RowHeaderDoubleClick);
+            // 
+            // btnLoeschen
+            // 
+            this.btnLoeschen.Location = new System.Drawing.Point(84, 796);
+            this.btnLoeschen.Name = "btnLoeschen";
+            this.btnLoeschen.Size = new System.Drawing.Size(75, 23);
+            this.btnLoeschen.TabIndex = 2;
+            this.btnLoeschen.Text = "Löschen";
+            this.btnLoeschen.UseVisualStyleBackColor = true;
+            // 
+            // btnBearbeiten
+            // 
+            this.btnBearbeiten.Location = new System.Drawing.Point(3, 796);
+            this.btnBearbeiten.Name = "btnBearbeiten";
+            this.btnBearbeiten.Size = new System.Drawing.Size(75, 23);
+            this.btnBearbeiten.TabIndex = 1;
+            this.btnBearbeiten.Text = "Bearbeiten";
+            this.btnBearbeiten.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanelRechts
+            // 
+            this.flowLayoutPanelRechts.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.flowLayoutPanelRechts.Controls.Add(this.documentViewer1);
+            this.flowLayoutPanelRechts.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelRechts.Name = "flowLayoutPanelRechts";
+            this.flowLayoutPanelRechts.Size = new System.Drawing.Size(611, 782);
+            this.flowLayoutPanelRechts.TabIndex = 0;
+            // 
+            // documentViewer1
+            // 
+            this.documentViewer1.AutoScroll = true;
+            this.documentViewer1.AutoSize = true;
+            this.documentViewer1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.documentViewer1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.documentViewer1.BorderWidth = 10;
+            this.documentViewer1.CurrentPage = 0;
+            this.documentViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.documentViewer1.HScrollBar.LargeChange = 40;
+            this.documentViewer1.HScrollBar.SmallChange = 20;
+            this.documentViewer1.HScrollBar.Value = 0;
+            this.documentViewer1.HScrollBar.Visibility = Gnostice.Documents.Controls.WinForms.ScrollBarVisibility.Always;
+            this.documentViewer1.Location = new System.Drawing.Point(4, 5);
+            this.documentViewer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.documentViewer1.Name = "documentViewer1";
+            // 
+            // 
+            // 
+            this.documentViewer1.NavigationPane.ActivePage = null;
+            this.documentViewer1.NavigationPane.Location = new System.Drawing.Point(0, 0);
+            this.documentViewer1.NavigationPane.Name = "";
+            this.documentViewer1.NavigationPane.TabIndex = 0;
+            this.documentViewer1.NavigationPane.Visibility = Gnostice.Documents.Controls.WinForms.Visibility.Auto;
+            this.documentViewer1.NavigationPane.WidthPercentage = 20;
+            this.documentViewer1.PageLayout = null;
+            this.documentViewer1.PageRotation = Gnostice.Documents.Controls.WinForms.RotationAngle.Zero;
+            spreadSheetFormatterSettings1.FormattingMode = Gnostice.DOM.FormattingMode.PreferDocumentSettings;
+            spreadSheetFormatterSettings1.PageOrder = Gnostice.Documents.Spreadsheet.LayoutDirection.BackwardN;
+            pageSettings1.Height = 11.6929F;
+            margins1.Bottom = 1F;
+            margins1.Footer = 0F;
+            margins1.Header = 0F;
+            margins1.Left = 1F;
+            margins1.Right = 1F;
+            margins1.Top = 1F;
+            pageSettings1.Margin = margins1;
+            pageSettings1.Orientation = Gnostice.Graphics.Orientation.Portrait;
+            pageSettings1.PageSize = Gnostice.Documents.PageSize.A4;
+            pageSettings1.Width = 8.2677F;
+            spreadSheetFormatterSettings1.PageSettings = pageSettings1;
+            sheetOptions1.Print = false;
+            sheetOptions1.View = true;
+            spreadSheetFormatterSettings1.ShowGridlines = sheetOptions1;
+            sheetOptions2.Print = false;
+            sheetOptions2.View = true;
+            spreadSheetFormatterSettings1.ShowHeadings = sheetOptions2;
+            formatterSettings1.SpreadSheet = spreadSheetFormatterSettings1;
+            txtFormatterSettings1.Font = new System.Drawing.Font("Calibri", 12F);
+            pageSettings2.Height = 11.6929F;
+            margins2.Bottom = 1F;
+            margins2.Footer = 0F;
+            margins2.Header = 0F;
+            margins2.Left = 1F;
+            margins2.Right = 1F;
+            margins2.Top = 1F;
+            pageSettings2.Margin = margins2;
+            pageSettings2.Orientation = Gnostice.Graphics.Orientation.Portrait;
+            pageSettings2.PageSize = Gnostice.Documents.PageSize.A4;
+            pageSettings2.Width = 8.2677F;
+            txtFormatterSettings1.PageSettings = pageSettings2;
+            formatterSettings1.TXT = txtFormatterSettings1;
+            this.documentViewer1.Preferences.FormatterSettings = formatterSettings1;
+            this.documentViewer1.Preferences.KeyNavigation = true;
+            imageRenderingSettings1.CompositingMode = Gnostice.Graphics.CompositingMode.SourceOver;
+            imageRenderingSettings1.CompositingQuality = Gnostice.Graphics.CompositingQuality.Default;
+            imageRenderingSettings1.InterpolationMode = Gnostice.Graphics.InterpolationMode.NearestNeighbor;
+            imageRenderingSettings1.PixelOffsetMode = Gnostice.Graphics.PixelOffsetMode.HighQuality;
+            renderingSettings1.Image = imageRenderingSettings1;
+            lineArtRenderingSettings1.SmoothingMode = Gnostice.Graphics.SmoothingMode.AntiAlias;
+            renderingSettings1.LineArt = lineArtRenderingSettings1;
+            resolutionSettings1.DpiX = 96F;
+            resolutionSettings1.DpiY = 96F;
+            resolutionSettings1.ResolutionMode = Gnostice.Graphics.ResolutionMode.UseSource;
+            renderingSettings1.Resolution = resolutionSettings1;
+            textRenderingSettings1.TextContrast = 3;
+            textRenderingSettings1.TextRenderingHint = Gnostice.Graphics.TextRenderingHint.AntiAlias;
+            renderingSettings1.Text = textRenderingSettings1;
+            this.documentViewer1.Preferences.RenderingSettings = renderingSettings1;
+            this.documentViewer1.Preferences.Units = Gnostice.Graphics.MeasurementUnit.Inches;
+            this.documentViewer1.Size = new System.Drawing.Size(0, 0);
+            this.documentViewer1.TabIndex = 1;
+            this.documentViewer1.VScrollBar.LargeChange = 40;
+            this.documentViewer1.VScrollBar.SmallChange = 20;
+            this.documentViewer1.VScrollBar.Value = 0;
+            this.documentViewer1.VScrollBar.Visibility = Gnostice.Documents.Controls.WinForms.ScrollBarVisibility.Auto;
+            this.documentViewer1.Zoom.ZoomMode = Gnostice.Documents.Controls.WinForms.ZoomMode.FitPage;
+            this.documentViewer1.Zoom.ZoomPercent = 100D;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(165, 796);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 3;
+            this.btnExport.Text = "Exportieren";
+            this.btnExport.UseVisualStyleBackColor = true;
+            // 
+            // btnDetails
+            // 
+            this.btnDetails.Location = new System.Drawing.Point(246, 796);
+            this.btnDetails.Name = "btnDetails";
+            this.btnDetails.Size = new System.Drawing.Size(75, 23);
+            this.btnDetails.TabIndex = 4;
+            this.btnDetails.Text = "Details";
+            this.btnDetails.UseVisualStyleBackColor = true;
+            // 
             // frmHauptfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,6 +432,8 @@
             this.flowLayoutPanelLinks.ResumeLayout(false);
             this.flowLayoutPanelLinks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeDok)).EndInit();
+            this.flowLayoutPanelRechts.ResumeLayout(false);
+            this.flowLayoutPanelRechts.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,5 +462,10 @@
         private System.Windows.Forms.TextBox txtPeriode;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnLoeschen;
+        private System.Windows.Forms.Button btnBearbeiten;
+        private Gnostice.Documents.Controls.WinForms.DocumentViewer documentViewer1;
+        private System.Windows.Forms.Button btnDetails;
+        private System.Windows.Forms.Button btnExport;
     }
 }

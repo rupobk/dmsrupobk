@@ -31,19 +31,24 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dokumentHinzufügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dokumenteImportierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dokumenteImportierenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerHauptfenster = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanelLinks = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSucheAlles = new System.Windows.Forms.TextBox();
-            this.cbVolltext = new System.Windows.Forms.CheckBox();
+            this.chboVolltext = new System.Windows.Forms.CheckBox();
             this.btnSuche = new System.Windows.Forms.Button();
-            this.txtDokArtSuche = new System.Windows.Forms.TextBox();
+            this.cbDokArt = new System.Windows.Forms.ComboBox();
             this.txtVerschlagwortSuche = new System.Windows.Forms.TextBox();
-            this.txtLiefSuche = new System.Windows.Forms.TextBox();
             this.txtPerSuche = new System.Windows.Forms.TextBox();
             this.dgvListeDok = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanelRechts = new System.Windows.Forms.FlowLayoutPanel();
-            this.dokumenteImportierenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.cbLieferant = new System.Windows.Forms.ComboBox();
+            this.txtPeriode = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHauptfenster)).BeginInit();
             this.splitContainerHauptfenster.Panel1.SuspendLayout();
@@ -78,6 +83,12 @@
             this.dokumenteImportierenToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.dokumenteImportierenToolStripMenuItem.Text = "Dokumente hinzufügen";
             // 
+            // dokumenteImportierenToolStripMenuItem1
+            // 
+            this.dokumenteImportierenToolStripMenuItem1.Name = "dokumenteImportierenToolStripMenuItem1";
+            this.dokumenteImportierenToolStripMenuItem1.Size = new System.Drawing.Size(201, 22);
+            this.dokumenteImportierenToolStripMenuItem1.Text = "Dokumente importieren";
+            // 
             // splitContainerHauptfenster
             // 
             this.splitContainerHauptfenster.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -93,7 +104,7 @@
             // 
             this.splitContainerHauptfenster.Panel2.Controls.Add(this.flowLayoutPanelRechts);
             this.splitContainerHauptfenster.Size = new System.Drawing.Size(1634, 826);
-            this.splitContainerHauptfenster.SplitterDistance = 744;
+            this.splitContainerHauptfenster.SplitterDistance = 1009;
             this.splitContainerHauptfenster.TabIndex = 1;
             // 
             // flowLayoutPanelLinks
@@ -102,18 +113,23 @@
             this.flowLayoutPanelLinks.AutoSize = true;
             this.flowLayoutPanelLinks.Controls.Add(this.label1);
             this.flowLayoutPanelLinks.Controls.Add(this.txtSucheAlles);
-            this.flowLayoutPanelLinks.Controls.Add(this.cbVolltext);
+            this.flowLayoutPanelLinks.Controls.Add(this.chboVolltext);
             this.flowLayoutPanelLinks.Controls.Add(this.btnSuche);
-            this.flowLayoutPanelLinks.Controls.Add(this.txtDokArtSuche);
+            this.flowLayoutPanelLinks.Controls.Add(this.textBox1);
+            this.flowLayoutPanelLinks.Controls.Add(this.txtID);
+            this.flowLayoutPanelLinks.Controls.Add(this.cbDokArt);
+            this.flowLayoutPanelLinks.Controls.Add(this.cbLieferant);
             this.flowLayoutPanelLinks.Controls.Add(this.txtVerschlagwortSuche);
-            this.flowLayoutPanelLinks.Controls.Add(this.txtLiefSuche);
             this.flowLayoutPanelLinks.Controls.Add(this.txtPerSuche);
+            this.flowLayoutPanelLinks.Controls.Add(this.txtPeriode);
+            this.flowLayoutPanelLinks.Controls.Add(this.textBox3);
+            this.flowLayoutPanelLinks.Controls.Add(this.textBox2);
             this.flowLayoutPanelLinks.Controls.Add(this.dgvListeDok);
             this.flowLayoutPanelLinks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelLinks.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelLinks.Name = "flowLayoutPanelLinks";
             this.flowLayoutPanelLinks.Padding = new System.Windows.Forms.Padding(10);
-            this.flowLayoutPanelLinks.Size = new System.Drawing.Size(740, 822);
+            this.flowLayoutPanelLinks.Size = new System.Drawing.Size(1005, 822);
             this.flowLayoutPanelLinks.TabIndex = 0;
             // 
             // label1
@@ -129,82 +145,122 @@
             // 
             this.txtSucheAlles.Location = new System.Drawing.Point(66, 13);
             this.txtSucheAlles.Name = "txtSucheAlles";
-            this.txtSucheAlles.Size = new System.Drawing.Size(503, 20);
+            this.txtSucheAlles.Size = new System.Drawing.Size(787, 20);
             this.txtSucheAlles.TabIndex = 2;
             // 
-            // cbVolltext
+            // chboVolltext
             // 
-            this.cbVolltext.AutoSize = true;
-            this.cbVolltext.Location = new System.Drawing.Point(575, 13);
-            this.cbVolltext.Name = "cbVolltext";
-            this.cbVolltext.Size = new System.Drawing.Size(60, 17);
-            this.cbVolltext.TabIndex = 0;
-            this.cbVolltext.Text = "Volltext";
-            this.cbVolltext.UseVisualStyleBackColor = true;
+            this.chboVolltext.AutoSize = true;
+            this.chboVolltext.Location = new System.Drawing.Point(859, 13);
+            this.chboVolltext.Name = "chboVolltext";
+            this.chboVolltext.Size = new System.Drawing.Size(60, 17);
+            this.chboVolltext.TabIndex = 0;
+            this.chboVolltext.Text = "Volltext";
+            this.chboVolltext.UseVisualStyleBackColor = true;
             // 
             // btnSuche
             // 
-            this.btnSuche.Location = new System.Drawing.Point(641, 13);
+            this.btnSuche.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnSuche.Location = new System.Drawing.Point(925, 13);
             this.btnSuche.Name = "btnSuche";
-            this.btnSuche.Size = new System.Drawing.Size(29, 23);
+            this.btnSuche.Size = new System.Drawing.Size(44, 23);
             this.btnSuche.TabIndex = 6;
             this.btnSuche.Text = "ok";
             this.btnSuche.UseVisualStyleBackColor = true;
             // 
-            // txtDokArtSuche
+            // cbDokArt
             // 
-            this.txtDokArtSuche.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtDokArtSuche.Location = new System.Drawing.Point(13, 42);
-            this.txtDokArtSuche.Name = "txtDokArtSuche";
-            this.txtDokArtSuche.Size = new System.Drawing.Size(109, 20);
-            this.txtDokArtSuche.TabIndex = 4;
+            this.cbDokArt.DropDownWidth = 140;
+            this.cbDokArt.FormattingEnabled = true;
+            this.cbDokArt.Location = new System.Drawing.Point(107, 42);
+            this.cbDokArt.Name = "cbDokArt";
+            this.cbDokArt.Size = new System.Drawing.Size(136, 21);
+            this.cbDokArt.TabIndex = 10;
             // 
             // txtVerschlagwortSuche
             // 
             this.txtVerschlagwortSuche.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtVerschlagwortSuche.Location = new System.Drawing.Point(128, 42);
+            this.txtVerschlagwortSuche.Location = new System.Drawing.Point(400, 42);
             this.txtVerschlagwortSuche.Name = "txtVerschlagwortSuche";
-            this.txtVerschlagwortSuche.Size = new System.Drawing.Size(236, 20);
+            this.txtVerschlagwortSuche.Size = new System.Drawing.Size(243, 20);
             this.txtVerschlagwortSuche.TabIndex = 7;
-            // 
-            // txtLiefSuche
-            // 
-            this.txtLiefSuche.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtLiefSuche.Location = new System.Drawing.Point(370, 42);
-            this.txtLiefSuche.Name = "txtLiefSuche";
-            this.txtLiefSuche.Size = new System.Drawing.Size(100, 20);
-            this.txtLiefSuche.TabIndex = 8;
             // 
             // txtPerSuche
             // 
             this.txtPerSuche.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtPerSuche.Location = new System.Drawing.Point(476, 42);
+            this.txtPerSuche.Location = new System.Drawing.Point(649, 42);
             this.txtPerSuche.Name = "txtPerSuche";
-            this.txtPerSuche.Size = new System.Drawing.Size(100, 20);
+            this.txtPerSuche.Size = new System.Drawing.Size(93, 20);
             this.txtPerSuche.TabIndex = 9;
             // 
             // dgvListeDok
             // 
             this.dgvListeDok.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dgvListeDok.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListeDok.Location = new System.Drawing.Point(13, 68);
+            this.dgvListeDok.Location = new System.Drawing.Point(13, 69);
             this.dgvListeDok.Name = "dgvListeDok";
-            this.dgvListeDok.Size = new System.Drawing.Size(709, 747);
+            this.dgvListeDok.Size = new System.Drawing.Size(978, 747);
             this.dgvListeDok.TabIndex = 5;
+            this.dgvListeDok.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListeDok_CellCont​entDoubleClick);
+            this.dgvListeDok.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvListeDok_RowHeaderDoubleClick);
             // 
             // flowLayoutPanelRechts
             // 
             this.flowLayoutPanelRechts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelRechts.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelRechts.Name = "flowLayoutPanelRechts";
-            this.flowLayoutPanelRechts.Size = new System.Drawing.Size(882, 822);
+            this.flowLayoutPanelRechts.Size = new System.Drawing.Size(617, 822);
             this.flowLayoutPanelRechts.TabIndex = 0;
             // 
-            // dokumenteImportierenToolStripMenuItem1
+            // textBox1
             // 
-            this.dokumenteImportierenToolStripMenuItem1.Name = "dokumenteImportierenToolStripMenuItem1";
-            this.dokumenteImportierenToolStripMenuItem1.Size = new System.Drawing.Size(201, 22);
-            this.dokumenteImportierenToolStripMenuItem1.Text = "Dokumente importieren";
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(13, 42);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(36, 20);
+            this.textBox1.TabIndex = 12;
+            // 
+            // txtID
+            // 
+            this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtID.Location = new System.Drawing.Point(55, 42);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(46, 20);
+            this.txtID.TabIndex = 13;
+            // 
+            // cbLieferant
+            // 
+            this.cbLieferant.DropDownWidth = 140;
+            this.cbLieferant.FormattingEnabled = true;
+            this.cbLieferant.Location = new System.Drawing.Point(249, 42);
+            this.cbLieferant.Name = "cbLieferant";
+            this.cbLieferant.Size = new System.Drawing.Size(145, 21);
+            this.cbLieferant.TabIndex = 10;
+            // 
+            // txtPeriode
+            // 
+            this.txtPeriode.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtPeriode.Location = new System.Drawing.Point(748, 42);
+            this.txtPeriode.Name = "txtPeriode";
+            this.txtPeriode.Size = new System.Drawing.Size(33, 20);
+            this.txtPeriode.TabIndex = 14;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox3.Location = new System.Drawing.Point(787, 42);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(74, 20);
+            this.textBox3.TabIndex = 15;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox2.Location = new System.Drawing.Point(867, 42);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(74, 20);
+            this.textBox2.TabIndex = 16;
             // 
             // frmHauptfenster
             // 
@@ -238,16 +294,21 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLinks;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSucheAlles;
-        private System.Windows.Forms.CheckBox cbVolltext;
+        private System.Windows.Forms.CheckBox chboVolltext;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelRechts;
-        private System.Windows.Forms.TextBox txtDokArtSuche;
         private System.Windows.Forms.DataGridView dgvListeDok;
         private System.Windows.Forms.Button btnSuche;
         private System.Windows.Forms.TextBox txtVerschlagwortSuche;
-        private System.Windows.Forms.TextBox txtLiefSuche;
         private System.Windows.Forms.TextBox txtPerSuche;
         private System.Windows.Forms.ToolStripMenuItem dokumentHinzufügenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dokumenteImportierenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dokumenteImportierenToolStripMenuItem1;
+        private System.Windows.Forms.ComboBox cbDokArt;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.ComboBox cbLieferant;
+        private System.Windows.Forms.TextBox txtPeriode;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

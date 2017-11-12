@@ -30,6 +30,10 @@ namespace DMSRupObk
             chboVolltext.Checked = false;
             ComboboxenAufbauen();
             GridInitialisieren();
+            btnBearbeiten.Enabled = false;
+            btnOeffnen.Enabled = false;
+            btnExport.Enabled = false;
+            btnLoeschen.Enabled = false;
         }
 
         private void ComboboxenAufbauen()
@@ -156,6 +160,20 @@ namespace DMSRupObk
             col8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             dgvListeDok.Columns.Add(col8);
 
+            // Pfad
+            DataGridViewColumn col9 = new DataGridViewTextBoxColumn();
+            col9.DataPropertyName = "Pfad";
+            col9.Visible = false;
+            dgvListeDok.Columns.Add(col9);
+
+            // Dateiname
+            DataGridViewColumn col10 = new DataGridViewTextBoxColumn();
+            col10.DataPropertyName = "Dateiname";
+            col10.Visible = false;
+            dgvListeDok.Columns.Add(col10);
+
+
+
             //dgvListeDok.Sort(col1, ListSortDirection.Ascending);
             //dgvListeDok.rowh
         }
@@ -210,16 +228,32 @@ namespace DMSRupObk
             return dt;
         }
 
-        private string DateiPfad(Dokument dok)
-        {
-            return Path.Combine(PrgPrm.RootVerzeichnisDok, dok.Pfad, dok.Dateiname);
-        }
-
-        private void dgvListeDok_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvListeDok_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)    // wenn auf Überschrift geklickt, dann nichts machen
             {
-                MessageBox.Show(e.RowIndex.ToString());
+                try
+                {
+                    documentViewer1.LoadDocument(Path.Combine(PrgPrm.RootVerzeichnisDok,
+                                                 dgvListeDok.Rows[e.RowIndex].Cells[8].Value.ToString(),
+                                                 dgvListeDok.Rows[e.RowIndex].Cells[9].Value.ToString()));
+                    btnBearbeiten.Enabled = true;
+                    btnOeffnen.Enabled = true;
+                    btnExport.Enabled = true;
+                    btnLoeschen.Enabled = true;
+                }
+                catch(Exception)
+                {
+                    try
+                    {
+                        documentViewer1.CloseDocument();
+                    }
+                    catch (Exception) { }
+                    btnBearbeiten.Enabled = false;
+                    btnOeffnen.Enabled = false;
+                    btnExport.Enabled = false;
+                    btnLoeschen.Enabled = false;
+                }
             }
         }
 
@@ -228,5 +262,27 @@ namespace DMSRupObk
                 MessageBox.Show(e.RowIndex.ToString());
         }
 
+        private string DateiPfad(Dokument dok)
+        {
+            return Path.Combine(PrgPrm.RootVerzeichnisDok, dok.Pfad, dok.Dateiname);
+        }
+
+        private void btnOeffnen_Click(object sender, EventArgs e)
+        {
+            //2 Methoden, um die Werte des datagrid herauszufinden
+            //1:
+            var x = dgvListeDok.CurrentCell.DataGridView.Columns[8];
+            DataGridViewRow selectedRow = dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex];
+            string pfad = selectedRow.Cells[8].Value.ToString();
+
+            //2:
+            string datei = dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[9].Value.ToString();
+
+            System.Diagnostics.Process.Start(Path.Combine(PrgPrm.RootVerzeichnisDok, pfad, datei));
+
+            //var rec = from a in Archiv.Erstellen().alleDokumente
+            //          where a.DokID == int.Parse(dgvListeDok.Rows[e.RowIndex].Cells[0].Value.ToString())
+            //          select a;
+        }
     }
 }

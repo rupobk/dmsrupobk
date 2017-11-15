@@ -206,10 +206,10 @@ namespace DMSRupObk
 
                 PrgPrm.AnzahlArchivierteDokumente++;
                 FileInfo fi = new FileInfo(pfadOrgDatei);
-                PrgPrm.DokDatengroesseInMB += Convert.ToDecimal(fi.Length / 1048576);
+                PrgPrm.DokDatengroesseInKB += Convert.ToDecimal(fi.Length / 1024);
 
                 FileInfo fi2 = new FileInfo(Volltext.PfadJsonVolltext);
-                PrgPrm.VolltextDatengroesseInMB += Convert.ToDecimal(fi2.Length / 1048576);
+                PrgPrm.VolltextDatengroesseInKB = Convert.ToDecimal(fi2.Length / 1024);
 
                 Archiv.Erstellen().Speichern();
                 PrgPrm.Schreiben();

@@ -20,7 +20,7 @@ namespace DMSRupObk
         public List<Dokument> alleRechnungen { get; set; } = new List<Dokument>(); // um schneller bei der Suche zu sein, weil das Meiste Rechnungen sind
 
         private Archiv()
-        {}
+        { }
 
         public static Archiv Erstellen()
         {
@@ -32,6 +32,34 @@ namespace DMSRupObk
             return DokArchiv;
         }
 
+        //TODO: testen
+        public void Loeschen(string id)
+        {
+            var rec = from a in Archiv.Erstellen().alleDokumente
+                      where a.DokID == int.Parse(id)
+                      select a;
+
+            foreach (Dokument d in rec)
+            {
+                try
+                {
+                    ProgParam PrgPrm = ProgParam.Erstellen();
+                    string pfad = Path.Combine(PrgPrm.RootVerzeichnisDok, d.Pfad, d.Dateiname);
+                    FileInfo fi = new FileInfo(pfad);
+                    File.Delete(pfad);
+                    alleDokumente.Remove(d);
+                    Speichern();
+                    PrgPrm.AnzahlArchivierteDokumente--;
+                    PrgPrm.DokDatengroesseInKB -= Convert.ToDecimal(fi.Length / 1024);
+                    PrgPrm.Schreiben();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Konnte Dokument nicht löschen. Fehler: " + ex.Message + "\nProgramm wird beendet!");
+                    Environment.Exit(1);
+                }
+            }
+        }
 
 
         //public Searchtree Suchbaum { get; set; }

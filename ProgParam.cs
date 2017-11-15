@@ -38,9 +38,9 @@ namespace DMSRupObk
         [JsonProperty] // ins json-File schreiben.
         public int AnzahlArchivierteDokumente { get; set; }
         [JsonProperty] // ins json-File schreiben.
-        public decimal DokDatengroesseInMB { get; set; }
+        public decimal DokDatengroesseInKB { get; set; }
         [JsonProperty] // ins json-File schreiben.
-        public decimal VolltextDatengroesseInMB { get; set; }
+        public decimal VolltextDatengroesseInKB { get; set; }
         [JsonProperty] // ins json-File schreiben.
         public int DokID { get; set; }
 
@@ -290,7 +290,7 @@ namespace DMSRupObk
 //public void iniDatenAktualisieren(int anzdok, int datgroes)   //anzdok=Anzahl Dokumente; datgroes=Dateigrösse in Byte
 //{
 //    AnzahlArchivierteDokumente += anzdok;
-//    DatengroesseInMB += datgroes / 1048576;
+//    DatengroesseInMB += datgroes / 1024;
 //    iniFile.SetValue("Archivstatistik", "AnzahlArchivierteDokumente", AnzahlArchivierteDokumente.ToString());
 //    iniFile.SetValue("Archivstatistik", "DatengroesseInMB", DatengroesseInMB.ToString());
 //}

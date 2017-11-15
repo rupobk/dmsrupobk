@@ -11,56 +11,80 @@ namespace DMSRupObk
 {
     class Volltext
     {
-            public static string PfadJsonVolltext;
-            private static Volltext DokVolltext = null;
+        public static string PfadJsonVolltext;
+        private static Volltext DokVolltext = null;
 
-            //Singleton Klasse für Datenbehälter
-            public List<Volltextindex> alleVolltexte { get; set; } = new List<Volltextindex>();
+        //Singleton Klasse für Datenbehälter
+        public List<Volltextindex> alleVolltexte { get; set; } = new List<Volltextindex>();
 
-            private Volltext()
-            { }
+        private Volltext()
+        { }
 
-            public static Volltext Erstellen()
+        public static Volltext Erstellen()
+        {
+            if (DokVolltext == null)
             {
-                if (DokVolltext == null)
-                {
-                    DokVolltext = new Volltext();
-                    PfadJsonVolltext = Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiVolltext);
-                }
-                return DokVolltext;
+                DokVolltext = new Volltext();
+                PfadJsonVolltext = Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiVolltext);
             }
+            return DokVolltext;
+        }
 
 
 
-            //public Searchtree Suchbaum { get; set; }
+        //public Searchtree Suchbaum { get; set; }
 
+        //TODO: testen
+        public void Loeschen(string id)
+        {
+            var rec = from a in Volltext.Erstellen().alleVolltexte
+                      where a.DokID == int.Parse(id)
+                      select a;
 
-
-            public void Speichern()
+            foreach (Volltextindex d in rec)
             {
                 try
                 {
-                    File.WriteAllText(Volltext.PfadJsonVolltext, JsonConvert.SerializeObject(this, Formatting.Indented));
+                    ProgParam PrgPrm = ProgParam.Erstellen();
+                    alleVolltexte.Remove(d);
+                    Speichern();
+                    FileInfo fi = new FileInfo(Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiVolltext));
+                    PrgPrm.VolltextDatengroesseInKB = Convert.ToDecimal(fi.Length / 1024);
+                    PrgPrm.Schreiben();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(PfadJsonVolltext + " kann nicht geschrieben werden. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
+                    MessageBox.Show("Konnte Volltext zum Dokument nicht löschen. Fehler: " + ex.Message + "\nProgramm wird beendet!");
                     Environment.Exit(1);
                 }
             }
+        }
 
-            public static void Laden()
+        public void Speichern()
+        {
+            try
             {
-                try
-                {
-                    DokVolltext = JsonConvert.DeserializeObject<Volltext>(File.ReadAllText(Volltext.PfadJsonVolltext));
-                }
-                catch (System.IO.FileNotFoundException)
-                {
-                    MessageBox.Show(PfadJsonVolltext + " nicht gefunden. Programm wird beendet ...");
-                    Environment.Exit(1);
-                }
+                File.WriteAllText(Volltext.PfadJsonVolltext, JsonConvert.SerializeObject(this, Formatting.Indented));
             }
-        
+            catch (Exception ex)
+            {
+                MessageBox.Show(PfadJsonVolltext + " kann nicht geschrieben werden. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
+                Environment.Exit(1);
+            }
+        }
+
+        public static void Laden()
+        {
+            try
+            {
+                DokVolltext = JsonConvert.DeserializeObject<Volltext>(File.ReadAllText(Volltext.PfadJsonVolltext));
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                MessageBox.Show(PfadJsonVolltext + " nicht gefunden. Programm wird beendet ...");
+                Environment.Exit(1);
+            }
+        }
+
     }
 }

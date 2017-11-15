@@ -59,8 +59,8 @@ namespace DMSRupObk
         private void GridInitialisieren()
         {
             var query = (from dok in Archiv.Erstellen().alleDokumente
-                       orderby dok.Archivierungsdatum descending, dok.DokID descending
-                       select dok).ToList();
+                         orderby dok.Archivierungsdatum descending, dok.DokID descending
+                         select dok).ToList();
 
             //muss gemacht werden, damit die Sortierung über die Spaltenüberschriften funktioniert
             //nur bei Dataview funktioniert nämlich die Sortierung über die Spaltenüberschriften
@@ -242,7 +242,7 @@ namespace DMSRupObk
                     btnExport.Enabled = true;
                     btnLoeschen.Enabled = true;
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     try
                     {
@@ -259,7 +259,7 @@ namespace DMSRupObk
 
         private void dgvListeDok_RowHeaderDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-                MessageBox.Show(e.RowIndex.ToString());
+            MessageBox.Show(e.RowIndex.ToString());
         }
 
         private string DateiPfad(Dokument dok)
@@ -279,10 +279,42 @@ namespace DMSRupObk
             string datei = dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[9].Value.ToString();
 
             System.Diagnostics.Process.Start(Path.Combine(PrgPrm.RootVerzeichnisDok, pfad, datei));
+        }
 
-            //var rec = from a in Archiv.Erstellen().alleDokumente
-            //          where a.DokID == int.Parse(dgvListeDok.Rows[e.RowIndex].Cells[0].Value.ToString())
-            //          select a;
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            string datei, pfad;
+            FolderBrowserDialog objDialog = new FolderBrowserDialog();
+            objDialog.Description = "Beschreibung";
+            objDialog.SelectedPath = @"C:\";       // Vorgabe Pfad (und danach der gewählte Pfad)
+            DialogResult objResult = objDialog.ShowDialog(this);
+            if (objResult == DialogResult.OK)
+            {
+                datei = dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[9].Value.ToString();
+                pfad = dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[8].Value.ToString();
+                File.Copy(Path.Combine(PrgPrm.RootVerzeichnisDok, pfad, datei), Path.Combine(objDialog.SelectedPath, datei));
+            }
+        }
+
+        private void btnLoeschen_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Bist du sicher?", "Rückfrage", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Archiv.Erstellen().Loeschen(dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[0].Value.ToString());
+                Volltext.Erstellen().Loeschen(dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[0].Value.ToString());
+            }
+        }
+
+        //TODO: noch zu programmieren
+        private void btnVerschieben_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //TODO: noch zu programmieren
+        private void btnBearbeiten_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

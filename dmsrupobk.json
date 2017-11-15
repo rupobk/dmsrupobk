@@ -8,8 +8,8 @@
   "VolltextindizierungDefault": false,
   "AnzDokProVerzeichnis": 10000,
   "AnzahlArchivierteDokumente": 6,
-  "DokDatengroesseInMB": 0.0,
-  "VolltextDatengroesseInMB": 0.0,
+  "DokDatengroesseInKB": 0.0,
+  "VolltextDatengroesseInKB": 0.0,
   "DokID": 6,
   "Dokumentenstatus": [
     "erledigt",

@@ -23,9 +23,12 @@ namespace DMSRupObk
         private string zielPfad;
         private string extension;
         public ProgParam PrgPrm = ProgParam.Erstellen();
+        public enum MomentanerDokumentenStatus { undefiniert, neuesDokument, inBearbeitung}
+        public MomentanerDokumentenStatus DokStatus = MomentanerDokumentenStatus.undefiniert;
 
         public frmDokBearbeiten()
         {
+            DokStatus = MomentanerDokumentenStatus.neuesDokument;
             InitializeComponent();
             FormularClear();
         }
@@ -33,6 +36,7 @@ namespace DMSRupObk
         /// Konstruktor der für bestehende Dokumente aufgerufen wird
         public frmDokBearbeiten(Dokument dok) : this()    //this ruft Hauptkonstruktor auf u. wird für bestehende Dok. aufgerufen
         {
+            DokStatus = MomentanerDokumentenStatus.inBearbeitung;
             FelderZuweisen(dok);
             this.ShowDialog();
         }
@@ -49,9 +53,26 @@ namespace DMSRupObk
             dtpAenderung.Text = dok.Aenderungsdatum.ToString("dd.MM.yyyy");
 
             ComboboxenAufbauen();
+            
+            //TODO: Fehler, funktioniert noch nicht
+            // Relativen Index des Eintrages in der sortierten Combobox suchen
+            int x = 0;
+            foreach (Dokumentenart da in cbDokArt.Items)
+            {
+                if (da.Key != dok.DokumentenartKey)
+                    x++;
+            }
             cbDokArt.SelectedIndex = dok.DokumentenartKey;
-            cbLieferant.SelectedIndex = dok.LieferantKey;
-            cbLieferant.Text = dok.Pfad;
+
+            x = 0;
+            foreach (Lieferant li in cbLieferant.Items)
+            {
+                if (li.Key != dok.LieferantKey)
+                    x++;
+            }
+            cbLieferant.SelectedIndex = x;
+
+            cbZielpfad.SelectedIndex = cbZielpfad.Items.IndexOf(dok.Pfad);
             cbDokArt.Text = dok.Dokumentenstatus;
 
             string pfad = Path.Combine(PrgPrm.RootVerzeichnisDok, dok.Pfad, dok.Dateiname);
@@ -98,19 +119,20 @@ namespace DMSRupObk
 
         private void ComboboxenAufbauen()
         {
-            cbDokArt.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
+            //cbDokArt.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
+            cbDokArt.DataSource = PrgPrm.AlleDokumentenarten;
             cbDokArt.DisplayMember = "Name";
             cbDokArt.ValueMember = "Key";
-            cbDokArt.SelectedIndex = 9;
+            //cbLieferant.SelectedIndex = 5;
 
             cbLieferant.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
             cbLieferant.DisplayMember = "Name";
             cbLieferant.ValueMember = "Key";
-            cbLieferant.SelectedIndex = 0;
+            //cbLieferant.SelectedIndex = 0;
 
             PrgPrm.Ordner.Sort();
             cbZielpfad.DataSource = PrgPrm.Ordner;
-            cbLieferant.SelectedIndex = 11;
+            //cbLieferant.SelectedIndex = 0;
 
             cbStatus.DataSource = PrgPrm.Dokumentenstatus;
             cbDokArt.SelectedIndex = 1;
@@ -173,46 +195,55 @@ namespace DMSRupObk
         {
             if (FelderPruefungOk())
             {
-                int DokID = int.Parse(lblDokID.Text);
-                int LiefKey = 0;
-                string LiefName = "";
-                if (!string.IsNullOrEmpty(cbLieferant.Text))
+                if (DokStatus == MomentanerDokumentenStatus.neuesDokument)
+                // Dokument wurde neu erstellt u. ist damit neu zu speichern
                 {
-                    LiefKey = (int)cbLieferant.SelectedValue;
-                    LiefName = cbLieferant.Text;
+                    int DokID = int.Parse(lblDokID.Text);
+                    int LiefKey = 0;
+                    string LiefName = "";
+                    if (!string.IsNullOrEmpty(cbLieferant.Text))
+                    {
+                        LiefKey = (int)cbLieferant.SelectedValue;
+                        LiefName = cbLieferant.Text;
+                    }
+
+                    string Per = "";
+                    if (!string.IsNullOrEmpty(txtPeriode.Text))
+                        Per = txtPeriode.Text;
+
+                    // Dokumentenviewer schliessen, damit das Dokument verschoben werden kann
+                    if (documentViewer1.Created)
+                        documentViewer1.CloseDocument();
+
+                    Dokument dok = new Dokument(DokID, (int)cbDokArt.SelectedValue, cbDokArt.Text, cbZielpfad.Text, neuerDateiname, extension,
+                                                txtVerschlagwort.Text, int.Parse(txtJahr.Text), cbStatus.Text, dtpArchivierung.Value,
+                                                dtpAenderung.Value, LiefKey, LiefName, Per);
+
+                    // verschiebt Dokument in richtigen Ordner -> Pfad setzen 
+                    string zielpfad = Path.Combine(PrgPrm.RootVerzeichnisDok, dok.Pfad, dok.Dateiname);
+                    File.Copy(pfadOrgDatei, zielpfad);
+
+                    if (!string.IsNullOrEmpty(txtVolltext.Text))
+                    {
+                        Volltextindex vti = new Volltextindex(DokID, txtVolltext.Text, cbZielpfad.Text, neuerDateiname, extension);
+                        Volltext.Erstellen().Speichern();
+                    }
+
+                    PrgPrm.AnzahlArchivierteDokumente++;
+                    FileInfo fi = new FileInfo(pfadOrgDatei);
+                    PrgPrm.DokDatengroesseInKB += Convert.ToDecimal(fi.Length / 1024);
+
+                    FileInfo fi2 = new FileInfo(Volltext.PfadJsonVolltext);
+                    PrgPrm.VolltextDatengroesseInKB = Convert.ToDecimal(fi2.Length / 1024);
+
+                    Archiv.Erstellen().Speichern();
+                    PrgPrm.Schreiben();
                 }
-
-                string Per = "";
-                if (!string.IsNullOrEmpty(txtPeriode.Text))
-                    Per = txtPeriode.Text;
-
-                // Dokumentenviewer schliessen, damit das Dokument verschoben werden kann
-                if (documentViewer1.Created)
-                    documentViewer1.CloseDocument();
-
-                Dokument dok = new Dokument(DokID, (int)cbDokArt.SelectedValue, cbDokArt.Text, cbZielpfad.Text, neuerDateiname, extension,
-                                            txtVerschlagwort.Text, int.Parse(txtJahr.Text), cbStatus.Text, dtpArchivierung.Value, 
-                                            dtpAenderung.Value, LiefKey, LiefName, Per);
-
-                // verschiebt Dokument in richtigen Ordner -> Pfad setzen 
-                string zielpfad = Path.Combine(PrgPrm.RootVerzeichnisDok, dok.Pfad, dok.Dateiname);
-                File.Copy(pfadOrgDatei, zielpfad);
-
-                if (!string.IsNullOrEmpty(txtVolltext.Text))
+                else
+                // Dokument wurde editiert u. damit sind nur mehr die Änderungen zu speichern
                 {
-                    Volltextindex vti = new Volltextindex(DokID, txtVolltext.Text, cbZielpfad.Text, neuerDateiname, extension);
-                    Volltext.Erstellen().Speichern();
+                    MessageBox.Show("Dok. in Bearbeitung");
                 }
-
-                PrgPrm.AnzahlArchivierteDokumente++;
-                FileInfo fi = new FileInfo(pfadOrgDatei);
-                PrgPrm.DokDatengroesseInKB += Convert.ToDecimal(fi.Length / 1024);
-
-                FileInfo fi2 = new FileInfo(Volltext.PfadJsonVolltext);
-                PrgPrm.VolltextDatengroesseInKB = Convert.ToDecimal(fi2.Length / 1024);
-
-                Archiv.Erstellen().Speichern();
-                PrgPrm.Schreiben();
 
                 FormularClear();
             }

@@ -64,7 +64,6 @@
             this.btnLoeschen = new System.Windows.Forms.Button();
             this.btnBearbeiten = new System.Windows.Forms.Button();
             this.documentViewer1 = new Gnostice.Documents.Controls.WinForms.DocumentViewer();
-            this.btnVerschieben = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeDok)).BeginInit();
             this.SuspendLayout();
@@ -340,22 +339,11 @@
             this.documentViewer1.Zoom.ZoomMode = Gnostice.Documents.Controls.WinForms.ZoomMode.FitPage;
             this.documentViewer1.Zoom.ZoomPercent = 100D;
             // 
-            // btnVerschieben
-            // 
-            this.btnVerschieben.Location = new System.Drawing.Point(1350, 27);
-            this.btnVerschieben.Name = "btnVerschieben";
-            this.btnVerschieben.Size = new System.Drawing.Size(75, 23);
-            this.btnVerschieben.TabIndex = 18;
-            this.btnVerschieben.Text = "Verschieben";
-            this.btnVerschieben.UseVisualStyleBackColor = true;
-            this.btnVerschieben.Click += new System.EventHandler(this.btnVerschieben_Click);
-            // 
             // frmHauptfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1678, 850);
-            this.Controls.Add(this.btnVerschieben);
             this.Controls.Add(this.documentViewer1);
             this.Controls.Add(this.btnOeffnen);
             this.Controls.Add(this.txtID);
@@ -410,6 +398,5 @@
         private System.Windows.Forms.Button btnOeffnen;
         private System.Windows.Forms.Button btnExport;
         private Gnostice.Documents.Controls.WinForms.DocumentViewer documentViewer1;
-        private System.Windows.Forms.Button btnVerschieben;
     }
 }

@@ -306,15 +306,16 @@ namespace DMSRupObk
         }
 
         //TODO: noch zu programmieren
-        private void btnVerschieben_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //TODO: noch zu programmieren
         private void btnBearbeiten_Click(object sender, EventArgs e)
         {
+            var rec = from a in Archiv.Erstellen().alleDokumente
+                      where a.DokID == int.Parse(dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[0].Value.ToString())
+                      select a;
 
+            foreach (Dokument d in rec)
+            {
+                new frmDokBearbeiten(d);
+            }
         }
     }
 }

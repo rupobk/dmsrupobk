@@ -96,6 +96,8 @@ namespace DMSRupObk
             btnNeu.Visible = false;
         }
 
+        //TODO: noch zu machen
+        // fehlt noch die Funktion, dass ein neu eingegebener Eintrag automatisch beim verlassen des Formulars in der Combobox ausgewählt wird
         private void btnSpeichern_Click(object sender, EventArgs e)
         {
             bool doppelt = false;

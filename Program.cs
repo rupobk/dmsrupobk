@@ -22,14 +22,13 @@ namespace DMSRupObk
             //Lizenz für Dokumentenviewer-Objekt einmal aktivieren
             Gnostice.Documents.Framework.ActivateLicense("E851-06B8-F97A-E39A-69AD-014C-F7C4-D3FD-55CE-ECBA-D607-941D");
 
-            //TODO: Laurin fragen: warum Methode DatenLaden, ansonsten Endlosschleife u. wohin damit
             ProgParam PrgPrm = ProgParam.Erstellen();
             Archiv DokArchiv = Archiv.Erstellen();
             if(PrgPrm.AnzahlArchivierteDokumente!=0)
                 Archiv.Laden();
             Volltext DokVolltext = Volltext.Erstellen();
-            if (PrgPrm.AnzahlArchivierteDokumente != 0)
-                Volltext.Laden();
+            //if (PrgPrm.AnzahlArchivierteDokumente != 0)
+            //    Volltext.Laden();
 
             //Application.Run(new frmDokBearbeiten());
             Application.Run(new frmHauptfenster());

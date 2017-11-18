@@ -75,7 +75,7 @@ namespace DMSRupObk
         {
             if (PrgPrm == null)
             {
-                //PrgPrm = new ProgParam();  nicht notwendig wird durch Json-Lesen automatisch ausgeführt
+                PrgPrm = new ProgParam();
                 // wird PrgPrm erstellt, dann müssen natürlich alle Parameter auch mit eingelesen werden:
                 Lesen();
                 PrgPrm.VerzeichnisseEinrichten();

@@ -23,8 +23,9 @@ namespace DMSRupObk
         private string zielPfad;
         private string extension;
         public ProgParam PrgPrm = ProgParam.Erstellen();
-        public enum MomentanerDokumentenStatus { undefiniert, neuesDokument, inBearbeitung}
+        public enum MomentanerDokumentenStatus { undefiniert, neuesDokument, inBearbeitung }
         public MomentanerDokumentenStatus DokStatus = MomentanerDokumentenStatus.undefiniert;
+        public Dokument tmpDok;
 
         public frmDokBearbeiten()
         {
@@ -38,6 +39,7 @@ namespace DMSRupObk
         {
             DokStatus = MomentanerDokumentenStatus.inBearbeitung;
             FelderZuweisen(dok);
+            tmpDok = dok;
             this.ShowDialog();
         }
 
@@ -53,21 +55,25 @@ namespace DMSRupObk
             dtpAenderung.Text = dok.Aenderungsdatum.ToString("dd.MM.yyyy");
 
             ComboboxenAufbauen();
-            
+
             //TODO: Fehler, funktioniert noch nicht
             // Relativen Index des Eintrages in der sortierten Combobox suchen
             int x = 0;
             foreach (Dokumentenart da in cbDokArt.Items)
             {
-                if (da.Key != dok.DokumentenartKey)
+                if (da.Key == dok.DokumentenartKey)
+                    break;
+                else
                     x++;
             }
-            cbDokArt.SelectedIndex = dok.DokumentenartKey;
+            cbDokArt.SelectedIndex = x;
 
             x = 0;
             foreach (Lieferant li in cbLieferant.Items)
             {
-                if (li.Key != dok.LieferantKey)
+                if (li.Key == dok.LieferantKey)
+                    break;
+                else
                     x++;
             }
             cbLieferant.SelectedIndex = x;
@@ -181,6 +187,11 @@ namespace DMSRupObk
                     txtVolltext.Text = Result.Text;
                     btnOCRScan.Enabled = false;
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Kann die OCR-Erkennung nicht durchführen. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
+                    Environment.Exit(1);
+                }
                 finally
                 {
                     Cursor = Cursors.Default;
@@ -238,14 +249,51 @@ namespace DMSRupObk
 
                     Archiv.Erstellen().Speichern();
                     PrgPrm.Schreiben();
+
+                    FormularClear();
                 }
                 else
-                // Dokument wurde editiert u. damit sind nur mehr die Änderungen zu speichern
+                // Dokument wurde editiert, Änderungen prüfen u. speichern
                 {
-                    MessageBox.Show("Dok. in Bearbeitung");
-                }
+                    // Dokumentenviewer schliessen, damit das Dokument verschoben werden kann
+                    if (documentViewer1.Created)
+                        documentViewer1.CloseDocument();
+                    tmpDok.DokumentenartKey = (int)cbDokArt.SelectedValue;
+                    tmpDok.DokumentenartName = cbDokArt.Text;
+                    tmpDok.LieferantKey = (int)cbLieferant.SelectedValue;
+                    tmpDok.LieferantName = cbLieferant.Text;
+                    tmpDok.Verschlagwortung = txtVerschlagwort.Text;
+                    tmpDok.Periode = txtPeriode.Text;
+                    tmpDok.Jahr = int.Parse(txtJahr.Text);
+                    tmpDok.Aenderungsdatum = DateTime.Today;
 
-                FormularClear();
+                    // Wenn sich Dokumentenpfad geändert hat, dann Dokument dort hin verschieben
+                    if (tmpDok.Pfad != cbZielpfad.Text || tmpDok.Dateiname!=txtDateiname.Text)
+                    {
+                        try
+                        {
+                            File.Move(Path.Combine(PrgPrm.RootVerzeichnisDok, tmpDok.Pfad, tmpDok.Dateiname),
+                                      Path.Combine(PrgPrm.RootVerzeichnisDok, cbZielpfad.Text, tmpDok.Dateiname));
+                            tmpDok.Pfad = cbZielpfad.Text;
+                            tmpDok.Dateiname = txtDateiname.Text;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Kann Dokument nicht verschieben. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
+                            Environment.Exit(1);
+                        }
+                    }
+
+                    List<Dokument> alledok = Archiv.Erstellen().alleDokumente;
+                    var index = alledok.FindIndex(c => c.DokID == tmpDok.DokID);
+                    alledok[index] = tmpDok;
+                    Archiv.Erstellen().Speichern();
+
+                    //Todo: noch zu machen
+                    // alleRechnungen aktualisieren
+
+                    this.Close();
+                }
             }
         }
 

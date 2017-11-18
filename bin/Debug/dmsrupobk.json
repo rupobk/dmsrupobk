@@ -83,6 +83,14 @@
     {
       "Key": 17,
       "Name": "vertrag"
+    },
+    {
+      "Key": 0,
+      "Name": ""
+    },
+    {
+      "Key": 0,
+      "Name": ""
     }
   ],
   "AlleLieferanten": [
@@ -217,6 +225,10 @@
     {
       "Key": 33,
       "Name": "innerhofer"
+    },
+    {
+      "Key": 34,
+      "Name": "genialloyd"
     }
   ],
   "Ordner": [

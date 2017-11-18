@@ -18,7 +18,9 @@ namespace DMSRupObk
         public List<Volltextindex> alleVolltexte { get; set; } = new List<Volltextindex>();
 
         private Volltext()
-        { }
+        {
+
+        }
 
         public static Volltext Erstellen()
         {
@@ -26,6 +28,8 @@ namespace DMSRupObk
             {
                 DokVolltext = new Volltext();
                 PfadJsonVolltext = Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiVolltext);
+                //DokVolltext = new Volltext();
+                Laden();
             }
             return DokVolltext;
         }

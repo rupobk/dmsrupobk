@@ -28,41 +28,14 @@ namespace DMSRupObk
             {
                 DokVolltext = new Volltext();
                 PfadJsonVolltext = Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiVolltext);
-                //DokVolltext = new Volltext();
                 Laden();
             }
             return DokVolltext;
         }
 
 
-
         //public Searchtree Suchbaum { get; set; }
 
-        //TODO: testen
-        public void Loeschen(string id)
-        {
-            var rec = from a in Volltext.Erstellen().alleVolltexte
-                      where a.DokID == int.Parse(id)
-                      select a;
-
-            foreach (Volltextindex d in rec)
-            {
-                try
-                {
-                    ProgParam PrgPrm = ProgParam.Erstellen();
-                    alleVolltexte.Remove(d);
-                    Speichern();
-                    FileInfo fi = new FileInfo(Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiVolltext));
-                    PrgPrm.VolltextDatengroesseInKB = Convert.ToDecimal(fi.Length / 1024);
-                    PrgPrm.Schreiben();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Konnte Volltext zum Dokument nicht löschen. Fehler: " + ex.Message + "\nProgramm wird beendet!");
-                    Environment.Exit(1);
-                }
-            }
-        }
 
         public void Speichern()
         {

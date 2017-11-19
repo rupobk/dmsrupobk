@@ -29,7 +29,7 @@ namespace DMSRupObk
             txtVerschlagwortSuche.Text = string.Empty;
             chboVolltext.Checked = false;
             ComboboxenAufbauen();
-            GridInitialisieren();
+            GridAnzeigen();
             btnBearbeiten.Enabled = false;
             btnOeffnen.Enabled = false;
             btnExport.Enabled = false;
@@ -56,7 +56,7 @@ namespace DMSRupObk
             cbLieferant.SelectedIndex = 0;
         }
 
-        private void GridInitialisieren()
+        private void GridAnzeigen()
         {
             var query = (from dok in Archiv.Erstellen().alleDokumente
                          orderby dok.Archivierungsdatum descending, dok.DokID descending
@@ -273,14 +273,14 @@ namespace DMSRupObk
         {
             //2 Methoden, um die Werte des datagrid herauszufinden
             //1:
-            var x = dgvListeDok.CurrentCell.DataGridView.Columns[8];
-            DataGridViewRow selectedRow = dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex];
-            string pfad = selectedRow.Cells[8].Value.ToString();
+            //var x = dgvListeDok.CurrentCell.DataGridView.Columns[8];
+            //DataGridViewRow selectedRow = dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex];
+            //string pfad = selectedRow.Cells[8].Value.ToString();
 
             //2:
-            string datei = dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[9].Value.ToString();
+            //string datei = dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[9].Value.ToString();
 
-            System.Diagnostics.Process.Start(Path.Combine(PrgPrm.RootVerzeichnisDok, pfad, datei));
+            Archiv.Erstellen().alleDokumente.Find(x => x.DokID == int.Parse(dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[0].Value.ToString())).OeffneDich();
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -302,12 +302,14 @@ namespace DMSRupObk
         {
             if (MessageBox.Show("Bist du sicher?", "Rückfrage", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Archiv.Erstellen().Loeschen(dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[0].Value.ToString());
-                Volltext.Erstellen().Loeschen(dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[0].Value.ToString());
+                Dokument dok = Archiv.Erstellen().alleDokumente.Find(x => x.DokID == int.Parse(dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[0].Value.ToString()));
+                dok.Loeschen();
+                Volltextindex vti = Volltext.Erstellen().alleVolltexte.Find(x => x.DokID == int.Parse(dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[0].Value.ToString()));
+                vti.Loeschen();
             }
         }
 
-        //TODO: noch zu programmieren
+        //TODO: noch ausgiebig zu testen
         private void btnBearbeiten_Click(object sender, EventArgs e)
         {
             //das Dokument finden kann man auf 2 Arten:

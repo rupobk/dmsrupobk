@@ -27,8 +27,6 @@ namespace DMSRupObk
             if(PrgPrm.AnzahlArchivierteDokumente!=0)
                 Archiv.Laden();
             Volltext DokVolltext = Volltext.Erstellen();
-            //if (PrgPrm.AnzahlArchivierteDokumente != 0)
-            //    Volltext.Laden();
 
             //Application.Run(new frmDokBearbeiten());
             Application.Run(new frmHauptfenster());

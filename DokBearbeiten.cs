@@ -56,7 +56,6 @@ namespace DMSRupObk
 
             ComboboxenAufbauen();
 
-            //TODO: Fehler, funktioniert noch nicht
             // Relativen Index des Eintrages in der sortierten Combobox suchen
             int x = 0;
             foreach (Dokumentenart da in cbDokArt.Items)
@@ -358,21 +357,48 @@ namespace DMSRupObk
         //TODO: ist noch auszutesten!
         private void btnDokuartBearbeiten_Click(object sender, EventArgs e)
         {
-            new frmAttributBearbeiten("Dokumentenart").ShowDialog();
+            frmAttributBearbeiten x = new frmAttributBearbeiten("Dokumentenart");
+            x.ShowDialog();
+
             cbDokArt.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
+            // Relativen Index des Eintrages in der sortierten Combobox suchen
+            int y = 0;
+            foreach (Dokumentenart da in cbDokArt.Items)
+            {
+                if (da.Key == x.NeuerKey)
+                    break;
+                else
+                    y++;
+            }
+            cbDokArt.SelectedIndex = y;
         }
 
+        //TODO: ist noch auszutesten!
         private void btnZielpfadBearbeiten_Click(object sender, EventArgs e)
         {
-            new frmAttributBearbeiten("Ordner").ShowDialog();
+            frmAttributBearbeiten t = new frmAttributBearbeiten("Ordner");
+            t.ShowDialog();
             PrgPrm.Ordner.Sort();
             cbZielpfad.DataSource = PrgPrm.Ordner;
+            cbZielpfad.SelectedIndex = cbZielpfad.Items.IndexOf(t.NeuerOrdner);
         }
 
+        //TODO: ist noch auszutesten!
         private void btnLiefBearbeiten_Click(object sender, EventArgs e)
         {
-            new frmAttributBearbeiten("Lieferant").ShowDialog();
+            frmAttributBearbeiten t = new frmAttributBearbeiten("Lieferant");
+            t.ShowDialog();
+
             cbLieferant.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
+            int x = 0;
+            foreach (Lieferant li in cbLieferant.Items)
+            {
+                if (li.Key == t.NeuerKey)
+                    break;
+                else
+                    x++;
+            }
+            cbLieferant.SelectedIndex = x;
         }
 
         private void btnClear_Click(object sender, EventArgs e)

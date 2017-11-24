@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            Gnostice.Documents.FormatterSettings formatterSettings2 = new Gnostice.Documents.FormatterSettings();
-            Gnostice.Documents.Spreadsheet.SpreadSheetFormatterSettings spreadSheetFormatterSettings2 = new Gnostice.Documents.Spreadsheet.SpreadSheetFormatterSettings();
-            Gnostice.Documents.PageSettings pageSettings3 = new Gnostice.Documents.PageSettings();
-            Gnostice.Documents.Margins margins3 = new Gnostice.Documents.Margins();
-            Gnostice.Documents.Spreadsheet.SheetOptions sheetOptions3 = new Gnostice.Documents.Spreadsheet.SheetOptions();
-            Gnostice.Documents.Spreadsheet.SheetOptions sheetOptions4 = new Gnostice.Documents.Spreadsheet.SheetOptions();
-            Gnostice.Documents.TXTFormatterSettings txtFormatterSettings2 = new Gnostice.Documents.TXTFormatterSettings();
-            Gnostice.Documents.PageSettings pageSettings4 = new Gnostice.Documents.PageSettings();
-            Gnostice.Documents.Margins margins4 = new Gnostice.Documents.Margins();
-            Gnostice.Graphics.RenderingSettings renderingSettings2 = new Gnostice.Graphics.RenderingSettings();
-            Gnostice.Graphics.ImageRenderingSettings imageRenderingSettings2 = new Gnostice.Graphics.ImageRenderingSettings();
-            Gnostice.Graphics.LineArtRenderingSettings lineArtRenderingSettings2 = new Gnostice.Graphics.LineArtRenderingSettings();
-            Gnostice.Graphics.ResolutionSettings resolutionSettings2 = new Gnostice.Graphics.ResolutionSettings();
-            Gnostice.Graphics.TextRenderingSettings textRenderingSettings2 = new Gnostice.Graphics.TextRenderingSettings();
+            Gnostice.Documents.FormatterSettings formatterSettings1 = new Gnostice.Documents.FormatterSettings();
+            Gnostice.Documents.Spreadsheet.SpreadSheetFormatterSettings spreadSheetFormatterSettings1 = new Gnostice.Documents.Spreadsheet.SpreadSheetFormatterSettings();
+            Gnostice.Documents.PageSettings pageSettings1 = new Gnostice.Documents.PageSettings();
+            Gnostice.Documents.Margins margins1 = new Gnostice.Documents.Margins();
+            Gnostice.Documents.Spreadsheet.SheetOptions sheetOptions1 = new Gnostice.Documents.Spreadsheet.SheetOptions();
+            Gnostice.Documents.Spreadsheet.SheetOptions sheetOptions2 = new Gnostice.Documents.Spreadsheet.SheetOptions();
+            Gnostice.Documents.TXTFormatterSettings txtFormatterSettings1 = new Gnostice.Documents.TXTFormatterSettings();
+            Gnostice.Documents.PageSettings pageSettings2 = new Gnostice.Documents.PageSettings();
+            Gnostice.Documents.Margins margins2 = new Gnostice.Documents.Margins();
+            Gnostice.Graphics.RenderingSettings renderingSettings1 = new Gnostice.Graphics.RenderingSettings();
+            Gnostice.Graphics.ImageRenderingSettings imageRenderingSettings1 = new Gnostice.Graphics.ImageRenderingSettings();
+            Gnostice.Graphics.LineArtRenderingSettings lineArtRenderingSettings1 = new Gnostice.Graphics.LineArtRenderingSettings();
+            Gnostice.Graphics.ResolutionSettings resolutionSettings1 = new Gnostice.Graphics.ResolutionSettings();
+            Gnostice.Graphics.TextRenderingSettings textRenderingSettings1 = new Gnostice.Graphics.TextRenderingSettings();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dokumentHinzufügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dokumenteImportierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +61,11 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dgvListeDok = new System.Windows.Forms.DataGridView();
+            this.btnOeffnen = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnLoeschen = new System.Windows.Forms.Button();
+            this.btnBearbeiten = new System.Windows.Forms.Button();
+            this.documentViewer1 = new Gnostice.Documents.Controls.WinForms.DocumentViewer();
             this.dgv_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_dokartkey = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_dokartname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,11 +79,6 @@
             this.dgv_pfad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_dateiname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_statusdok = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnOeffnen = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnLoeschen = new System.Windows.Forms.Button();
-            this.btnBearbeiten = new System.Windows.Forms.Button();
-            this.documentViewer1 = new Gnostice.Documents.Controls.WinForms.DocumentViewer();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeDok)).BeginInit();
             this.SuspendLayout();
@@ -240,104 +240,6 @@
             this.dgvListeDok.TabIndex = 5;
             this.dgvListeDok.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListeDok_CellClick);
             // 
-            // dgv_id
-            // 
-            this.dgv_id.HeaderText = "ID";
-            this.dgv_id.Name = "dgv_id";
-            this.dgv_id.ReadOnly = true;
-            this.dgv_id.Width = 50;
-            // 
-            // dgv_dokartkey
-            // 
-            this.dgv_dokartkey.HeaderText = "DokArt-Key";
-            this.dgv_dokartkey.Name = "dgv_dokartkey";
-            this.dgv_dokartkey.ReadOnly = true;
-            this.dgv_dokartkey.Visible = false;
-            this.dgv_dokartkey.Width = 50;
-            // 
-            // dgv_dokartname
-            // 
-            this.dgv_dokartname.HeaderText = "Dokumentenart";
-            this.dgv_dokartname.Name = "dgv_dokartname";
-            this.dgv_dokartname.ReadOnly = true;
-            this.dgv_dokartname.Width = 140;
-            // 
-            // dgv_liefkey
-            // 
-            this.dgv_liefkey.HeaderText = "Lief-Key";
-            this.dgv_liefkey.Name = "dgv_liefkey";
-            this.dgv_liefkey.ReadOnly = true;
-            this.dgv_liefkey.Visible = false;
-            this.dgv_liefkey.Width = 50;
-            // 
-            // dgv_liefname
-            // 
-            this.dgv_liefname.HeaderText = "Lieferant";
-            this.dgv_liefname.Name = "dgv_liefname";
-            this.dgv_liefname.ReadOnly = true;
-            this.dgv_liefname.Width = 150;
-            // 
-            // dgv_verschlagwort
-            // 
-            this.dgv_verschlagwort.HeaderText = "Verschlagwortung";
-            this.dgv_verschlagwort.Name = "dgv_verschlagwort";
-            this.dgv_verschlagwort.ReadOnly = true;
-            this.dgv_verschlagwort.Width = 250;
-            // 
-            // dgv_period
-            // 
-            this.dgv_period.HeaderText = "Periode";
-            this.dgv_period.Name = "dgv_period";
-            this.dgv_period.ReadOnly = true;
-            // 
-            // dgv_jahr
-            // 
-            this.dgv_jahr.HeaderText = "Jahr";
-            this.dgv_jahr.Name = "dgv_jahr";
-            this.dgv_jahr.ReadOnly = true;
-            this.dgv_jahr.Width = 40;
-            // 
-            // dgv_archdat
-            // 
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dgv_archdat.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv_archdat.HeaderText = "Arch. Datum";
-            this.dgv_archdat.Name = "dgv_archdat";
-            this.dgv_archdat.ReadOnly = true;
-            this.dgv_archdat.Width = 80;
-            // 
-            // dgv_AenderDat
-            // 
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            this.dgv_AenderDat.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgv_AenderDat.HeaderText = "Änder.Datum";
-            this.dgv_AenderDat.Name = "dgv_AenderDat";
-            this.dgv_AenderDat.ReadOnly = true;
-            this.dgv_AenderDat.Width = 80;
-            // 
-            // dgv_pfad
-            // 
-            this.dgv_pfad.HeaderText = "Pfad";
-            this.dgv_pfad.Name = "dgv_pfad";
-            this.dgv_pfad.ReadOnly = true;
-            this.dgv_pfad.Width = 150;
-            // 
-            // dgv_dateiname
-            // 
-            this.dgv_dateiname.HeaderText = "Dateiname";
-            this.dgv_dateiname.Name = "dgv_dateiname";
-            this.dgv_dateiname.ReadOnly = true;
-            this.dgv_dateiname.Width = 120;
-            // 
-            // dgv_statusdok
-            // 
-            this.dgv_statusdok.HeaderText = "Dok Status";
-            this.dgv_statusdok.Name = "dgv_statusdok";
-            this.dgv_statusdok.ReadOnly = true;
-            this.dgv_statusdok.Width = 50;
-            // 
             // btnOeffnen
             // 
             this.btnOeffnen.Location = new System.Drawing.Point(1269, 27);
@@ -403,58 +305,58 @@
             this.documentViewer1.NavigationPane.WidthPercentage = 20;
             this.documentViewer1.PageLayout = null;
             this.documentViewer1.PageRotation = Gnostice.Documents.Controls.WinForms.RotationAngle.Zero;
-            spreadSheetFormatterSettings2.FormattingMode = Gnostice.DOM.FormattingMode.PreferDocumentSettings;
-            spreadSheetFormatterSettings2.PageOrder = Gnostice.Documents.Spreadsheet.LayoutDirection.BackwardN;
-            pageSettings3.Height = 11.6929F;
-            margins3.Bottom = 1F;
-            margins3.Footer = 0F;
-            margins3.Header = 0F;
-            margins3.Left = 1F;
-            margins3.Right = 1F;
-            margins3.Top = 1F;
-            pageSettings3.Margin = margins3;
-            pageSettings3.Orientation = Gnostice.Graphics.Orientation.Portrait;
-            pageSettings3.PageSize = Gnostice.Documents.PageSize.A4;
-            pageSettings3.Width = 8.2677F;
-            spreadSheetFormatterSettings2.PageSettings = pageSettings3;
-            sheetOptions3.Print = false;
-            sheetOptions3.View = true;
-            spreadSheetFormatterSettings2.ShowGridlines = sheetOptions3;
-            sheetOptions4.Print = false;
-            sheetOptions4.View = true;
-            spreadSheetFormatterSettings2.ShowHeadings = sheetOptions4;
-            formatterSettings2.SpreadSheet = spreadSheetFormatterSettings2;
-            txtFormatterSettings2.Font = new System.Drawing.Font("Calibri", 12F);
-            pageSettings4.Height = 11.6929F;
-            margins4.Bottom = 1F;
-            margins4.Footer = 0F;
-            margins4.Header = 0F;
-            margins4.Left = 1F;
-            margins4.Right = 1F;
-            margins4.Top = 1F;
-            pageSettings4.Margin = margins4;
-            pageSettings4.Orientation = Gnostice.Graphics.Orientation.Portrait;
-            pageSettings4.PageSize = Gnostice.Documents.PageSize.A4;
-            pageSettings4.Width = 8.2677F;
-            txtFormatterSettings2.PageSettings = pageSettings4;
-            formatterSettings2.TXT = txtFormatterSettings2;
-            this.documentViewer1.Preferences.FormatterSettings = formatterSettings2;
+            spreadSheetFormatterSettings1.FormattingMode = Gnostice.DOM.FormattingMode.PreferDocumentSettings;
+            spreadSheetFormatterSettings1.PageOrder = Gnostice.Documents.Spreadsheet.LayoutDirection.BackwardN;
+            pageSettings1.Height = 11.6929F;
+            margins1.Bottom = 1F;
+            margins1.Footer = 0F;
+            margins1.Header = 0F;
+            margins1.Left = 1F;
+            margins1.Right = 1F;
+            margins1.Top = 1F;
+            pageSettings1.Margin = margins1;
+            pageSettings1.Orientation = Gnostice.Graphics.Orientation.Portrait;
+            pageSettings1.PageSize = Gnostice.Documents.PageSize.A4;
+            pageSettings1.Width = 8.2677F;
+            spreadSheetFormatterSettings1.PageSettings = pageSettings1;
+            sheetOptions1.Print = false;
+            sheetOptions1.View = true;
+            spreadSheetFormatterSettings1.ShowGridlines = sheetOptions1;
+            sheetOptions2.Print = false;
+            sheetOptions2.View = true;
+            spreadSheetFormatterSettings1.ShowHeadings = sheetOptions2;
+            formatterSettings1.SpreadSheet = spreadSheetFormatterSettings1;
+            txtFormatterSettings1.Font = new System.Drawing.Font("Calibri", 12F);
+            pageSettings2.Height = 11.6929F;
+            margins2.Bottom = 1F;
+            margins2.Footer = 0F;
+            margins2.Header = 0F;
+            margins2.Left = 1F;
+            margins2.Right = 1F;
+            margins2.Top = 1F;
+            pageSettings2.Margin = margins2;
+            pageSettings2.Orientation = Gnostice.Graphics.Orientation.Portrait;
+            pageSettings2.PageSize = Gnostice.Documents.PageSize.A4;
+            pageSettings2.Width = 8.2677F;
+            txtFormatterSettings1.PageSettings = pageSettings2;
+            formatterSettings1.TXT = txtFormatterSettings1;
+            this.documentViewer1.Preferences.FormatterSettings = formatterSettings1;
             this.documentViewer1.Preferences.KeyNavigation = true;
-            imageRenderingSettings2.CompositingMode = Gnostice.Graphics.CompositingMode.SourceOver;
-            imageRenderingSettings2.CompositingQuality = Gnostice.Graphics.CompositingQuality.Default;
-            imageRenderingSettings2.InterpolationMode = Gnostice.Graphics.InterpolationMode.NearestNeighbor;
-            imageRenderingSettings2.PixelOffsetMode = Gnostice.Graphics.PixelOffsetMode.HighQuality;
-            renderingSettings2.Image = imageRenderingSettings2;
-            lineArtRenderingSettings2.SmoothingMode = Gnostice.Graphics.SmoothingMode.AntiAlias;
-            renderingSettings2.LineArt = lineArtRenderingSettings2;
-            resolutionSettings2.DpiX = 96F;
-            resolutionSettings2.DpiY = 96F;
-            resolutionSettings2.ResolutionMode = Gnostice.Graphics.ResolutionMode.UseSource;
-            renderingSettings2.Resolution = resolutionSettings2;
-            textRenderingSettings2.TextContrast = 3;
-            textRenderingSettings2.TextRenderingHint = Gnostice.Graphics.TextRenderingHint.AntiAlias;
-            renderingSettings2.Text = textRenderingSettings2;
-            this.documentViewer1.Preferences.RenderingSettings = renderingSettings2;
+            imageRenderingSettings1.CompositingMode = Gnostice.Graphics.CompositingMode.SourceOver;
+            imageRenderingSettings1.CompositingQuality = Gnostice.Graphics.CompositingQuality.Default;
+            imageRenderingSettings1.InterpolationMode = Gnostice.Graphics.InterpolationMode.NearestNeighbor;
+            imageRenderingSettings1.PixelOffsetMode = Gnostice.Graphics.PixelOffsetMode.HighQuality;
+            renderingSettings1.Image = imageRenderingSettings1;
+            lineArtRenderingSettings1.SmoothingMode = Gnostice.Graphics.SmoothingMode.AntiAlias;
+            renderingSettings1.LineArt = lineArtRenderingSettings1;
+            resolutionSettings1.DpiX = 96F;
+            resolutionSettings1.DpiY = 96F;
+            resolutionSettings1.ResolutionMode = Gnostice.Graphics.ResolutionMode.UseSource;
+            renderingSettings1.Resolution = resolutionSettings1;
+            textRenderingSettings1.TextContrast = 3;
+            textRenderingSettings1.TextRenderingHint = Gnostice.Graphics.TextRenderingHint.AntiAlias;
+            renderingSettings1.Text = textRenderingSettings1;
+            this.documentViewer1.Preferences.RenderingSettings = renderingSettings1;
             this.documentViewer1.Preferences.Units = Gnostice.Graphics.MeasurementUnit.Inches;
             this.documentViewer1.Size = new System.Drawing.Size(573, 561);
             this.documentViewer1.TabIndex = 17;
@@ -464,6 +366,102 @@
             this.documentViewer1.VScrollBar.Visibility = Gnostice.Documents.Controls.WinForms.ScrollBarVisibility.Auto;
             this.documentViewer1.Zoom.ZoomMode = Gnostice.Documents.Controls.WinForms.ZoomMode.FitPage;
             this.documentViewer1.Zoom.ZoomPercent = 100D;
+            // 
+            // dgv_id
+            // 
+            this.dgv_id.HeaderText = "ID";
+            this.dgv_id.Name = "dgv_id";
+            this.dgv_id.ReadOnly = true;
+            this.dgv_id.Width = 50;
+            // 
+            // dgv_dokartkey
+            // 
+            this.dgv_dokartkey.HeaderText = "DokArt-Key";
+            this.dgv_dokartkey.Name = "dgv_dokartkey";
+            this.dgv_dokartkey.ReadOnly = true;
+            this.dgv_dokartkey.Width = 50;
+            // 
+            // dgv_dokartname
+            // 
+            this.dgv_dokartname.HeaderText = "Dokumentenart";
+            this.dgv_dokartname.Name = "dgv_dokartname";
+            this.dgv_dokartname.ReadOnly = true;
+            this.dgv_dokartname.Width = 140;
+            // 
+            // dgv_liefkey
+            // 
+            this.dgv_liefkey.HeaderText = "Lief-Key";
+            this.dgv_liefkey.Name = "dgv_liefkey";
+            this.dgv_liefkey.ReadOnly = true;
+            this.dgv_liefkey.Width = 50;
+            // 
+            // dgv_liefname
+            // 
+            this.dgv_liefname.HeaderText = "Lieferant";
+            this.dgv_liefname.Name = "dgv_liefname";
+            this.dgv_liefname.ReadOnly = true;
+            this.dgv_liefname.Width = 150;
+            // 
+            // dgv_verschlagwort
+            // 
+            this.dgv_verschlagwort.HeaderText = "Verschlagwortung";
+            this.dgv_verschlagwort.Name = "dgv_verschlagwort";
+            this.dgv_verschlagwort.ReadOnly = true;
+            this.dgv_verschlagwort.Width = 250;
+            // 
+            // dgv_period
+            // 
+            this.dgv_period.HeaderText = "Periode";
+            this.dgv_period.Name = "dgv_period";
+            this.dgv_period.ReadOnly = true;
+            // 
+            // dgv_jahr
+            // 
+            this.dgv_jahr.HeaderText = "Jahr";
+            this.dgv_jahr.Name = "dgv_jahr";
+            this.dgv_jahr.ReadOnly = true;
+            this.dgv_jahr.Width = 40;
+            // 
+            // dgv_archdat
+            // 
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dgv_archdat.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_archdat.HeaderText = "Arch. Datum";
+            this.dgv_archdat.Name = "dgv_archdat";
+            this.dgv_archdat.ReadOnly = true;
+            this.dgv_archdat.Width = 80;
+            // 
+            // dgv_AenderDat
+            // 
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dgv_AenderDat.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_AenderDat.HeaderText = "Änder.Datum";
+            this.dgv_AenderDat.Name = "dgv_AenderDat";
+            this.dgv_AenderDat.ReadOnly = true;
+            this.dgv_AenderDat.Width = 80;
+            // 
+            // dgv_pfad
+            // 
+            this.dgv_pfad.HeaderText = "Pfad";
+            this.dgv_pfad.Name = "dgv_pfad";
+            this.dgv_pfad.ReadOnly = true;
+            this.dgv_pfad.Width = 150;
+            // 
+            // dgv_dateiname
+            // 
+            this.dgv_dateiname.HeaderText = "Dateiname";
+            this.dgv_dateiname.Name = "dgv_dateiname";
+            this.dgv_dateiname.ReadOnly = true;
+            this.dgv_dateiname.Width = 120;
+            // 
+            // dgv_statusdok
+            // 
+            this.dgv_statusdok.HeaderText = "Dok Status";
+            this.dgv_statusdok.Name = "dgv_statusdok";
+            this.dgv_statusdok.ReadOnly = true;
+            this.dgv_statusdok.Width = 50;
             // 
             // frmHauptfenster
             // 

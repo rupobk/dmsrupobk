@@ -64,6 +64,9 @@
             this.btnLoeschen = new System.Windows.Forms.Button();
             this.btnBearbeiten = new System.Windows.Forms.Button();
             this.documentViewer1 = new Gnostice.Documents.Controls.WinForms.DocumentViewer();
+            this.dgv_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_dokartkey = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_dokartname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeDok)).BeginInit();
             this.SuspendLayout();
@@ -74,7 +77,7 @@
             this.dokumentHinzufügenToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1678, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1532, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -128,7 +131,7 @@
             // btnSuche
             // 
             this.btnSuche.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnSuche.Location = new System.Drawing.Point(924, 27);
+            this.btnSuche.Location = new System.Drawing.Point(924, 20);
             this.btnSuche.Name = "btnSuche";
             this.btnSuche.Size = new System.Drawing.Size(44, 23);
             this.btnSuche.TabIndex = 6;
@@ -138,7 +141,7 @@
             // txtID
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtID.Location = new System.Drawing.Point(65, 58);
+            this.txtID.Location = new System.Drawing.Point(24, 58);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(46, 20);
             this.txtID.TabIndex = 13;
@@ -164,7 +167,7 @@
             // txtVerschlagwortSuche
             // 
             this.txtVerschlagwortSuche.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtVerschlagwortSuche.Location = new System.Drawing.Point(432, 57);
+            this.txtVerschlagwortSuche.Location = new System.Drawing.Point(359, 57);
             this.txtVerschlagwortSuche.Name = "txtVerschlagwortSuche";
             this.txtVerschlagwortSuche.Size = new System.Drawing.Size(243, 20);
             this.txtVerschlagwortSuche.TabIndex = 7;
@@ -172,7 +175,7 @@
             // txtPerSuche
             // 
             this.txtPerSuche.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtPerSuche.Location = new System.Drawing.Point(681, 57);
+            this.txtPerSuche.Location = new System.Drawing.Point(608, 57);
             this.txtPerSuche.Name = "txtPerSuche";
             this.txtPerSuche.Size = new System.Drawing.Size(93, 20);
             this.txtPerSuche.TabIndex = 9;
@@ -180,7 +183,7 @@
             // txtPeriode
             // 
             this.txtPeriode.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtPeriode.Location = new System.Drawing.Point(780, 57);
+            this.txtPeriode.Location = new System.Drawing.Point(707, 57);
             this.txtPeriode.Name = "txtPeriode";
             this.txtPeriode.Size = new System.Drawing.Size(33, 20);
             this.txtPeriode.TabIndex = 14;
@@ -188,7 +191,7 @@
             // textBox3
             // 
             this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox3.Location = new System.Drawing.Point(819, 57);
+            this.textBox3.Location = new System.Drawing.Point(746, 57);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(74, 20);
             this.textBox3.TabIndex = 15;
@@ -196,7 +199,7 @@
             // textBox2
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox2.Location = new System.Drawing.Point(899, 57);
+            this.textBox2.Location = new System.Drawing.Point(826, 57);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(74, 20);
             this.textBox2.TabIndex = 16;
@@ -205,11 +208,16 @@
             // 
             this.dgvListeDok.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dgvListeDok.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListeDok.Location = new System.Drawing.Point(15, 91);
+            this.dgvListeDok.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_id,
+            this.dgv_dokartkey,
+            this.dgv_dokartname});
+            this.dgvListeDok.Location = new System.Drawing.Point(15, 84);
             this.dgvListeDok.Name = "dgvListeDok";
-            this.dgvListeDok.Size = new System.Drawing.Size(978, 747);
+            this.dgvListeDok.Size = new System.Drawing.Size(924, 747);
             this.dgvListeDok.TabIndex = 5;
             this.dgvListeDok.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListeDok_CellClick);
+            this.dgvListeDok.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListeDok_CellContentClick);
             this.dgvListeDok.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvListeDok_RowHeaderDoubleClick);
             // 
             // btnOeffnen
@@ -263,7 +271,7 @@
             this.documentViewer1.HScrollBar.SmallChange = 20;
             this.documentViewer1.HScrollBar.Value = 0;
             this.documentViewer1.HScrollBar.Visibility = Gnostice.Documents.Controls.WinForms.ScrollBarVisibility.Always;
-            this.documentViewer1.Location = new System.Drawing.Point(1000, 58);
+            this.documentViewer1.Location = new System.Drawing.Point(946, 84);
             this.documentViewer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.documentViewer1.Name = "documentViewer1";
             // 
@@ -330,7 +338,7 @@
             renderingSettings1.Text = textRenderingSettings1;
             this.documentViewer1.Preferences.RenderingSettings = renderingSettings1;
             this.documentViewer1.Preferences.Units = Gnostice.Graphics.MeasurementUnit.Inches;
-            this.documentViewer1.Size = new System.Drawing.Size(665, 780);
+            this.documentViewer1.Size = new System.Drawing.Size(573, 754);
             this.documentViewer1.TabIndex = 17;
             this.documentViewer1.VScrollBar.LargeChange = 40;
             this.documentViewer1.VScrollBar.SmallChange = 20;
@@ -339,11 +347,28 @@
             this.documentViewer1.Zoom.ZoomMode = Gnostice.Documents.Controls.WinForms.ZoomMode.FitPage;
             this.documentViewer1.Zoom.ZoomPercent = 100D;
             // 
+            // dgv_id
+            // 
+            this.dgv_id.HeaderText = "ID";
+            this.dgv_id.Name = "dgv_id";
+            this.dgv_id.ReadOnly = true;
+            this.dgv_id.Width = 50;
+            // 
+            // dgv_dokartkey
+            // 
+            this.dgv_dokartkey.HeaderText = "DokArt-Key";
+            this.dgv_dokartkey.Name = "dgv_dokartkey";
+            // 
+            // dgv_dokartname
+            // 
+            this.dgv_dokartname.HeaderText = "Dokumentenart";
+            this.dgv_dokartname.Name = "dgv_dokartname";
+            // 
             // frmHauptfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1678, 850);
+            this.ClientSize = new System.Drawing.Size(1532, 837);
             this.Controls.Add(this.documentViewer1);
             this.Controls.Add(this.btnOeffnen);
             this.Controls.Add(this.txtID);
@@ -398,5 +423,8 @@
         private System.Windows.Forms.Button btnOeffnen;
         private System.Windows.Forms.Button btnExport;
         private Gnostice.Documents.Controls.WinForms.DocumentViewer documentViewer1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_dokartkey;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_dokartname;
     }
 }

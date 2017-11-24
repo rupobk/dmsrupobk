@@ -24,6 +24,7 @@ namespace DMSRupObk
 
         private void FormularClear()
         {
+            //TODO: Vollbild einschalten u. die 2 Fenster entsprechend dimensionieren
             txtSucheAlles.Text = string.Empty;
             txtPerSuche.Text = string.Empty;
             txtVerschlagwortSuche.Text = string.Empty;
@@ -343,6 +344,11 @@ namespace DMSRupObk
             btnOeffnen.Enabled = true;
             btnExport.Enabled = true;
             btnLoeschen.Enabled = true;
+        }
+
+        private void dgvListeDok_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

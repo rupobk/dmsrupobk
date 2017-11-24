@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             Gnostice.Documents.FormatterSettings formatterSettings1 = new Gnostice.Documents.FormatterSettings();
             Gnostice.Documents.Spreadsheet.SpreadSheetFormatterSettings spreadSheetFormatterSettings1 = new Gnostice.Documents.Spreadsheet.SpreadSheetFormatterSettings();
             Gnostice.Documents.PageSettings pageSettings1 = new Gnostice.Documents.PageSettings();
@@ -42,8 +44,6 @@
             Gnostice.Graphics.LineArtRenderingSettings lineArtRenderingSettings1 = new Gnostice.Graphics.LineArtRenderingSettings();
             Gnostice.Graphics.ResolutionSettings resolutionSettings1 = new Gnostice.Graphics.ResolutionSettings();
             Gnostice.Graphics.TextRenderingSettings textRenderingSettings1 = new Gnostice.Graphics.TextRenderingSettings();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dokumentHinzufügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dokumenteImportierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,11 +61,6 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dgvListeDok = new System.Windows.Forms.DataGridView();
-            this.btnOeffnen = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnLoeschen = new System.Windows.Forms.Button();
-            this.btnBearbeiten = new System.Windows.Forms.Button();
-            this.documentViewer1 = new Gnostice.Documents.Controls.WinForms.DocumentViewer();
             this.dgv_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_dokartkey = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_dokartname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +74,11 @@
             this.dgv_pfad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_dateiname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_statusdok = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnOeffnen = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnLoeschen = new System.Windows.Forms.Button();
+            this.btnBearbeiten = new System.Windows.Forms.Button();
+            this.documentViewer1 = new Gnostice.Documents.Controls.WinForms.DocumentViewer();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeDok)).BeginInit();
             this.SuspendLayout();
@@ -240,6 +240,102 @@
             this.dgvListeDok.TabIndex = 5;
             this.dgvListeDok.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListeDok_CellClick);
             // 
+            // dgv_id
+            // 
+            this.dgv_id.HeaderText = "ID";
+            this.dgv_id.Name = "dgv_id";
+            this.dgv_id.ReadOnly = true;
+            this.dgv_id.Width = 50;
+            // 
+            // dgv_dokartkey
+            // 
+            this.dgv_dokartkey.HeaderText = "DokArt-Key";
+            this.dgv_dokartkey.Name = "dgv_dokartkey";
+            this.dgv_dokartkey.ReadOnly = true;
+            this.dgv_dokartkey.Width = 50;
+            // 
+            // dgv_dokartname
+            // 
+            this.dgv_dokartname.HeaderText = "Dokumentenart";
+            this.dgv_dokartname.Name = "dgv_dokartname";
+            this.dgv_dokartname.ReadOnly = true;
+            this.dgv_dokartname.Width = 140;
+            // 
+            // dgv_liefkey
+            // 
+            this.dgv_liefkey.HeaderText = "Lief-Key";
+            this.dgv_liefkey.Name = "dgv_liefkey";
+            this.dgv_liefkey.ReadOnly = true;
+            this.dgv_liefkey.Width = 50;
+            // 
+            // dgv_liefname
+            // 
+            this.dgv_liefname.HeaderText = "Lieferant";
+            this.dgv_liefname.Name = "dgv_liefname";
+            this.dgv_liefname.ReadOnly = true;
+            this.dgv_liefname.Width = 150;
+            // 
+            // dgv_verschlagwort
+            // 
+            this.dgv_verschlagwort.HeaderText = "Verschlagwortung";
+            this.dgv_verschlagwort.Name = "dgv_verschlagwort";
+            this.dgv_verschlagwort.ReadOnly = true;
+            this.dgv_verschlagwort.Width = 250;
+            // 
+            // dgv_period
+            // 
+            this.dgv_period.HeaderText = "Periode";
+            this.dgv_period.Name = "dgv_period";
+            this.dgv_period.ReadOnly = true;
+            // 
+            // dgv_jahr
+            // 
+            this.dgv_jahr.HeaderText = "Jahr";
+            this.dgv_jahr.Name = "dgv_jahr";
+            this.dgv_jahr.ReadOnly = true;
+            this.dgv_jahr.Width = 40;
+            // 
+            // dgv_archdat
+            // 
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dgv_archdat.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_archdat.HeaderText = "Arch. Datum";
+            this.dgv_archdat.Name = "dgv_archdat";
+            this.dgv_archdat.ReadOnly = true;
+            this.dgv_archdat.Width = 80;
+            // 
+            // dgv_AenderDat
+            // 
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dgv_AenderDat.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_AenderDat.HeaderText = "Änder.Datum";
+            this.dgv_AenderDat.Name = "dgv_AenderDat";
+            this.dgv_AenderDat.ReadOnly = true;
+            this.dgv_AenderDat.Width = 80;
+            // 
+            // dgv_pfad
+            // 
+            this.dgv_pfad.HeaderText = "Pfad";
+            this.dgv_pfad.Name = "dgv_pfad";
+            this.dgv_pfad.ReadOnly = true;
+            this.dgv_pfad.Width = 150;
+            // 
+            // dgv_dateiname
+            // 
+            this.dgv_dateiname.HeaderText = "Dateiname";
+            this.dgv_dateiname.Name = "dgv_dateiname";
+            this.dgv_dateiname.ReadOnly = true;
+            this.dgv_dateiname.Width = 120;
+            // 
+            // dgv_statusdok
+            // 
+            this.dgv_statusdok.HeaderText = "Dok Status";
+            this.dgv_statusdok.Name = "dgv_statusdok";
+            this.dgv_statusdok.ReadOnly = true;
+            this.dgv_statusdok.Width = 50;
+            // 
             // btnOeffnen
             // 
             this.btnOeffnen.Location = new System.Drawing.Point(1269, 27);
@@ -366,102 +462,6 @@
             this.documentViewer1.VScrollBar.Visibility = Gnostice.Documents.Controls.WinForms.ScrollBarVisibility.Auto;
             this.documentViewer1.Zoom.ZoomMode = Gnostice.Documents.Controls.WinForms.ZoomMode.FitPage;
             this.documentViewer1.Zoom.ZoomPercent = 100D;
-            // 
-            // dgv_id
-            // 
-            this.dgv_id.HeaderText = "ID";
-            this.dgv_id.Name = "dgv_id";
-            this.dgv_id.ReadOnly = true;
-            this.dgv_id.Width = 50;
-            // 
-            // dgv_dokartkey
-            // 
-            this.dgv_dokartkey.HeaderText = "DokArt-Key";
-            this.dgv_dokartkey.Name = "dgv_dokartkey";
-            this.dgv_dokartkey.ReadOnly = true;
-            this.dgv_dokartkey.Width = 50;
-            // 
-            // dgv_dokartname
-            // 
-            this.dgv_dokartname.HeaderText = "Dokumentenart";
-            this.dgv_dokartname.Name = "dgv_dokartname";
-            this.dgv_dokartname.ReadOnly = true;
-            this.dgv_dokartname.Width = 140;
-            // 
-            // dgv_liefkey
-            // 
-            this.dgv_liefkey.HeaderText = "Lief-Key";
-            this.dgv_liefkey.Name = "dgv_liefkey";
-            this.dgv_liefkey.ReadOnly = true;
-            this.dgv_liefkey.Width = 50;
-            // 
-            // dgv_liefname
-            // 
-            this.dgv_liefname.HeaderText = "Lieferant";
-            this.dgv_liefname.Name = "dgv_liefname";
-            this.dgv_liefname.ReadOnly = true;
-            this.dgv_liefname.Width = 150;
-            // 
-            // dgv_verschlagwort
-            // 
-            this.dgv_verschlagwort.HeaderText = "Verschlagwortung";
-            this.dgv_verschlagwort.Name = "dgv_verschlagwort";
-            this.dgv_verschlagwort.ReadOnly = true;
-            this.dgv_verschlagwort.Width = 250;
-            // 
-            // dgv_period
-            // 
-            this.dgv_period.HeaderText = "Periode";
-            this.dgv_period.Name = "dgv_period";
-            this.dgv_period.ReadOnly = true;
-            // 
-            // dgv_jahr
-            // 
-            this.dgv_jahr.HeaderText = "Jahr";
-            this.dgv_jahr.Name = "dgv_jahr";
-            this.dgv_jahr.ReadOnly = true;
-            this.dgv_jahr.Width = 40;
-            // 
-            // dgv_archdat
-            // 
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dgv_archdat.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_archdat.HeaderText = "Arch. Datum";
-            this.dgv_archdat.Name = "dgv_archdat";
-            this.dgv_archdat.ReadOnly = true;
-            this.dgv_archdat.Width = 80;
-            // 
-            // dgv_AenderDat
-            // 
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dgv_AenderDat.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_AenderDat.HeaderText = "Änder.Datum";
-            this.dgv_AenderDat.Name = "dgv_AenderDat";
-            this.dgv_AenderDat.ReadOnly = true;
-            this.dgv_AenderDat.Width = 80;
-            // 
-            // dgv_pfad
-            // 
-            this.dgv_pfad.HeaderText = "Pfad";
-            this.dgv_pfad.Name = "dgv_pfad";
-            this.dgv_pfad.ReadOnly = true;
-            this.dgv_pfad.Width = 150;
-            // 
-            // dgv_dateiname
-            // 
-            this.dgv_dateiname.HeaderText = "Dateiname";
-            this.dgv_dateiname.Name = "dgv_dateiname";
-            this.dgv_dateiname.ReadOnly = true;
-            this.dgv_dateiname.Width = 120;
-            // 
-            // dgv_statusdok
-            // 
-            this.dgv_statusdok.HeaderText = "Dok Status";
-            this.dgv_statusdok.Name = "dgv_statusdok";
-            this.dgv_statusdok.ReadOnly = true;
-            this.dgv_statusdok.Width = 50;
             // 
             // frmHauptfenster
             // 

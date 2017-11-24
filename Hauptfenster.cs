@@ -70,111 +70,128 @@ namespace DMSRupObk
 
             dgvListeDok.AutoGenerateColumns = false;
             dgvListeDok.DataSource = dv;
+            dgv_id.DataPropertyName = "DokID";
+            dgv_dokartkey.DataPropertyName = "DokumentenartKey";
+            dgv_dokartkey.Visible = false;
+            dgv_dokartname.DataPropertyName = "DokumentenartName";
+            dgv_liefkey.DataPropertyName = "LieferantKey";
+            dgv_liefkey.Visible = false;
+            dgv_liefname.DataPropertyName = "LieferantName";
+            dgv_period.DataPropertyName = "Periode";
+            dgv_jahr.DataPropertyName = "Jahr";
+            dgv_pfad.DataPropertyName = "Pfad";
+            dgv_verschlagwort.DataPropertyName = "Verschlagwortung";
+            dgv_dateiname.DataPropertyName = "Dateiname";
+            dgv_AenderDat.DataPropertyName = "Aenderungsdatum";
+            dgv_archdat.DataPropertyName = "Archivierungsdatum";
+            dgv_statusdok.DataPropertyName = "Dokumentenstatus";
 
-            if (dgvListeDok.ColumnCount == 0)
-            {
-                //public int DokID { get; set; }
-                //public string Pfad { get; set; }
-                //public string Dateiname { get; set; }
-                //public string Dateityp { get; set; }
-                //public DateTime Archivierungsdatum { get; set; }
-                //public DateTime Aenderungsdatum { get; set; }
-                //public int Jahr { get; set; }
-                //public string Periode { get; set; }
-                //public int DokumentenartKey { get; set; }
-                //public string DokumentenartName { get; set; }
-                //public int LieferantKey { get; set; }
-                //public string LieferantName { get; set; }
-                //public string Verschlagwortung { get; set; }
-                //public string Dokumentenstatus { get; set; }
+            //if (dgvListeDok.ColumnCount == 0)
+            //{
+            //public int DokID { get; set; }
+            //public string Pfad { get; set; }
+            //public string Dateiname { get; set; }
+            //public string Dateityp { get; set; }
+            //public DateTime Archivierungsdatum { get; set; }
+            //public DateTime Aenderungsdatum { get; set; }
+            //public int Jahr { get; set; }
+            //public string Periode { get; set; }
+            //public int DokumentenartKey { get; set; }
+            //public string DokumentenartName { get; set; }
+            //public int LieferantKey { get; set; }
+            //public string LieferantName { get; set; }
+            //public string Verschlagwortung { get; set; }
+            //public string Dokumentenstatus { get; set; }
 
-                //ID
-                DataGridViewColumn col1 = new DataGridViewTextBoxColumn();
-                col1.DataPropertyName = "DokID";
-                col1.HeaderText = "ID";
-                col1.Name = "DokID";
-                col1.Width = 50;
-                col1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                col1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-                dgvListeDok.Columns.Add(col1);
+            //ID
+            //dgv_id.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dgv_id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            //DataGridViewColumn col1 = new DataGridViewTextBoxColumn();
+            //col1.DataPropertyName = "DokID";
+            //col1.HeaderText = "ID";
+            //col1.Name = "DokID";
+            //col1.Width = 50;
+            //col1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //col1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            //dgvListeDok.Columns.Add(col1);
 
-                // Dokumentenart
-                DataGridViewColumn col2 = new DataGridViewTextBoxColumn();
-                col2.DataPropertyName = "DokumentenartName";
-                col2.HeaderText = "Dokum.art";
-                col2.Name = "DokumentenartName";
-                col2.Width = 140;
-                col2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-                dgvListeDok.Columns.Add(col2);
+            // Dokumentenart
+            //DataGridViewColumn col2 = new DataGridViewTextBoxColumn();
+            //col2.DataPropertyName = "DokumentenartName";
+            //col2.HeaderText = "Dokum.art";
+            //col2.Name = "DokumentenartName";
+            //col2.Width = 140;
+            //col2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            //dgvListeDok.Columns.Add(col2);
 
-                // Lieferant
-                DataGridViewColumn col3 = new DataGridViewTextBoxColumn();
-                col3.DataPropertyName = "LieferantName";
-                col3.HeaderText = "Lieferant";
-                col3.Name = "LieferantName";
-                col3.Width = 150;
-                col3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-                dgvListeDok.Columns.Add(col3);
+            // Lieferant
+            //DataGridViewColumn col3 = new DataGridViewTextBoxColumn();
+            //col3.DataPropertyName = "LieferantName";
+            //col3.HeaderText = "Lieferant";
+            //col3.Name = "LieferantName";
+            //col3.Width = 150;
+            //col3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            //dgvListeDok.Columns.Add(col3);
 
-                // Verschlagwortung
-                DataGridViewColumn col4 = new DataGridViewTextBoxColumn();
-                col4.DataPropertyName = "Verschlagwortung";
-                col4.HeaderText = "Verschlagwortung";
-                col4.Name = "Verschlagwortung";
-                col4.Width = 250;
-                col4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-                dgvListeDok.Columns.Add(col4);
+            // Verschlagwortung
+            //DataGridViewColumn col4 = new DataGridViewTextBoxColumn();
+            //col4.DataPropertyName = "Verschlagwortung";
+            //col4.HeaderText = "Verschlagwortung";
+            //col4.Name = "Verschlagwortung";
+            //col4.Width = 250;
+            //col4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            //dgvListeDok.Columns.Add(col4);
 
-                // Periode
-                DataGridViewColumn col5 = new DataGridViewTextBoxColumn();
-                col5.DataPropertyName = "Periode";
-                col5.HeaderText = "Periode";
-                col5.Name = "Periode";
-                col5.Width = 100;
-                col5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-                dgvListeDok.Columns.Add(col5);
+            // Periode
+            //DataGridViewColumn col5 = new DataGridViewTextBoxColumn();
+            //col5.DataPropertyName = "Periode";
+            //col5.HeaderText = "Periode";
+            //col5.Name = "Periode";
+            //col5.Width = 100;
+            //col5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            //dgvListeDok.Columns.Add(col5);
 
-                // Jahr
-                DataGridViewColumn col6 = new DataGridViewTextBoxColumn();
-                col6.DataPropertyName = "Jahr";
-                col6.HeaderText = "Jahr";
-                col6.Name = "Jahr";
-                col6.Width = 40;
-                col6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-                dgvListeDok.Columns.Add(col6);
+            // Jahr
+            //DataGridViewColumn col6 = new DataGridViewTextBoxColumn();
+            //col6.DataPropertyName = "Jahr";
+            //col6.HeaderText = "Jahr";
+            //col6.Name = "Jahr";
+            //col6.Width = 40;
+            //col6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            //dgvListeDok.Columns.Add(col6);
 
-                // Archivierungsdatum
-                DataGridViewColumn col7 = new DataGridViewTextBoxColumn();
-                col7.DataPropertyName = "Archivierungsdatum";
-                col7.HeaderText = "Arch.Datum";
-                col7.Name = "Archivierungsdatum";
-                col7.DefaultCellStyle.Format = "dd.MM.yyyy";
-                col7.Width = 80;
-                col7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-                dgvListeDok.Columns.Add(col7);
+            // Archivierungsdatum
+            //DataGridViewColumn col7 = new DataGridViewTextBoxColumn();
+            //col7.DataPropertyName = "Archivierungsdatum";
+            //col7.HeaderText = "Arch.Datum";
+            //col7.Name = "Archivierungsdatum";
+            //col7.DefaultCellStyle.Format = "dd.MM.yyyy";
+            //col7.Width = 80;
+            //col7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            //dgvListeDok.Columns.Add(col7);
 
-                // Änderungsdatum
-                DataGridViewColumn col8 = new DataGridViewTextBoxColumn();
-                col8.DataPropertyName = "Aenderungsdatum";
-                col8.HeaderText = "Änderdatum";
-                col8.Name = "Aenderungsdatum";
-                col8.DefaultCellStyle.Format = "dd.MM.yyyy";
-                col8.Width = 80;
-                col8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-                dgvListeDok.Columns.Add(col8);
+            // Änderungsdatum
+            //DataGridViewColumn col8 = new DataGridViewTextBoxColumn();
+            //col8.DataPropertyName = "Aenderungsdatum";
+            //col8.HeaderText = "Änderdatum";
+            //col8.Name = "Aenderungsdatum";
+            //col8.DefaultCellStyle.Format = "dd.MM.yyyy";
+            //col8.Width = 80;
+            //col8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            //dgvListeDok.Columns.Add(col8);
 
-                // Pfad
-                DataGridViewColumn col9 = new DataGridViewTextBoxColumn();
-                col9.DataPropertyName = "Pfad";
-                col9.Visible = false;
-                dgvListeDok.Columns.Add(col9);
+            // Pfad
+            //DataGridViewColumn col9 = new DataGridViewTextBoxColumn();
+            //col9.DataPropertyName = "Pfad";
+            //col9.Visible = false;
+            //dgvListeDok.Columns.Add(col9);
 
-                // Dateiname
-                DataGridViewColumn col10 = new DataGridViewTextBoxColumn();
-                col10.DataPropertyName = "Dateiname";
-                col10.Visible = false;
-                dgvListeDok.Columns.Add(col10);
-            }
+            // Dateiname
+            //DataGridViewColumn col10 = new DataGridViewTextBoxColumn();
+            //col10.DataPropertyName = "Dateiname";
+            //col10.Visible = false;
+            //dgvListeDok.Columns.Add(col10);
+            //}
 
             // Sortierung einstellen
             //dgvListeDok.Sort(col1, ListSortDirection.Ascending);
@@ -238,8 +255,8 @@ namespace DMSRupObk
                 try
                 {
                     documentViewer1.LoadDocument(Path.Combine(PrgPrm.RootVerzeichnisDok,
-                                                 dgvListeDok.Rows[e.RowIndex].Cells[8].Value.ToString(),
-                                                 dgvListeDok.Rows[e.RowIndex].Cells[9].Value.ToString()));
+                                                 dgvListeDok.Rows[e.RowIndex].Cells[10].Value.ToString(),
+                                                 dgvListeDok.Rows[e.RowIndex].Cells[11].Value.ToString()));
                     btnBearbeiten.Enabled = true;
                     btnOeffnen.Enabled = true;
                     btnExport.Enabled = true;
@@ -258,11 +275,6 @@ namespace DMSRupObk
                     btnLoeschen.Enabled = false;
                 }
             }
-        }
-
-        private void dgvListeDok_RowHeaderDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            MessageBox.Show(e.RowIndex.ToString());
         }
 
         private string DateiPfad(Dokument dok)
@@ -293,8 +305,8 @@ namespace DMSRupObk
             DialogResult objResult = objDialog.ShowDialog(this);
             if (objResult == DialogResult.OK)
             {
-                datei = dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[9].Value.ToString();
-                pfad = dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[8].Value.ToString();
+                datei = dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[11].Value.ToString();
+                pfad = dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[10].Value.ToString();
                 File.Copy(Path.Combine(PrgPrm.RootVerzeichnisDok, pfad, datei), Path.Combine(objDialog.SelectedPath, datei));
             }
         }
@@ -316,7 +328,7 @@ namespace DMSRupObk
             //das Dokument finden kann man auf 2 Arten:
             //1.
             Dokument dok = Archiv.Erstellen().alleDokumente.Find(x => x.DokID == int.Parse(dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[0].Value.ToString()));
-           
+
             //2.
             //var rec = from a in Archiv.Erstellen().alleDokumente
             //          where a.DokID == int.Parse(dgvListeDok.Rows[dgvListeDok.CurrentCell.RowIndex].Cells[0].Value.ToString())
@@ -344,11 +356,6 @@ namespace DMSRupObk
             btnOeffnen.Enabled = true;
             btnExport.Enabled = true;
             btnLoeschen.Enabled = true;
-        }
-
-        private void dgvListeDok_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

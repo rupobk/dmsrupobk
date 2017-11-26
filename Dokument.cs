@@ -70,13 +70,13 @@ namespace DMSRupObk
                 Archiv.Erstellen().alleDokumente.Remove(this);
                 Archiv.Erstellen().Speichern();
                 PrgPrm.AnzahlArchivierteDokumente--;
-                PrgPrm.DokDatengroesseInKB -= Convert.ToDecimal(fi.Length / 1024);
+                PrgPrm.DokDatengroesseInKB -= Convert.ToDecimal(fi.Length / 1024d);
                 PrgPrm.Schreiben();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Konnte Dokument nicht löschen. Fehler: " + ex.Message + "\nProgramm wird beendet!");
-                Environment.Exit(1);
+                Environment.Exit(-1);
             }
         }
 
@@ -117,7 +117,7 @@ namespace DMSRupObk
             catch (Exception ex)
             {
                 MessageBox.Show("Konnte Volltext zum Dokument nicht löschen. Fehler: " + ex.Message + "\nProgramm wird beendet!");
-                Environment.Exit(1);
+                Environment.Exit(-1);
             }
         }
     }

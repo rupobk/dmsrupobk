@@ -32,6 +32,11 @@ namespace DMSRupObk
             DokStatus = MomentanerDokumentenStatus.neuesDokument;
             InitializeComponent();
             FormularClear();
+            FelderInitialisieren();
+            this.Show();
+            if(!DateiLaden());
+            
+
         }
 
         /// Konstruktor der für bestehende Dokumente aufgerufen wird
@@ -148,7 +153,7 @@ namespace DMSRupObk
             DateiLaden();
         }
 
-        private void DateiLaden()
+        private bool DateiLaden()
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "All Files (*.*)|*.*";
@@ -169,9 +174,13 @@ namespace DMSRupObk
                 {
                     Cursor = Cursors.Default;
                 }
+                return true;
             }
             else
+            {
                 btnOCRScan.Enabled = false;
+                return false;
+            }
         }
 
         private void btnOCRScan_Click(object sender, EventArgs e)
@@ -241,10 +250,10 @@ namespace DMSRupObk
 
                     PrgPrm.AnzahlArchivierteDokumente++;
                     FileInfo fi = new FileInfo(pfadOrgDatei);
-                    PrgPrm.DokDatengroesseInKB += Convert.ToDecimal(fi.Length / 1024);
+                    PrgPrm.DokDatengroesseInKB += Convert.ToDecimal(fi.Length / 1024d);
 
                     FileInfo fi2 = new FileInfo(Volltext.PfadJsonVolltext);
-                    PrgPrm.VolltextDatengroesseInKB = Convert.ToDecimal(fi2.Length / 1024);
+                    PrgPrm.VolltextDatengroesseInKB = Convert.ToDecimal(fi2.Length / 1024d);
 
                     Archiv.Erstellen().Speichern();
                     PrgPrm.Schreiben();
@@ -267,7 +276,7 @@ namespace DMSRupObk
                     tmpDok.Aenderungsdatum = DateTime.Today;
 
                     // Wenn sich Dokumentenpfad geändert hat, dann Dokument dort hin verschieben
-                    if (tmpDok.Pfad != cbZielpfad.Text || tmpDok.Dateiname!=txtDateiname.Text)
+                    if (tmpDok.Pfad != cbZielpfad.Text || tmpDok.Dateiname != txtDateiname.Text)
                     {
                         try
                         {

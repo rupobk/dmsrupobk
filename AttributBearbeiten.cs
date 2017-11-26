@@ -36,13 +36,13 @@ namespace DMSRupObk
             {
                 case "Dokumentenart":
                     this.Text = "Dokumentenarten-Attribute bearbeiten";
-                    dgAttribute.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
+                    dgAttribute.DataSource = PrgPrm.AlleDokumentenarten.Where(o => o.Key != 0).OrderBy(o => o.Name).ToList();
                     dgAttribute.Columns[0].Width = 30;
                     dgAttribute.Columns[1].Width = 172;
                     break;
                 case "Lieferant":
                     this.Text = "Lieferanten-Attribute bearbeiten";
-                    dgAttribute.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
+                    dgAttribute.DataSource = PrgPrm.AlleLieferanten.Where(o => o.Key != 0).OrderBy(o => o.Name).ToList();
                     dgAttribute.Columns[0].Width = 30;
                     dgAttribute.Columns[1].Width = 172;
                     break;

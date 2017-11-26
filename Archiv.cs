@@ -45,7 +45,7 @@ namespace DMSRupObk
             catch (Exception ex)
             {
                 MessageBox.Show(PfadJsonMetadaten + " kann nicht geschrieben werden. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
-                Environment.Exit(1);
+                Environment.Exit(-1);
             }
         }
 
@@ -58,7 +58,7 @@ namespace DMSRupObk
             catch (System.IO.FileNotFoundException)
             {
                 MessageBox.Show("metadaten.json nicht gefunden. Programm wird beendet ...");
-                Environment.Exit(1);
+                Environment.Exit(-1);
             }
         }
     }

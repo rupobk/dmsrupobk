@@ -93,13 +93,13 @@ namespace DMSRupObk
 
         private void VerzeichnisseEinrichten()
         {
-            string ordner="";
+            string ordner = "";
             try
             {
                 foreach (var item in Ordner)
                 {
-                    ordner = Path.Combine(RootVerzeichnisDok,item);
-                    
+                    ordner = Path.Combine(RootVerzeichnisDok, item);
+
                     if (!Directory.Exists(ordner))
                         Directory.CreateDirectory(ordner);
                 }
@@ -107,7 +107,7 @@ namespace DMSRupObk
             catch (Exception ex)
             {
                 MessageBox.Show("Kann Ordner " + ordner + " nicht anlegen. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
-                Environment.Exit(1);
+                Environment.Exit(-1);
             }
         }
 
@@ -120,7 +120,7 @@ namespace DMSRupObk
             catch (System.IO.FileNotFoundException)
             {
                 MessageBox.Show("dmsrupobk.json nicht gefunden. Programm wird beendet ...");
-                Environment.Exit(1);
+                Environment.Exit(-1);
             }
         }
 
@@ -133,7 +133,7 @@ namespace DMSRupObk
             catch (Exception ex)
             {
                 MessageBox.Show("dmsrupobk.json kann nicht geschrieben werden. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
-                Environment.Exit(1);
+                Environment.Exit(-1);
             }
         }
 
@@ -154,7 +154,7 @@ namespace DMSRupObk
             string ordner = "";
             try
             {
-                ordner = Path.Combine(RootVerzeichnisDok,Name);
+                ordner = Path.Combine(RootVerzeichnisDok, Name);
                 if (!Directory.Exists(ordner))
                 {
                     Directory.CreateDirectory(ordner);
@@ -171,7 +171,7 @@ namespace DMSRupObk
 
         public string NeuerDateiname(string id)
         {
-            return "d_"+id+"_"+ DateTime.Now.ToString("yyyyMMdd");
+            return "d_" + id + "_" + DateTime.Now.ToString("yyyyMMdd");
         }
     }
 
@@ -283,7 +283,7 @@ namespace DMSRupObk
 //    catch (System.IO.FileNotFoundException)
 //    {
 //        MessageBox.Show("ini-Datei dmsrupobk.ini oder dmsrupobk.json nicht gefunden. Programm wird beendet ...");
-//        Environment.Exit(1);
+//        Environment.Exit(-1);
 //    }
 //}
 

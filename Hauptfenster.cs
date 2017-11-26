@@ -40,17 +40,20 @@ namespace DMSRupObk
         private void ComboboxenAufbauen()
         {
             //Leerzeile als Eintrag hinzufügen
-            List<Dokumentenart> x = new List<Dokumentenart>();
-            x = PrgPrm.AlleDokumentenarten;
-            x.Add(new Dokumentenart(0, ""));
-            cbDokArt.DataSource = x.OrderBy(o => o.Name).ToList();
+            List<Dokumentenart> z = new List<Dokumentenart>();
+            z = PrgPrm.AlleDokumentenarten;
+            if (!z.Any(d => d.Key == 0))
+                //TODO: Laurin fragen, warum in PprgPram.AlleDokumentenarten jene mit Key 0 angelegt ist
+                z.Add(new Dokumentenart(0, ""));
+            cbDokArt.DataSource = z.OrderBy(o => o.Name).ToList();
             cbDokArt.DisplayMember = "Name";
             cbDokArt.ValueMember = "Key";
             cbDokArt.SelectedIndex = 0;
 
             List<Dokumentenart> y = new List<Dokumentenart>();
             y = PrgPrm.AlleDokumentenarten;
-            y.Add(new Dokumentenart(0, ""));
+            if (!y.Any(d => d.Key == 0))
+                y.Add(new Dokumentenart(0, ""));
             cbLieferant.DataSource = y.OrderBy(o => o.Name).ToList();
             cbLieferant.DisplayMember = "Name";
             cbLieferant.ValueMember = "Key";
@@ -356,6 +359,14 @@ namespace DMSRupObk
             btnOeffnen.Enabled = true;
             btnExport.Enabled = true;
             btnLoeschen.Enabled = true;
+        }
+
+        private void dokumenteImportierenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormularClear();
+            if (documentViewer1.Created)
+                documentViewer1.CloseDocument();
+            new frmDokBearbeiten();
         }
     }
 }

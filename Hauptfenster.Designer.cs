@@ -107,6 +107,7 @@
             this.dokumenteImportierenToolStripMenuItem.Name = "dokumenteImportierenToolStripMenuItem";
             this.dokumenteImportierenToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.dokumenteImportierenToolStripMenuItem.Text = "Dokumente hinzufügen";
+            this.dokumenteImportierenToolStripMenuItem.Click += new System.EventHandler(this.dokumenteImportierenToolStripMenuItem_Click);
             // 
             // dokumenteImportierenToolStripMenuItem1
             // 
@@ -127,13 +128,13 @@
             // 
             this.txtSucheAlles.Location = new System.Drawing.Point(62, 27);
             this.txtSucheAlles.Name = "txtSucheAlles";
-            this.txtSucheAlles.Size = new System.Drawing.Size(787, 20);
+            this.txtSucheAlles.Size = new System.Drawing.Size(755, 20);
             this.txtSucheAlles.TabIndex = 2;
             // 
             // chboVolltext
             // 
             this.chboVolltext.AutoSize = true;
-            this.chboVolltext.Location = new System.Drawing.Point(858, 27);
+            this.chboVolltext.Location = new System.Drawing.Point(823, 28);
             this.chboVolltext.Name = "chboVolltext";
             this.chboVolltext.Size = new System.Drawing.Size(60, 17);
             this.chboVolltext.TabIndex = 0;
@@ -142,8 +143,7 @@
             // 
             // btnSuche
             // 
-            this.btnSuche.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnSuche.Location = new System.Drawing.Point(924, -69);
+            this.btnSuche.Location = new System.Drawing.Point(889, 25);
             this.btnSuche.Name = "btnSuche";
             this.btnSuche.Size = new System.Drawing.Size(44, 23);
             this.btnSuche.TabIndex = 6;
@@ -152,7 +152,6 @@
             // 
             // txtID
             // 
-            this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtID.Location = new System.Drawing.Point(51, 58);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(46, 20);
@@ -178,7 +177,6 @@
             // 
             // txtVerschlagwortSuche
             // 
-            this.txtVerschlagwortSuche.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtVerschlagwortSuche.Location = new System.Drawing.Point(392, 57);
             this.txtVerschlagwortSuche.Name = "txtVerschlagwortSuche";
             this.txtVerschlagwortSuche.Size = new System.Drawing.Size(245, 20);
@@ -186,7 +184,6 @@
             // 
             // txtPerSuche
             // 
-            this.txtPerSuche.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtPerSuche.Location = new System.Drawing.Point(641, 57);
             this.txtPerSuche.Name = "txtPerSuche";
             this.txtPerSuche.Size = new System.Drawing.Size(95, 20);
@@ -194,7 +191,6 @@
             // 
             // txtPeriode
             // 
-            this.txtPeriode.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtPeriode.Location = new System.Drawing.Point(742, 57);
             this.txtPeriode.Name = "txtPeriode";
             this.txtPeriode.Size = new System.Drawing.Size(33, 20);
@@ -202,7 +198,6 @@
             // 
             // textBox3
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox3.Location = new System.Drawing.Point(781, 57);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(74, 20);
@@ -210,7 +205,6 @@
             // 
             // textBox2
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox2.Location = new System.Drawing.Point(859, 57);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(74, 20);
@@ -218,7 +212,9 @@
             // 
             // dgvListeDok
             // 
-            this.dgvListeDok.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dgvListeDok.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvListeDok.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListeDok.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_id,
@@ -338,6 +334,7 @@
             // 
             // btnOeffnen
             // 
+            this.btnOeffnen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOeffnen.Location = new System.Drawing.Point(1269, 27);
             this.btnOeffnen.Name = "btnOeffnen";
             this.btnOeffnen.Size = new System.Drawing.Size(75, 23);
@@ -348,6 +345,7 @@
             // 
             // btnExport
             // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExport.Location = new System.Drawing.Point(1188, 27);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 23);
@@ -358,6 +356,7 @@
             // 
             // btnLoeschen
             // 
+            this.btnLoeschen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLoeschen.Location = new System.Drawing.Point(1107, 27);
             this.btnLoeschen.Name = "btnLoeschen";
             this.btnLoeschen.Size = new System.Drawing.Size(75, 23);
@@ -368,6 +367,7 @@
             // 
             // btnBearbeiten
             // 
+            this.btnBearbeiten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBearbeiten.Location = new System.Drawing.Point(1026, 27);
             this.btnBearbeiten.Name = "btnBearbeiten";
             this.btnBearbeiten.Size = new System.Drawing.Size(75, 23);
@@ -378,6 +378,9 @@
             // 
             // documentViewer1
             // 
+            this.documentViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.documentViewer1.AutoScroll = true;
             this.documentViewer1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.documentViewer1.BackColor = System.Drawing.SystemColors.ControlDark;

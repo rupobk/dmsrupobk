@@ -8,9 +8,9 @@
   "VolltextindizierungDefault": false,
   "AnzDokProVerzeichnis": 10000,
   "AnzahlArchivierteDokumente": 7,
-  "DokDatengroesseInKB": 0.0,
-  "VolltextDatengroesseInKB": 0.0,
-  "DokID": 7,
+  "DokDatengroesseInKB": 1453.0,
+  "VolltextDatengroesseInKB": 49.0,
+  "DokID": 12,
   "Dokumentenstatus": [
     "erledigt",
     "bearbeitung"
@@ -83,10 +83,6 @@
     {
       "Key": 17,
       "Name": "vertrag"
-    },
-    {
-      "Key": 0,
-      "Name": ""
     },
     {
       "Key": 0,

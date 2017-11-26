@@ -30,6 +30,7 @@ namespace DMSRupObk
 
             //Application.Run(new frmDokBearbeiten());
             Application.Run(new frmHauptfenster());
+            //Application.Run(new frmDokBearbeiten());
         }
     }
 }

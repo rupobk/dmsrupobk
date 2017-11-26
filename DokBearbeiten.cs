@@ -23,30 +23,50 @@ namespace DMSRupObk
         private string zielPfad;
         private string extension;
         public ProgParam PrgPrm = ProgParam.Erstellen();
-        public enum MomentanerDokumentenStatus { undefiniert, neuesDokument, inBearbeitung }
+        public enum MomentanerDokumentenStatus { undefiniert, neuesDokument, inBearbeitung, importiert }
         public MomentanerDokumentenStatus DokStatus = MomentanerDokumentenStatus.undefiniert;
         public Dokument tmpDok;
+        public bool BearbeitungAbgebrochen { get; set; } = false;
 
         public frmDokBearbeiten()
         {
             DokStatus = MomentanerDokumentenStatus.neuesDokument;
             InitializeComponent();
             FormularClear();
-            FelderInitialisieren();
+            FelderInitialisieren(DokStatus);
             this.Show();
-            if(!DateiLaden());
-            
-
+            if (!DateiLaden())
+            {
+                this.Close();
+            }
         }
 
         /// Konstruktor der für bestehende Dokumente aufgerufen wird
-        public frmDokBearbeiten(Dokument dok) : this()    //this ruft Hauptkonstruktor auf u. wird für bestehende Dok. aufgerufen
+        public frmDokBearbeiten(Dokument dok) //: this()    //this ruft Hauptkonstruktor auf u. wird für bestehende Dok. aufgerufen
         {
             DokStatus = MomentanerDokumentenStatus.inBearbeitung;
+            InitializeComponent();
+            FormularClear();
+            FelderInitialisieren(DokStatus);
             FelderZuweisen(dok);
             tmpDok = dok;
             this.ShowDialog();
+            this.Close();
         }
+
+        /// Konstruktor der für zu importierende Dokumente aufgerufen wird
+        public frmDokBearbeiten(string datei)
+        {
+            DokStatus = MomentanerDokumentenStatus.importiert;
+            InitializeComponent();
+            FormularClear();
+            FelderInitialisieren(DokStatus);
+            pfadOrgDatei = Path.Combine(PrgPrm.RootVerzeichnisDok, PrgPrm.ImportVerzeichnisDok, datei);
+            documentViewer1.LoadDocument(pfadOrgDatei);
+            this.ShowDialog();
+            this.Close();
+        }
+
 
         //TODO: muss noch getestet werden
         private void FelderZuweisen(Dokument dok)
@@ -113,12 +133,13 @@ namespace DMSRupObk
             tableLayoutPanelLinks.Enabled = false;
         }
 
-        private void FelderInitialisieren()
+        private void FelderInitialisieren(MomentanerDokumentenStatus DokStatus)
         {
-            lblDokID.Text = PrgPrm.DokIDGenerieren().ToString();
+            if (DokStatus == MomentanerDokumentenStatus.neuesDokument || DokStatus == MomentanerDokumentenStatus.importiert)
+                lblDokID.Text = PrgPrm.DokIDGenerieren().ToString();
+
             ComboboxenAufbauen();
             txtPeriode.Text = DateTime.Today.Year.ToString() + DateTime.Today.Month.ToString();
-
             txtJahr.Text = DateTime.Today.Year.ToString();
             btnOCRScan.Enabled = false;
             cbStatus.SelectedIndex = 0;
@@ -214,7 +235,7 @@ namespace DMSRupObk
         {
             if (FelderPruefungOk())
             {
-                if (DokStatus == MomentanerDokumentenStatus.neuesDokument)
+                if (DokStatus == MomentanerDokumentenStatus.neuesDokument || DokStatus == MomentanerDokumentenStatus.importiert)
                 // Dokument wurde neu erstellt u. ist damit neu zu speichern
                 {
                     int DokID = int.Parse(lblDokID.Text);
@@ -257,8 +278,6 @@ namespace DMSRupObk
 
                     Archiv.Erstellen().Speichern();
                     PrgPrm.Schreiben();
-
-                    FormularClear();
                 }
                 else
                 // Dokument wurde editiert, Änderungen prüfen u. speichern
@@ -299,9 +318,8 @@ namespace DMSRupObk
 
                     //Todo: noch zu machen
                     // alleRechnungen aktualisieren
-
-                    this.Close();
                 }
+                this.Close();
             }
         }
 
@@ -348,7 +366,7 @@ namespace DMSRupObk
 
         private void hinzufügenToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FelderInitialisieren();
+            FelderInitialisieren(DokStatus);
             DateiLaden();
             if (!File.Exists(pfadOrgDatei))
             {
@@ -418,12 +436,15 @@ namespace DMSRupObk
         private void txtAbbrechen_Click(object sender, EventArgs e)
         {
             this.Close();
+            BearbeitungAbgebrochen = true;
         }
 
-        //TODO: ist noch zu machen!
-        private void importierenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tableLayoutPanelLinks_SizeChanged(object sender, EventArgs e)
         {
-
+            if (tableLayoutPanelLinks.Size.Width > 520)
+            {
+                splitContainerHauptfenster.SplitterDistance = 520;
+            }
         }
     }
 }

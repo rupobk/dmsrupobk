@@ -128,6 +128,9 @@ namespace DMSRupObk
         {
             try
             {
+                //Eventuellen Blank-Record bei Alle Dokumentenarten u. Lieferanten löschen
+                AlleDokumentenarten.Remove(AlleDokumentenarten.SingleOrDefault(x => x.Key == 0));
+                AlleLieferanten.Remove(AlleLieferanten.SingleOrDefault(x => x.Key == 0));
                 File.WriteAllText(PfadJSONDateiParam, JsonConvert.SerializeObject(this, Formatting.Indented));
             }
             catch (Exception ex)

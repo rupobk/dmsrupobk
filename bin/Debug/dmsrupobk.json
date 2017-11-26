@@ -10,7 +10,7 @@
   "AnzahlArchivierteDokumente": 7,
   "DokDatengroesseInKB": 1453.0,
   "VolltextDatengroesseInKB": 49.0,
-  "DokID": 12,
+  "DokID": 8,
   "Dokumentenstatus": [
     "erledigt",
     "bearbeitung"
@@ -83,10 +83,6 @@
     {
       "Key": 17,
       "Name": "vertrag"
-    },
-    {
-      "Key": 0,
-      "Name": ""
     }
   ],
   "AlleLieferanten": [
@@ -237,6 +233,7 @@
     "hans\\rechnung",
     "hans\\sonstiges",
     "hans\\vertrag",
+    "import",
     "l_g",
     "lizenz",
     "rechnung",

@@ -111,7 +111,7 @@ namespace DMSRupObk
                 Volltext.Erstellen().alleVolltexte.Remove(this);
                 Volltext.Erstellen().Speichern();
                 FileInfo fi = new FileInfo(Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiVolltext));
-                PrgPrm.VolltextDatengroesseInKB = Convert.ToDecimal(fi.Length / 1024);
+                PrgPrm.VolltextDatengroesseInKB = Convert.ToDecimal(fi.Length / 1024d);
                 PrgPrm.Schreiben();
             }
             catch (Exception ex)

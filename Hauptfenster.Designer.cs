@@ -114,6 +114,7 @@
             this.dokumenteImportierenToolStripMenuItem1.Name = "dokumenteImportierenToolStripMenuItem1";
             this.dokumenteImportierenToolStripMenuItem1.Size = new System.Drawing.Size(201, 22);
             this.dokumenteImportierenToolStripMenuItem1.Text = "Dokumente importieren";
+            this.dokumenteImportierenToolStripMenuItem1.Click += new System.EventHandler(this.dokumenteImportierenToolStripMenuItem1_Click);
             // 
             // label1
             // 
@@ -378,8 +379,7 @@
             // 
             // documentViewer1
             // 
-            this.documentViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.documentViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.documentViewer1.AutoScroll = true;
             this.documentViewer1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -493,6 +493,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmHauptfenster";
             this.Text = "DMS";
+            this.SizeChanged += new System.EventHandler(this.frmHauptfenster_SizeChanged);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeDok)).EndInit();

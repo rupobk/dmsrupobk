@@ -363,10 +363,35 @@ namespace DMSRupObk
 
         private void dokumenteImportierenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormularClear();
             if (documentViewer1.Created)
                 documentViewer1.CloseDocument();
             new frmDokBearbeiten();
+        }
+
+        private void dokumenteImportierenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo ParentDirectory = new DirectoryInfo(Path.Combine(PrgPrm.RootVerzeichnisDok, PrgPrm.ImportVerzeichnisDok));
+            if (ParentDirectory.GetFiles().Length != 0)
+                if (documentViewer1.Created)
+                    documentViewer1.CloseDocument();
+
+            foreach (FileInfo f in ParentDirectory.GetFiles())
+            {
+                if (new frmDokBearbeiten(f.Name).BearbeitungAbgebrochen)
+                    break;
+            }
+        }
+
+        private void frmHauptfenster_SizeChanged(object sender, EventArgs e)
+        {
+            Control control = (Control)sender;
+            //MessageBox.Show("size changed");
+            int breite = (int)(control.Size.Width * 0.59d);
+            int hoehe = dgvListeDok.Size.Height;
+            dgvListeDok.Size = new Size(breite, hoehe);
+
+            documentViewer1.Location = new Point(dgvListeDok.Location.X+breite + 8, dgvListeDok.Location.Y);
+            documentViewer1.Size = new Size((int)(control.Size.Width * 0.39d), documentViewer1.Size.Height);
         }
     }
 }

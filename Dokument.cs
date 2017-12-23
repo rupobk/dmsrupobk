@@ -53,15 +53,31 @@ namespace DMSRupObk
                 DokArchiv.alleRechnungen.Add(this);
         }
 
-        public void OpenDokument()
+        public void OeffneDich()
         {
-            //Hei du, Dokument, zeige dich !! Hier wird ausprogrammiert, mit welchem Programm ein Dokument sinnvoll angezeigt werden kann!!! Pdf mit Adobe Reader
-            //z. B. Process.Start(Dateiname) ungefähr;
+            System.Diagnostics.Process.Start(Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, this.Pfad, this.Dateiname));
         }
 
-        public void DeleteDokument()
+        //TODO: testen
+        public void Loeschen()
         {
-
+            try
+            {
+                ProgParam PrgPrm = ProgParam.Erstellen();
+                string pfad = Path.Combine(PrgPrm.RootVerzeichnisDok, this.Pfad, this.Dateiname);
+                FileInfo fi = new FileInfo(pfad);
+                File.Delete(pfad);
+                Archiv.Erstellen().alleDokumente.Remove(this);
+                Archiv.Erstellen().Speichern();
+                PrgPrm.AnzahlArchivierteDokumente--;
+                PrgPrm.DokDatengroesseInKB -= Convert.ToDecimal(fi.Length / 1024d);
+                PrgPrm.Schreiben();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Konnte Dokument nicht löschen. Fehler: " + ex.Message + "\nProgramm wird beendet!");
+                Environment.Exit(-1);
+            }
         }
 
     }
@@ -84,6 +100,25 @@ namespace DMSRupObk
 
             Volltext vt = Volltext.Erstellen();
             vt.alleVolltexte.Add(this);
+        }
+
+        //TODO: testen
+        public void Loeschen()
+        {
+            try
+            {
+                ProgParam PrgPrm = ProgParam.Erstellen();
+                Volltext.Erstellen().alleVolltexte.Remove(this);
+                Volltext.Erstellen().Speichern();
+                FileInfo fi = new FileInfo(Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiVolltext));
+                PrgPrm.VolltextDatengroesseInKB = Convert.ToDecimal(fi.Length / 1024d);
+                PrgPrm.Schreiben();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Konnte Volltext zum Dokument nicht löschen. Fehler: " + ex.Message + "\nProgramm wird beendet!");
+                Environment.Exit(-1);
+            }
         }
     }
 

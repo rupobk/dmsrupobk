@@ -20,7 +20,7 @@ namespace DMSRupObk
         public List<Dokument> alleRechnungen { get; set; } = new List<Dokument>(); // um schneller bei der Suche zu sein, weil das Meiste Rechnungen sind
 
         private Archiv()
-        {}
+        { }
 
         public static Archiv Erstellen()
         {
@@ -28,10 +28,10 @@ namespace DMSRupObk
             {
                 DokArchiv = new Archiv();
                 PfadJsonMetadaten = Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiMetadaten);
+                Laden();
             }
             return DokArchiv;
         }
-
 
 
         //public Searchtree Suchbaum { get; set; }
@@ -45,7 +45,7 @@ namespace DMSRupObk
             catch (Exception ex)
             {
                 MessageBox.Show(PfadJsonMetadaten + " kann nicht geschrieben werden. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
-                Environment.Exit(1);
+                Environment.Exit(-1);
             }
         }
 
@@ -58,7 +58,7 @@ namespace DMSRupObk
             catch (System.IO.FileNotFoundException)
             {
                 MessageBox.Show("metadaten.json nicht gefunden. Programm wird beendet ...");
-                Environment.Exit(1);
+                Environment.Exit(-1);
             }
         }
     }

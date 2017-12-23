@@ -11,56 +11,57 @@ namespace DMSRupObk
 {
     class Volltext
     {
-            public static string PfadJsonVolltext;
-            private static Volltext DokVolltext = null;
+        public static string PfadJsonVolltext;
+        private static Volltext DokVolltext = null;
 
-            //Singleton Klasse für Datenbehälter
-            public List<Volltextindex> alleVolltexte { get; set; } = new List<Volltextindex>();
+        //Singleton Klasse für Datenbehälter
+        public List<Volltextindex> alleVolltexte { get; set; } = new List<Volltextindex>();
 
-            private Volltext()
-            { }
+        private Volltext()
+        {
 
-            public static Volltext Erstellen()
+        }
+
+        public static Volltext Erstellen()
+        {
+            if (DokVolltext == null)
             {
-                if (DokVolltext == null)
-                {
-                    DokVolltext = new Volltext();
-                    PfadJsonVolltext = Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiVolltext);
-                }
-                return DokVolltext;
+                DokVolltext = new Volltext();
+                PfadJsonVolltext = Path.Combine(ProgParam.Erstellen().RootVerzeichnisDok, ProgParam.Erstellen().PfadJSONDateiVolltext);
+                Laden();
             }
+            return DokVolltext;
+        }
 
 
-
-            //public Searchtree Suchbaum { get; set; }
-
+        //public Searchtree Suchbaum { get; set; }
 
 
-            public void Speichern()
+        public void Speichern()
+        {
+            try
             {
-                try
-                {
-                    File.WriteAllText(Volltext.PfadJsonVolltext, JsonConvert.SerializeObject(this, Formatting.Indented));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(PfadJsonVolltext + " kann nicht geschrieben werden. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
-                    Environment.Exit(1);
-                }
+                File.WriteAllText(Volltext.PfadJsonVolltext, JsonConvert.SerializeObject(this, Formatting.Indented));
             }
-
-            public static void Laden()
+            catch (Exception ex)
             {
-                try
-                {
-                    DokVolltext = JsonConvert.DeserializeObject<Volltext>(File.ReadAllText(Volltext.PfadJsonVolltext));
-                }
-                catch (System.IO.FileNotFoundException)
-                {
-                    MessageBox.Show(PfadJsonVolltext + " nicht gefunden. Programm wird beendet ...");
-                    Environment.Exit(1);
-                }
+                MessageBox.Show(PfadJsonVolltext + " kann nicht geschrieben werden. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
+                Environment.Exit(-1);
             }
-        
+        }
+
+        public static void Laden()
+        {
+            try
+            {
+                DokVolltext = JsonConvert.DeserializeObject<Volltext>(File.ReadAllText(Volltext.PfadJsonVolltext));
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                MessageBox.Show(PfadJsonVolltext + " nicht gefunden. Programm wird beendet ...");
+                Environment.Exit(-1);
+            }
+        }
+
     }
 }

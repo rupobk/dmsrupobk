@@ -38,9 +38,9 @@ namespace DMSRupObk
         [JsonProperty] // ins json-File schreiben.
         public int AnzahlArchivierteDokumente { get; set; }
         [JsonProperty] // ins json-File schreiben.
-        public decimal DokDatengroesseInMB { get; set; }
+        public decimal DokDatengroesseInKB { get; set; }
         [JsonProperty] // ins json-File schreiben.
-        public decimal VolltextDatengroesseInMB { get; set; }
+        public decimal VolltextDatengroesseInKB { get; set; }
         [JsonProperty] // ins json-File schreiben.
         public int DokID { get; set; }
 
@@ -75,7 +75,7 @@ namespace DMSRupObk
         {
             if (PrgPrm == null)
             {
-                //PrgPrm = new ProgParam();  nicht notwendig wird durch Json-Lesen automatisch ausgeführt
+                PrgPrm = new ProgParam();
                 // wird PrgPrm erstellt, dann müssen natürlich alle Parameter auch mit eingelesen werden:
                 Lesen();
                 PrgPrm.VerzeichnisseEinrichten();
@@ -93,13 +93,13 @@ namespace DMSRupObk
 
         private void VerzeichnisseEinrichten()
         {
-            string ordner="";
+            string ordner = "";
             try
             {
                 foreach (var item in Ordner)
                 {
-                    ordner = Path.Combine(RootVerzeichnisDok,item);
-                    
+                    ordner = Path.Combine(RootVerzeichnisDok, item);
+
                     if (!Directory.Exists(ordner))
                         Directory.CreateDirectory(ordner);
                 }
@@ -107,7 +107,7 @@ namespace DMSRupObk
             catch (Exception ex)
             {
                 MessageBox.Show("Kann Ordner " + ordner + " nicht anlegen. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
-                Environment.Exit(1);
+                Environment.Exit(-1);
             }
         }
 
@@ -120,7 +120,7 @@ namespace DMSRupObk
             catch (System.IO.FileNotFoundException)
             {
                 MessageBox.Show("dmsrupobk.json nicht gefunden. Programm wird beendet ...");
-                Environment.Exit(1);
+                Environment.Exit(-1);
             }
         }
 
@@ -128,12 +128,15 @@ namespace DMSRupObk
         {
             try
             {
+                //Eventuellen Blank-Record bei Alle Dokumentenarten u. Lieferanten löschen
+                AlleDokumentenarten.Remove(AlleDokumentenarten.SingleOrDefault(x => x.Key == 0));
+                AlleLieferanten.Remove(AlleLieferanten.SingleOrDefault(x => x.Key == 0));
                 File.WriteAllText(PfadJSONDateiParam, JsonConvert.SerializeObject(this, Formatting.Indented));
             }
             catch (Exception ex)
             {
                 MessageBox.Show("dmsrupobk.json kann nicht geschrieben werden. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
-                Environment.Exit(1);
+                Environment.Exit(-1);
             }
         }
 
@@ -154,7 +157,7 @@ namespace DMSRupObk
             string ordner = "";
             try
             {
-                ordner = Path.Combine(RootVerzeichnisDok,Name);
+                ordner = Path.Combine(RootVerzeichnisDok, Name);
                 if (!Directory.Exists(ordner))
                 {
                     Directory.CreateDirectory(ordner);
@@ -171,7 +174,7 @@ namespace DMSRupObk
 
         public string NeuerDateiname(string id)
         {
-            return "d_"+id+"_"+ DateTime.Now.ToString("yyyyMMdd");
+            return "d_" + id + "_" + DateTime.Now.ToString("yyyyMMdd");
         }
     }
 
@@ -283,14 +286,14 @@ namespace DMSRupObk
 //    catch (System.IO.FileNotFoundException)
 //    {
 //        MessageBox.Show("ini-Datei dmsrupobk.ini oder dmsrupobk.json nicht gefunden. Programm wird beendet ...");
-//        Environment.Exit(1);
+//        Environment.Exit(-1);
 //    }
 //}
 
 //public void iniDatenAktualisieren(int anzdok, int datgroes)   //anzdok=Anzahl Dokumente; datgroes=Dateigrösse in Byte
 //{
 //    AnzahlArchivierteDokumente += anzdok;
-//    DatengroesseInMB += datgroes / 1048576;
+//    DatengroesseInMB += datgroes / 1024;
 //    iniFile.SetValue("Archivstatistik", "AnzahlArchivierteDokumente", AnzahlArchivierteDokumente.ToString());
 //    iniFile.SetValue("Archivstatistik", "DatengroesseInMB", DatengroesseInMB.ToString());
 //}

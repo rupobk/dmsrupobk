@@ -23,19 +23,50 @@ namespace DMSRupObk
         private string zielPfad;
         private string extension;
         public ProgParam PrgPrm = ProgParam.Erstellen();
+        public enum MomentanerDokumentenStatus { undefiniert, neuesDokument, inBearbeitung, importiert }
+        public MomentanerDokumentenStatus DokStatus = MomentanerDokumentenStatus.undefiniert;
+        public Dokument tmpDok;
+        public bool BearbeitungAbgebrochen { get; set; } = false;
 
         public frmDokBearbeiten()
         {
+            DokStatus = MomentanerDokumentenStatus.neuesDokument;
             InitializeComponent();
             FormularClear();
+            FelderInitialisieren(DokStatus);
+            this.Show();
+            if (!DateiLaden())
+            {
+                this.Close();
+            }
         }
 
         /// Konstruktor der für bestehende Dokumente aufgerufen wird
-        public frmDokBearbeiten(Dokument dok) : this()    //this ruft Hauptkonstruktor auf u. wird für bestehende Dok. aufgerufen
+        public frmDokBearbeiten(Dokument dok) //: this()    //this ruft Hauptkonstruktor auf u. wird für bestehende Dok. aufgerufen
         {
+            DokStatus = MomentanerDokumentenStatus.inBearbeitung;
+            InitializeComponent();
+            FormularClear();
+            FelderInitialisieren(DokStatus);
             FelderZuweisen(dok);
+            tmpDok = dok;
             this.ShowDialog();
+            this.Close();
         }
+
+        /// Konstruktor der für zu importierende Dokumente aufgerufen wird
+        public frmDokBearbeiten(string datei)
+        {
+            DokStatus = MomentanerDokumentenStatus.importiert;
+            InitializeComponent();
+            FormularClear();
+            FelderInitialisieren(DokStatus);
+            pfadOrgDatei = Path.Combine(PrgPrm.RootVerzeichnisDok, PrgPrm.ImportVerzeichnisDok, datei);
+            documentViewer1.LoadDocument(pfadOrgDatei);
+            this.ShowDialog();
+            this.Close();
+        }
+
 
         //TODO: muss noch getestet werden
         private void FelderZuweisen(Dokument dok)
@@ -49,9 +80,29 @@ namespace DMSRupObk
             dtpAenderung.Text = dok.Aenderungsdatum.ToString("dd.MM.yyyy");
 
             ComboboxenAufbauen();
-            cbDokArt.SelectedIndex = dok.DokumentenartKey;
-            cbLieferant.SelectedIndex = dok.LieferantKey;
-            cbLieferant.Text = dok.Pfad;
+
+            // Relativen Index des Eintrages in der sortierten Combobox suchen
+            int x = 0;
+            foreach (Dokumentenart da in cbDokArt.Items)
+            {
+                if (da.Key == dok.DokumentenartKey)
+                    break;
+                else
+                    x++;
+            }
+            cbDokArt.SelectedIndex = x;
+
+            x = 0;
+            foreach (Lieferant li in cbLieferant.Items)
+            {
+                if (li.Key == dok.LieferantKey)
+                    break;
+                else
+                    x++;
+            }
+            cbLieferant.SelectedIndex = x;
+
+            cbZielpfad.SelectedIndex = cbZielpfad.Items.IndexOf(dok.Pfad);
             cbDokArt.Text = dok.Dokumentenstatus;
 
             string pfad = Path.Combine(PrgPrm.RootVerzeichnisDok, dok.Pfad, dok.Dateiname);
@@ -82,12 +133,13 @@ namespace DMSRupObk
             tableLayoutPanelLinks.Enabled = false;
         }
 
-        private void FelderInitialisieren()
+        private void FelderInitialisieren(MomentanerDokumentenStatus DokStatus)
         {
-            lblDokID.Text = PrgPrm.DokIDGenerieren().ToString();
+            if (DokStatus == MomentanerDokumentenStatus.neuesDokument || DokStatus == MomentanerDokumentenStatus.importiert)
+                lblDokID.Text = PrgPrm.DokIDGenerieren().ToString();
+
             ComboboxenAufbauen();
             txtPeriode.Text = DateTime.Today.Year.ToString() + DateTime.Today.Month.ToString();
-
             txtJahr.Text = DateTime.Today.Year.ToString();
             btnOCRScan.Enabled = false;
             cbStatus.SelectedIndex = 0;
@@ -98,19 +150,20 @@ namespace DMSRupObk
 
         private void ComboboxenAufbauen()
         {
-            cbDokArt.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
+            //cbDokArt.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
+            cbDokArt.DataSource = PrgPrm.AlleDokumentenarten;
             cbDokArt.DisplayMember = "Name";
             cbDokArt.ValueMember = "Key";
-            cbDokArt.SelectedIndex = 9;
+            //cbLieferant.SelectedIndex = 5;
 
             cbLieferant.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
             cbLieferant.DisplayMember = "Name";
             cbLieferant.ValueMember = "Key";
-            cbLieferant.SelectedIndex = 0;
+            //cbLieferant.SelectedIndex = 0;
 
             PrgPrm.Ordner.Sort();
             cbZielpfad.DataSource = PrgPrm.Ordner;
-            cbLieferant.SelectedIndex = 11;
+            //cbLieferant.SelectedIndex = 0;
 
             cbStatus.DataSource = PrgPrm.Dokumentenstatus;
             cbDokArt.SelectedIndex = 1;
@@ -121,7 +174,7 @@ namespace DMSRupObk
             DateiLaden();
         }
 
-        private void DateiLaden()
+        private bool DateiLaden()
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "All Files (*.*)|*.*";
@@ -142,9 +195,13 @@ namespace DMSRupObk
                 {
                     Cursor = Cursors.Default;
                 }
+                return true;
             }
             else
+            {
                 btnOCRScan.Enabled = false;
+                return false;
+            }
         }
 
         private void btnOCRScan_Click(object sender, EventArgs e)
@@ -158,6 +215,11 @@ namespace DMSRupObk
                     var Result = Ocr.ReadPdf(pfadOrgDatei);
                     txtVolltext.Text = Result.Text;
                     btnOCRScan.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Kann die OCR-Erkennung nicht durchführen. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
+                    Environment.Exit(1);
                 }
                 finally
                 {
@@ -173,48 +235,91 @@ namespace DMSRupObk
         {
             if (FelderPruefungOk())
             {
-                int DokID = int.Parse(lblDokID.Text);
-                int LiefKey = 0;
-                string LiefName = "";
-                if (!string.IsNullOrEmpty(cbLieferant.Text))
+                if (DokStatus == MomentanerDokumentenStatus.neuesDokument || DokStatus == MomentanerDokumentenStatus.importiert)
+                // Dokument wurde neu erstellt u. ist damit neu zu speichern
                 {
-                    LiefKey = (int)cbLieferant.SelectedValue;
-                    LiefName = cbLieferant.Text;
+                    int DokID = int.Parse(lblDokID.Text);
+                    int LiefKey = 0;
+                    string LiefName = "";
+                    if (!string.IsNullOrEmpty(cbLieferant.Text))
+                    {
+                        LiefKey = (int)cbLieferant.SelectedValue;
+                        LiefName = cbLieferant.Text;
+                    }
+
+                    string Per = "";
+                    if (!string.IsNullOrEmpty(txtPeriode.Text))
+                        Per = txtPeriode.Text;
+
+                    // Dokumentenviewer schliessen, damit das Dokument verschoben werden kann
+                    if (documentViewer1.Created)
+                        documentViewer1.CloseDocument();
+
+                    Dokument dok = new Dokument(DokID, (int)cbDokArt.SelectedValue, cbDokArt.Text, cbZielpfad.Text, neuerDateiname, extension,
+                                                txtVerschlagwort.Text, int.Parse(txtJahr.Text), cbStatus.Text, dtpArchivierung.Value,
+                                                dtpAenderung.Value, LiefKey, LiefName, Per);
+
+                    // verschiebt Dokument in richtigen Ordner -> Pfad setzen 
+                    string zielpfad = Path.Combine(PrgPrm.RootVerzeichnisDok, dok.Pfad, dok.Dateiname);
+                    File.Copy(pfadOrgDatei, zielpfad);
+
+                    if (!string.IsNullOrEmpty(txtVolltext.Text))
+                    {
+                        Volltextindex vti = new Volltextindex(DokID, txtVolltext.Text, cbZielpfad.Text, neuerDateiname, extension);
+                        Volltext.Erstellen().Speichern();
+                    }
+
+                    PrgPrm.AnzahlArchivierteDokumente++;
+                    FileInfo fi = new FileInfo(pfadOrgDatei);
+                    PrgPrm.DokDatengroesseInKB += Convert.ToDecimal(fi.Length / 1024d);
+
+                    FileInfo fi2 = new FileInfo(Volltext.PfadJsonVolltext);
+                    PrgPrm.VolltextDatengroesseInKB = Convert.ToDecimal(fi2.Length / 1024d);
+
+                    Archiv.Erstellen().Speichern();
+                    PrgPrm.Schreiben();
                 }
-
-                string Per = "";
-                if (!string.IsNullOrEmpty(txtPeriode.Text))
-                    Per = txtPeriode.Text;
-
-                // Dokumentenviewer schliessen, damit das Dokument verschoben werden kann
-                if (documentViewer1.Created)
-                    documentViewer1.CloseDocument();
-
-                Dokument dok = new Dokument(DokID, (int)cbDokArt.SelectedValue, cbDokArt.Text, cbZielpfad.Text, neuerDateiname, extension,
-                                            txtVerschlagwort.Text, int.Parse(txtJahr.Text), cbStatus.Text, dtpArchivierung.Value, 
-                                            dtpAenderung.Value, LiefKey, LiefName, Per);
-
-                // verschiebt Dokument in richtigen Ordner -> Pfad setzen 
-                string zielpfad = Path.Combine(PrgPrm.RootVerzeichnisDok, dok.Pfad, dok.Dateiname);
-                File.Copy(pfadOrgDatei, zielpfad);
-
-                if (!string.IsNullOrEmpty(txtVolltext.Text))
+                else
+                // Dokument wurde editiert, Änderungen prüfen u. speichern
                 {
-                    Volltextindex vti = new Volltextindex(DokID, txtVolltext.Text, cbZielpfad.Text, neuerDateiname, extension);
-                    Volltext.Erstellen().Speichern();
+                    // Dokumentenviewer schliessen, damit das Dokument verschoben werden kann
+                    if (documentViewer1.Created)
+                        documentViewer1.CloseDocument();
+                    tmpDok.DokumentenartKey = (int)cbDokArt.SelectedValue;
+                    tmpDok.DokumentenartName = cbDokArt.Text;
+                    tmpDok.LieferantKey = (int)cbLieferant.SelectedValue;
+                    tmpDok.LieferantName = cbLieferant.Text;
+                    tmpDok.Verschlagwortung = txtVerschlagwort.Text;
+                    tmpDok.Periode = txtPeriode.Text;
+                    tmpDok.Jahr = int.Parse(txtJahr.Text);
+                    tmpDok.Aenderungsdatum = DateTime.Today;
+
+                    // Wenn sich Dokumentenpfad geändert hat, dann Dokument dort hin verschieben
+                    if (tmpDok.Pfad != cbZielpfad.Text || tmpDok.Dateiname != txtDateiname.Text)
+                    {
+                        try
+                        {
+                            File.Move(Path.Combine(PrgPrm.RootVerzeichnisDok, tmpDok.Pfad, tmpDok.Dateiname),
+                                      Path.Combine(PrgPrm.RootVerzeichnisDok, cbZielpfad.Text, tmpDok.Dateiname));
+                            tmpDok.Pfad = cbZielpfad.Text;
+                            tmpDok.Dateiname = txtDateiname.Text;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Kann Dokument nicht verschieben. Fehler:" + ex.Message + "\nProgramm wird beendet ...");
+                            Environment.Exit(1);
+                        }
+                    }
+
+                    List<Dokument> alledok = Archiv.Erstellen().alleDokumente;
+                    var index = alledok.FindIndex(c => c.DokID == tmpDok.DokID);
+                    alledok[index] = tmpDok;
+                    Archiv.Erstellen().Speichern();
+
+                    //Todo: noch zu machen
+                    // alleRechnungen aktualisieren
                 }
-
-                PrgPrm.AnzahlArchivierteDokumente++;
-                FileInfo fi = new FileInfo(pfadOrgDatei);
-                PrgPrm.DokDatengroesseInMB += Convert.ToDecimal(fi.Length / 1048576);
-
-                FileInfo fi2 = new FileInfo(Volltext.PfadJsonVolltext);
-                PrgPrm.VolltextDatengroesseInMB += Convert.ToDecimal(fi2.Length / 1048576);
-
-                Archiv.Erstellen().Speichern();
-                PrgPrm.Schreiben();
-
-                FormularClear();
+                this.Close();
             }
         }
 
@@ -261,7 +366,7 @@ namespace DMSRupObk
 
         private void hinzufügenToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FelderInitialisieren();
+            FelderInitialisieren(DokStatus);
             DateiLaden();
             if (!File.Exists(pfadOrgDatei))
             {
@@ -279,21 +384,48 @@ namespace DMSRupObk
         //TODO: ist noch auszutesten!
         private void btnDokuartBearbeiten_Click(object sender, EventArgs e)
         {
-            new frmAttributBearbeiten("Dokumentenart").ShowDialog();
+            frmAttributBearbeiten x = new frmAttributBearbeiten("Dokumentenart");
+            x.ShowDialog();
+
             cbDokArt.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
+            // Relativen Index des Eintrages in der sortierten Combobox suchen
+            int y = 0;
+            foreach (Dokumentenart da in cbDokArt.Items)
+            {
+                if (da.Key == x.NeuerKey)
+                    break;
+                else
+                    y++;
+            }
+            cbDokArt.SelectedIndex = y;
         }
 
+        //TODO: ist noch auszutesten!
         private void btnZielpfadBearbeiten_Click(object sender, EventArgs e)
         {
-            new frmAttributBearbeiten("Ordner").ShowDialog();
+            frmAttributBearbeiten t = new frmAttributBearbeiten("Ordner");
+            t.ShowDialog();
             PrgPrm.Ordner.Sort();
             cbZielpfad.DataSource = PrgPrm.Ordner;
+            cbZielpfad.SelectedIndex = cbZielpfad.Items.IndexOf(t.NeuerOrdner);
         }
 
+        //TODO: ist noch auszutesten!
         private void btnLiefBearbeiten_Click(object sender, EventArgs e)
         {
-            new frmAttributBearbeiten("Lieferant").ShowDialog();
+            frmAttributBearbeiten t = new frmAttributBearbeiten("Lieferant");
+            t.ShowDialog();
+
             cbLieferant.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
+            int x = 0;
+            foreach (Lieferant li in cbLieferant.Items)
+            {
+                if (li.Key == t.NeuerKey)
+                    break;
+                else
+                    x++;
+            }
+            cbLieferant.SelectedIndex = x;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -304,12 +436,15 @@ namespace DMSRupObk
         private void txtAbbrechen_Click(object sender, EventArgs e)
         {
             this.Close();
+            BearbeitungAbgebrochen = true;
         }
 
-        //TODO: ist noch zu machen!
-        private void importierenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tableLayoutPanelLinks_SizeChanged(object sender, EventArgs e)
         {
-
+            if (tableLayoutPanelLinks.Size.Width > 520)
+            {
+                splitContainerHauptfenster.SplitterDistance = 520;
+            }
         }
     }
 }

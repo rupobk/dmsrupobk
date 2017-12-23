@@ -44,15 +44,12 @@
             Gnostice.Graphics.TextRenderingSettings textRenderingSettings1 = new Gnostice.Graphics.TextRenderingSettings();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.hinzufügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hinzufügenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.importierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerHauptfenster = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanelLinks = new System.Windows.Forms.TableLayoutPanel();
             this.lblDokArt = new System.Windows.Forms.Label();
             this.lblDokID = new System.Windows.Forms.Label();
             this.lblGuid2 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtAbbrechen = new System.Windows.Forms.Button();
             this.lblVolltext = new System.Windows.Forms.Label();
             this.txtVolltext = new System.Windows.Forms.RichTextBox();
             this.txtDateiname = new System.Windows.Forms.TextBox();
@@ -61,7 +58,6 @@
             this.lblDateiname = new System.Windows.Forms.Label();
             this.btnDokuartBearbeiten = new System.Windows.Forms.Button();
             this.btnOCRScan = new System.Windows.Forms.Button();
-            this.btnSpeichern = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblZielpfad = new System.Windows.Forms.Label();
             this.btnZielpfadBearbeiten = new System.Windows.Forms.Button();
@@ -77,6 +73,8 @@
             this.lblPeriodSyntax = new System.Windows.Forms.Label();
             this.dtpArchivierung = new System.Windows.Forms.DateTimePicker();
             this.dtpAenderung = new System.Windows.Forms.DateTimePicker();
+            this.btnSpeichern = new System.Windows.Forms.Button();
+            this.txtAbbrechen = new System.Windows.Forms.Button();
             this.documentViewer1 = new Gnostice.Documents.Controls.WinForms.DocumentViewer();
             this.cbDokArt = new DMSRupObk.SearchableComboBox();
             this.cbZielpfad = new DMSRupObk.SearchableComboBox();
@@ -104,26 +102,9 @@
             // 
             // hinzufügenToolStripMenuItem
             // 
-            this.hinzufügenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hinzufügenToolStripMenuItem1,
-            this.importierenToolStripMenuItem});
             this.hinzufügenToolStripMenuItem.Name = "hinzufügenToolStripMenuItem";
             this.hinzufügenToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.hinzufügenToolStripMenuItem.Text = "Datei";
-            // 
-            // hinzufügenToolStripMenuItem1
-            // 
-            this.hinzufügenToolStripMenuItem1.Name = "hinzufügenToolStripMenuItem1";
-            this.hinzufügenToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
-            this.hinzufügenToolStripMenuItem1.Text = "Hinzufügen";
-            this.hinzufügenToolStripMenuItem1.Click += new System.EventHandler(this.hinzufügenToolStripMenuItem1_Click);
-            // 
-            // importierenToolStripMenuItem
-            // 
-            this.importierenToolStripMenuItem.Name = "importierenToolStripMenuItem";
-            this.importierenToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.importierenToolStripMenuItem.Text = "Importieren";
-            this.importierenToolStripMenuItem.Click += new System.EventHandler(this.importierenToolStripMenuItem_Click);
             // 
             // splitContainerHauptfenster
             // 
@@ -160,7 +141,6 @@
             this.tableLayoutPanelLinks.Controls.Add(this.lblGuid2, 0, 1);
             this.tableLayoutPanelLinks.Controls.Add(this.label12, 0, 0);
             this.tableLayoutPanelLinks.Controls.Add(this.cbDokArt, 1, 2);
-            this.tableLayoutPanelLinks.Controls.Add(this.txtAbbrechen, 4, 23);
             this.tableLayoutPanelLinks.Controls.Add(this.lblVolltext, 0, 12);
             this.tableLayoutPanelLinks.Controls.Add(this.txtVolltext, 1, 12);
             this.tableLayoutPanelLinks.Controls.Add(this.txtDateiname, 1, 9);
@@ -169,7 +149,6 @@
             this.tableLayoutPanelLinks.Controls.Add(this.lblDateiname, 0, 9);
             this.tableLayoutPanelLinks.Controls.Add(this.btnDokuartBearbeiten, 4, 2);
             this.tableLayoutPanelLinks.Controls.Add(this.btnOCRScan, 1, 23);
-            this.tableLayoutPanelLinks.Controls.Add(this.btnSpeichern, 4, 22);
             this.tableLayoutPanelLinks.Controls.Add(this.lblStatus, 0, 8);
             this.tableLayoutPanelLinks.Controls.Add(this.lblZielpfad, 0, 3);
             this.tableLayoutPanelLinks.Controls.Add(this.cbZielpfad, 1, 3);
@@ -189,6 +168,8 @@
             this.tableLayoutPanelLinks.Controls.Add(this.lblPeriodSyntax, 2, 6);
             this.tableLayoutPanelLinks.Controls.Add(this.dtpArchivierung, 1, 10);
             this.tableLayoutPanelLinks.Controls.Add(this.dtpAenderung, 1, 11);
+            this.tableLayoutPanelLinks.Controls.Add(this.btnSpeichern, 3, 22);
+            this.tableLayoutPanelLinks.Controls.Add(this.txtAbbrechen, 4, 23);
             this.tableLayoutPanelLinks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelLinks.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelLinks.Name = "tableLayoutPanelLinks";
@@ -220,6 +201,7 @@
             this.tableLayoutPanelLinks.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.tableLayoutPanelLinks.Size = new System.Drawing.Size(506, 732);
             this.tableLayoutPanelLinks.TabIndex = 0;
+            this.tableLayoutPanelLinks.SizeChanged += new System.EventHandler(this.tableLayoutPanelLinks_SizeChanged);
             // 
             // lblDokArt
             // 
@@ -271,17 +253,6 @@
             this.label12.TabIndex = 1;
             this.label12.Text = "Verschlagwortung";
             // 
-            // txtAbbrechen
-            // 
-            this.txtAbbrechen.Location = new System.Drawing.Point(435, 669);
-            this.txtAbbrechen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtAbbrechen.Name = "txtAbbrechen";
-            this.txtAbbrechen.Size = new System.Drawing.Size(68, 27);
-            this.txtAbbrechen.TabIndex = 140;
-            this.txtAbbrechen.Text = "Abbrechen";
-            this.txtAbbrechen.UseVisualStyleBackColor = true;
-            this.txtAbbrechen.Click += new System.EventHandler(this.txtAbbrechen_Click);
-            // 
             // lblVolltext
             // 
             this.lblVolltext.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -297,7 +268,7 @@
             // 
             this.tableLayoutPanelLinks.SetColumnSpan(this.txtVolltext, 5);
             this.txtVolltext.Location = new System.Drawing.Point(118, 350);
-            this.txtVolltext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtVolltext.Margin = new System.Windows.Forms.Padding(2);
             this.txtVolltext.Name = "txtVolltext";
             this.tableLayoutPanelLinks.SetRowSpan(this.txtVolltext, 9);
             this.txtVolltext.Size = new System.Drawing.Size(379, 257);
@@ -349,7 +320,7 @@
             // btnDokuartBearbeiten
             // 
             this.btnDokuartBearbeiten.Location = new System.Drawing.Point(435, 60);
-            this.btnDokuartBearbeiten.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDokuartBearbeiten.Margin = new System.Windows.Forms.Padding(2);
             this.btnDokuartBearbeiten.Name = "btnDokuartBearbeiten";
             this.btnDokuartBearbeiten.Size = new System.Drawing.Size(68, 25);
             this.btnDokuartBearbeiten.TabIndex = 180;
@@ -360,24 +331,13 @@
             // btnOCRScan
             // 
             this.btnOCRScan.Location = new System.Drawing.Point(118, 669);
-            this.btnOCRScan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOCRScan.Margin = new System.Windows.Forms.Padding(2);
             this.btnOCRScan.Name = "btnOCRScan";
             this.btnOCRScan.Size = new System.Drawing.Size(74, 27);
             this.btnOCRScan.TabIndex = 160;
             this.btnOCRScan.Text = "OCR-Scan";
             this.btnOCRScan.UseVisualStyleBackColor = true;
             this.btnOCRScan.Click += new System.EventHandler(this.btnOCRScan_Click);
-            // 
-            // btnSpeichern
-            // 
-            this.btnSpeichern.Location = new System.Drawing.Point(435, 640);
-            this.btnSpeichern.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnSpeichern.Name = "btnSpeichern";
-            this.btnSpeichern.Size = new System.Drawing.Size(68, 25);
-            this.btnSpeichern.TabIndex = 130;
-            this.btnSpeichern.Text = "Speichern";
-            this.btnSpeichern.UseVisualStyleBackColor = true;
-            this.btnSpeichern.Click += new System.EventHandler(this.btnSpeichern_Click);
             // 
             // lblStatus
             // 
@@ -404,7 +364,7 @@
             // btnZielpfadBearbeiten
             // 
             this.btnZielpfadBearbeiten.Location = new System.Drawing.Point(435, 89);
-            this.btnZielpfadBearbeiten.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnZielpfadBearbeiten.Margin = new System.Windows.Forms.Padding(2);
             this.btnZielpfadBearbeiten.Name = "btnZielpfadBearbeiten";
             this.btnZielpfadBearbeiten.Size = new System.Drawing.Size(68, 25);
             this.btnZielpfadBearbeiten.TabIndex = 190;
@@ -426,7 +386,7 @@
             // btnLiefBearbeiten
             // 
             this.btnLiefBearbeiten.Location = new System.Drawing.Point(435, 147);
-            this.btnLiefBearbeiten.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLiefBearbeiten.Margin = new System.Windows.Forms.Padding(2);
             this.btnLiefBearbeiten.Name = "btnLiefBearbeiten";
             this.btnLiefBearbeiten.Size = new System.Drawing.Size(68, 25);
             this.btnLiefBearbeiten.TabIndex = 200;
@@ -487,7 +447,7 @@
             // btnLaden
             // 
             this.btnLaden.Location = new System.Drawing.Point(2, 669);
-            this.btnLaden.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLaden.Margin = new System.Windows.Forms.Padding(2);
             this.btnLaden.Name = "btnLaden";
             this.btnLaden.Size = new System.Drawing.Size(98, 25);
             this.btnLaden.TabIndex = 170;
@@ -498,7 +458,7 @@
             // btnClear
             // 
             this.btnClear.Location = new System.Drawing.Point(275, 669);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(73, 27);
             this.btnClear.TabIndex = 150;
@@ -516,7 +476,7 @@
             this.lblPeriodSyntax.Location = new System.Drawing.Point(276, 182);
             this.lblPeriodSyntax.Name = "lblPeriodSyntax";
             this.lblPeriodSyntax.Size = new System.Drawing.Size(213, 13);
-            this.lblPeriodSyntax.TabIndex = 201;
+            this.lblPeriodSyntax.TabIndex = 1000;
             this.lblPeriodSyntax.Text = "Syntax: YYYYMM od. YYYYMM-YYYYMM  ";
             // 
             // dtpArchivierung
@@ -525,10 +485,10 @@
             this.dtpArchivierung.CustomFormat = "dd.MM.yyyy";
             this.dtpArchivierung.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpArchivierung.Location = new System.Drawing.Point(118, 294);
-            this.dtpArchivierung.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpArchivierung.Margin = new System.Windows.Forms.Padding(2);
             this.dtpArchivierung.Name = "dtpArchivierung";
             this.dtpArchivierung.Size = new System.Drawing.Size(100, 20);
-            this.dtpArchivierung.TabIndex = 202;
+            this.dtpArchivierung.TabIndex = 100;
             // 
             // dtpAenderung
             // 
@@ -536,10 +496,33 @@
             this.dtpAenderung.CustomFormat = "dd.MM.yyyy";
             this.dtpAenderung.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpAenderung.Location = new System.Drawing.Point(118, 323);
-            this.dtpAenderung.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpAenderung.Margin = new System.Windows.Forms.Padding(2);
             this.dtpAenderung.Name = "dtpAenderung";
             this.dtpAenderung.Size = new System.Drawing.Size(100, 20);
-            this.dtpAenderung.TabIndex = 203;
+            this.dtpAenderung.TabIndex = 110;
+            // 
+            // btnSpeichern
+            // 
+            this.tableLayoutPanelLinks.SetColumnSpan(this.btnSpeichern, 2);
+            this.btnSpeichern.Location = new System.Drawing.Point(364, 640);
+            this.btnSpeichern.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSpeichern.Name = "btnSpeichern";
+            this.btnSpeichern.Size = new System.Drawing.Size(139, 25);
+            this.btnSpeichern.TabIndex = 130;
+            this.btnSpeichern.Text = "Speichern u. schließen";
+            this.btnSpeichern.UseVisualStyleBackColor = true;
+            this.btnSpeichern.Click += new System.EventHandler(this.btnSpeichern_Click);
+            // 
+            // txtAbbrechen
+            // 
+            this.txtAbbrechen.Location = new System.Drawing.Point(435, 669);
+            this.txtAbbrechen.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAbbrechen.Name = "txtAbbrechen";
+            this.txtAbbrechen.Size = new System.Drawing.Size(68, 27);
+            this.txtAbbrechen.TabIndex = 140;
+            this.txtAbbrechen.Text = "Abbrechen";
+            this.txtAbbrechen.UseVisualStyleBackColor = true;
+            this.txtAbbrechen.Click += new System.EventHandler(this.txtAbbrechen_Click);
             // 
             // documentViewer1
             // 
@@ -745,8 +728,6 @@
         private SearchableComboBox cbStatus;
         private System.Windows.Forms.Button btnLaden;
         private System.Windows.Forms.ToolStripMenuItem hinzufügenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hinzufügenToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem importierenToolStripMenuItem;
         private System.Windows.Forms.Label lblZielpfad;
         private SearchableComboBox cbZielpfad;
         private System.Windows.Forms.Button btnOCRScan;

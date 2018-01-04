@@ -33,7 +33,7 @@ namespace DMSRupObk
             return DokArchiv;
         }
 
-
+        //TODO: Suchbaum erstellen
         //public Searchtree Suchbaum { get; set; }
 
         public void Speichern()

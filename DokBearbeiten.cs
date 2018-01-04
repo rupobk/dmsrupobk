@@ -67,8 +67,6 @@ namespace DMSRupObk
             this.Close();
         }
 
-
-        //TODO: muss noch getestet werden
         private void FelderZuweisen(Dokument dok)
         {
             lblDokID.Text = dok.DokID.ToString();

@@ -43,9 +43,6 @@ D:\daten\rupi\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\obj\
 D:\daten\rupi\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\DMSRupObk.exe.config
 D:\daten\rupi\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\DMSRupObk.exe
 D:\daten\rupi\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\DMSRupObk.pdb
-D:\daten\rupi\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\IronOcr.xml
-D:\daten\rupi\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\IronOcr.German.xml
-D:\daten\rupi\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\Newtonsoft.Json.xml
 D:\daten\rupi\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\obj\Debug\DMSRupObk.exe
 D:\daten\rupi\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\obj\Debug\DMSRupObk.pdb
 D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\obj\Debug\DMSRupObk.csprojResolveAssemblyReference.cache
@@ -65,3 +62,4 @@ D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\obj\Debug
 D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\obj\Debug\DMSRupObk.pdb
 C:\Users\rupi\Documents\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\DMSRupObk.exe.CodeAnalysisLog.xml
 C:\Users\rupi\Documents\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\DMSRupObk.exe.lastcodeanalysissucceeded
+D:\daten\rupi\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\obj\Debug\DMSRupObk.csproj.CopyComplete

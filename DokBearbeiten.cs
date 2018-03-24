@@ -34,11 +34,7 @@ namespace DMSRupObk
             InitializeComponent();
             FormularClear();
             FelderInitialisieren(DokStatus);
-            this.Show();
-            if (!DateiLaden())
-            {
-                this.Close();
-            }
+            this.ShowDialog();
         }
 
         /// Konstruktor der für bestehende Dokumente aufgerufen wird
@@ -173,6 +169,7 @@ namespace DMSRupObk
         }
 
         private bool DateiLaden()
+        // Macht Filedialog u. zeigt Dokument hinterher an falls Dokument gewählt
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "All Files (*.*)|*.*";

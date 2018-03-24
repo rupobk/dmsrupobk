@@ -79,6 +79,7 @@
             this.btnLoeschen = new System.Windows.Forms.Button();
             this.btnBearbeiten = new System.Windows.Forms.Button();
             this.documentViewer1 = new Gnostice.Documents.Controls.WinForms.DocumentViewer();
+            this.btnNeu = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeDok)).BeginInit();
             this.SuspendLayout();
@@ -466,11 +467,23 @@
             this.documentViewer1.Zoom.ZoomMode = Gnostice.Documents.Controls.WinForms.ZoomMode.FitPage;
             this.documentViewer1.Zoom.ZoomPercent = 100D;
             // 
+            // btnNeu
+            // 
+            this.btnNeu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNeu.Location = new System.Drawing.Point(1440, 28);
+            this.btnNeu.Name = "btnNeu";
+            this.btnNeu.Size = new System.Drawing.Size(75, 23);
+            this.btnNeu.TabIndex = 18;
+            this.btnNeu.Text = "Neues Dok.";
+            this.btnNeu.UseVisualStyleBackColor = true;
+            this.btnNeu.Click += new System.EventHandler(this.btnNeu_Click);
+            // 
             // frmHauptfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1523, 659);
+            this.Controls.Add(this.btnNeu);
             this.Controls.Add(this.documentViewer1);
             this.Controls.Add(this.btnOeffnen);
             this.Controls.Add(this.txtID);
@@ -539,5 +552,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_pfad;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_dateiname;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_statusdok;
+        private System.Windows.Forms.Button btnNeu;
     }
 }

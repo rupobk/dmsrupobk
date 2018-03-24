@@ -393,5 +393,11 @@ namespace DMSRupObk
             documentViewer1.Location = new Point(dgvListeDok.Location.X+breite + 8, dgvListeDok.Location.Y);
             documentViewer1.Size = new Size((int)(control.Size.Width * 0.39d), documentViewer1.Size.Height);
         }
+
+        private void btnNeu_Click(object sender, EventArgs e)
+        {
+            new frmDokBearbeiten();
+            FormularClear();
+        }
     }
 }

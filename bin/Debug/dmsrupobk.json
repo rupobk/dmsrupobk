@@ -7,10 +7,10 @@
   "IndexVerzeichnis": "index",
   "VolltextindizierungDefault": false,
   "AnzDokProVerzeichnis": 10000,
-  "AnzahlArchivierteDokumente": 13,
-  "DokDatengroesseInKB": 7262.5546875,
+  "AnzahlArchivierteDokumente": 27,
+  "DokDatengroesseInKB": 9223.25390625,
   "VolltextDatengroesseInKB": 48.4853515625,
-  "DokID": 35,
+  "DokID": 79,
   "Dokumentenstatus": [
     "erledigt",
     "bearbeitung"
@@ -221,10 +221,17 @@
     {
       "Key": 34,
       "Name": "genialloyd"
+    },
+    {
+      "Key": 35,
+      "Name": "scheisse"
     }
   ],
   "Ordner": [
     "arbeit",
+    "arbeit\\affe",
+    "arbeit\\scheisse",
+    "arbeit\\test",
     "bestaetigung",
     "dokumentation",
     "garantie",
@@ -247,6 +254,7 @@
     "vertrag\\energie",
     "vertrag\\kommunikation",
     "vertrag\\sonstiges",
-    "vertrag\\versicherung"
+    "vertrag\\versicherung",
+    "welsch"
   ]
 }

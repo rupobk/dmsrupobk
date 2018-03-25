@@ -115,26 +115,27 @@ namespace DMSRupObk
                         PrgPrm.NeueDokumentenart(int.Parse(lblKeyCalc.Text), txtName.Text);
                         dgAttribute.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
                         NeuerKey = int.Parse(lblKeyCalc.Text);
+                        this.Close();
                         break;
                     }
-                    //var a = from w in PrgPrm.AlleDokumentenarten
-                    //        where w.Name.Contains(txtName.Text)
-                    //        select w;
-                    //foreach (var item in a)
-                    //{
-                    //    if (!string.IsNullOrEmpty(item.Name))
-                    //        doppelt = true;
-                    //}
-                    //if (!string.IsNullOrEmpty(txtName.Text) && !doppelt)
-                    //{
-                    //    PrgPrm.NeueDokumentenart(int.Parse(lblKeyCalc.Text), txtName.Text);
-                    //    dgAttribute.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
-                    //}
-                    //else
-                    //    MessageBox.Show("Das Attribut kann nicht doppelt angelegt werden!");
-                    //break;
+                //var a = from w in PrgPrm.AlleDokumentenarten
+                //        where w.Name.Contains(txtName.Text)
+                //        select w;
+                //foreach (var item in a)
+                //{
+                //    if (!string.IsNullOrEmpty(item.Name))
+                //        doppelt = true;
+                //}
+                //if (!string.IsNullOrEmpty(txtName.Text) && !doppelt)
+                //{
+                //    PrgPrm.NeueDokumentenart(int.Parse(lblKeyCalc.Text), txtName.Text);
+                //    dgAttribute.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
+                //}
+                //else
+                //    MessageBox.Show("Das Attribut kann nicht doppelt angelegt werden!");
+                //break;
                 case "Lieferanten-Attribute bearbeiten":
-                    if(!string.IsNullOrEmpty(txtName.Text) && PrgPrm.AlleLieferanten.FindIndex(x=>x.Name==txtName.Text)<-1)
+                    if (!string.IsNullOrEmpty(txtName.Text) && PrgPrm.AlleLieferanten.FindIndex(x => x.Name == txtName.Text) < -1)
                     {
                         MessageBox.Show("Das Attribut kann nicht doppelt angelegt werden!");
                         break;
@@ -143,38 +144,44 @@ namespace DMSRupObk
                     {
                         PrgPrm.NeuerLieferant(int.Parse(lblKeyCalc.Text), txtName.Text);
                         dgAttribute.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
+
                         NeuerKey = int.Parse(lblKeyCalc.Text);
+                        this.Close();
                         break;
                     }
-                    //var b = from w in PrgPrm.AlleLieferanten
-                    //        where w.Name.Contains(txtName.Text)
-                    //        select w;
-                    //foreach (var item in b)
-                    //{
-                    //    if (!string.IsNullOrEmpty(item.Name))
-                    //        doppelt = true;
-                    //}
-                    //if (!string.IsNullOrEmpty(txtName.Text) && !doppelt)
-                    //{
-                    //    PrgPrm.NeuerLieferant(int.Parse(lblKeyCalc.Text), txtName.Text);
-                    //    dgAttribute.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
-                    //}
-                    //else
-                    //    MessageBox.Show("Das Attribut kann nicht doppelt angelegt werden!");
-                    //break;
+                //var b = from w in PrgPrm.AlleLieferanten
+                //        where w.Name.Contains(txtName.Text)
+                //        select w;
+                //foreach (var item in b)
+                //{
+                //    if (!string.IsNullOrEmpty(item.Name))
+                //        doppelt = true;
+                //}
+                //if (!string.IsNullOrEmpty(txtName.Text) && !doppelt)
+                //{
+                //    PrgPrm.NeuerLieferant(int.Parse(lblKeyCalc.Text), txtName.Text);
+                //    dgAttribute.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
+                //}
+                //else
+                //    MessageBox.Show("Das Attribut kann nicht doppelt angelegt werden!");
+                //break;
                 default:
 
                     if (!string.IsNullOrEmpty(txtName.Text) && !PrgPrm.Ordner.Contains(txtName.Text))
                     {
+                        txtName.Text = txtName.Text.Replace('/', '\\');
                         PrgPrm.NeuerOrdner(txtName.Text);
                         dgAttribute.DataSource = (from data in PrgPrm.Ordner
                                                   orderby data
                                                   select new { Value = data }).ToList();
                         NeuerOrdner = txtName.Text;
+                        break;
                     }
                     else
+                    {
                         MessageBox.Show("Das Attribut kann nicht doppelt angelegt werden!");
-                    break;
+                        break;
+                    }
             }
         }
     }

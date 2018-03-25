@@ -80,6 +80,7 @@
             this.btnBearbeiten = new System.Windows.Forms.Button();
             this.documentViewer1 = new Gnostice.Documents.Controls.WinForms.DocumentViewer();
             this.btnNeu = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeDok)).BeginInit();
             this.SuspendLayout();
@@ -478,11 +479,23 @@
             this.btnNeu.UseVisualStyleBackColor = true;
             this.btnNeu.Click += new System.EventHandler(this.btnNeu_Click);
             // 
+            // btnImport
+            // 
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImport.Location = new System.Drawing.Point(1440, 53);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(75, 23);
+            this.btnImport.TabIndex = 19;
+            this.btnImport.Text = "Importieren";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
             // frmHauptfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1523, 659);
+            this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnNeu);
             this.Controls.Add(this.documentViewer1);
             this.Controls.Add(this.btnOeffnen);
@@ -553,5 +566,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_dateiname;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_statusdok;
         private System.Windows.Forms.Button btnNeu;
+        private System.Windows.Forms.Button btnImport;
     }
 }

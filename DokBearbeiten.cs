@@ -254,10 +254,6 @@ namespace DMSRupObk
                                                 txtVerschlagwort.Text, int.Parse(txtJahr.Text), cbStatus.Text, dtpArchivierung.Value,
                                                 dtpAenderung.Value, LiefKey, LiefName, Per);
 
-                    // verschiebt Dokument in richtigen Ordner -> Pfad setzen 
-                    string zielpfad = Path.Combine(PrgPrm.RootVerzeichnisDok, dok.Pfad, dok.Dateiname);
-                    File.Copy(pfadOrgDatei, zielpfad);
-
                     if (!string.IsNullOrEmpty(txtVolltext.Text))
                     {
                         Volltextindex vti = new Volltextindex(DokID, txtVolltext.Text, cbZielpfad.Text, neuerDateiname, extension);
@@ -270,6 +266,10 @@ namespace DMSRupObk
 
                     FileInfo fi2 = new FileInfo(Volltext.PfadJsonVolltext);
                     PrgPrm.VolltextDatengroesseInKB = Convert.ToDecimal(fi2.Length / 1024d);
+
+                    // verschiebt Dokument in richtigen Ordner -> Pfad setzen 
+                    string zielpfad = Path.Combine(PrgPrm.RootVerzeichnisDok, dok.Pfad, dok.Dateiname);
+                    File.Move(pfadOrgDatei, zielpfad);
 
                     Archiv.Erstellen().Speichern();
                     PrgPrm.Schreiben();

@@ -363,23 +363,22 @@ namespace DMSRupObk
 
         private void dokumenteImportierenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (documentViewer1.Created)
-                documentViewer1.CloseDocument();
-            new frmDokBearbeiten();
+            NeuesDokumentHinzufuegen();
+        }
+
+        private void btnNeu_Click(object sender, EventArgs e)
+        {
+            NeuesDokumentHinzufuegen();
         }
 
         private void dokumenteImportierenToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            DirectoryInfo ParentDirectory = new DirectoryInfo(Path.Combine(PrgPrm.RootVerzeichnisDok, PrgPrm.ImportVerzeichnisDok));
-            if (ParentDirectory.GetFiles().Length != 0)
-                if (documentViewer1.Created)
-                    documentViewer1.CloseDocument();
+            DokumenteImportieren();
+        }
 
-            foreach (FileInfo f in ParentDirectory.GetFiles())
-            {
-                if (new frmDokBearbeiten(f.Name).BearbeitungAbgebrochen)
-                    break;
-            }
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            DokumenteImportieren();
         }
 
         private void frmHauptfenster_SizeChanged(object sender, EventArgs e)
@@ -390,14 +389,37 @@ namespace DMSRupObk
             int hoehe = dgvListeDok.Size.Height;
             dgvListeDok.Size = new Size(breite, hoehe);
 
-            documentViewer1.Location = new Point(dgvListeDok.Location.X+breite + 8, dgvListeDok.Location.Y);
+            documentViewer1.Location = new Point(dgvListeDok.Location.X + breite + 8, dgvListeDok.Location.Y);
             documentViewer1.Size = new Size((int)(control.Size.Width * 0.39d), documentViewer1.Size.Height);
         }
 
-        private void btnNeu_Click(object sender, EventArgs e)
+        private void NeuesDokumentHinzufuegen()
         {
-            new frmDokBearbeiten();
-            FormularClear();
+            if (documentViewer1.Created)
+                documentViewer1.CloseDocument();
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "All Files (*.*)|*.*";
+            ofd.FilterIndex = 1;
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty(ofd.FileName))
+            {
+                new frmDokBearbeiten(ofd.FileName);
+                FormularClear();
+            }
+        }
+
+        private void DokumenteImportieren()
+        {
+            DirectoryInfo ParentDirectory = new DirectoryInfo(Path.Combine(PrgPrm.RootVerzeichnisDok, PrgPrm.ImportVerzeichnisDok));
+            if (ParentDirectory.GetFiles().Length != 0)
+                if (documentViewer1.Created)
+                    documentViewer1.CloseDocument();
+
+            foreach (FileInfo f in ParentDirectory.GetFiles())
+            {
+                if (new frmDokBearbeiten(f.Name).BearbeitungAbgebrochen)
+                    break;
+                FormularClear();
+            }
         }
     }
 }

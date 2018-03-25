@@ -348,7 +348,8 @@ namespace DMSRupObk
                 documentViewer1.CloseDocument();
 
             // Dokument bearbeiten
-            new frmDokBearbeiten(dok);
+            frmDokBearbeiten fdb = new frmDokBearbeiten(dok);
+            fdb.ShowDialog();
 
             // Fenster neu aufbauen
             //for (int x = 0; x < dgvListeDok.Columns.Count; x++)
@@ -402,7 +403,8 @@ namespace DMSRupObk
             ofd.FilterIndex = 1;
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty(ofd.FileName))
             {
-                new frmDokBearbeiten(ofd.FileName);
+                frmDokBearbeiten fdb = new frmDokBearbeiten(ofd.FileName);
+                fdb.ShowDialog();
                 FormularClear();
             }
         }
@@ -416,7 +418,10 @@ namespace DMSRupObk
 
             foreach (FileInfo f in ParentDirectory.GetFiles())
             {
-                if (new frmDokBearbeiten(f.Name).BearbeitungAbgebrochen)
+                frmDokBearbeiten fdb = new frmDokBearbeiten(f.Name);
+                //todo: fehlt noch den ocr-button zu aktivieren
+                fdb.ShowDialog();
+                if (fdb.BearbeitungAbgebrochen)
                     break;
                 FormularClear();
             }

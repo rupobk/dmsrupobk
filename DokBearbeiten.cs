@@ -34,7 +34,6 @@ namespace DMSRupObk
             InitializeComponent();
             FormularClear();
             FelderInitialisieren(DokStatus);
-            this.ShowDialog();
         }
 
         /// Konstruktor der für bestehende Dokumente aufgerufen wird
@@ -46,8 +45,6 @@ namespace DMSRupObk
             FelderInitialisieren(DokStatus);
             FelderZuweisen(dok);
             tmpDok = dok;
-            this.ShowDialog();
-            this.Close();
         }
 
         /// Konstruktor der für zu importierende Dokumente aufgerufen wird
@@ -59,8 +56,6 @@ namespace DMSRupObk
             FelderInitialisieren(DokStatus);
             pfadOrgDatei = Path.Combine(PrgPrm.RootVerzeichnisDok, PrgPrm.ImportVerzeichnisDok, datei);
             documentViewer1.LoadDocument(pfadOrgDatei);
-            this.ShowDialog();
-            this.Close();
         }
 
         private void FelderZuweisen(Dokument dok)

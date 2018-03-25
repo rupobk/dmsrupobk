@@ -46,8 +46,8 @@
             Gnostice.Graphics.TextRenderingSettings textRenderingSettings1 = new Gnostice.Graphics.TextRenderingSettings();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dokumentHinzufügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dokumenteImportierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dokumenteImportierenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dokumenteHinzufuegenMenuitem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dokumenteImportierenMenuitem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSucheAlles = new System.Windows.Forms.TextBox();
             this.chboVolltext = new System.Windows.Forms.CheckBox();
@@ -98,25 +98,25 @@
             // dokumentHinzufügenToolStripMenuItem
             // 
             this.dokumentHinzufügenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dokumenteImportierenToolStripMenuItem,
-            this.dokumenteImportierenToolStripMenuItem1});
+            this.dokumenteHinzufuegenMenuitem,
+            this.dokumenteImportierenMenuitem});
             this.dokumentHinzufügenToolStripMenuItem.Name = "dokumentHinzufügenToolStripMenuItem";
             this.dokumentHinzufügenToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.dokumentHinzufügenToolStripMenuItem.Text = "Dokumente";
             // 
-            // dokumenteImportierenToolStripMenuItem
+            // dokumenteHinzufuegenMenuitem
             // 
-            this.dokumenteImportierenToolStripMenuItem.Name = "dokumenteImportierenToolStripMenuItem";
-            this.dokumenteImportierenToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.dokumenteImportierenToolStripMenuItem.Text = "Dokumente hinzufügen";
-            this.dokumenteImportierenToolStripMenuItem.Click += new System.EventHandler(this.dokumenteImportierenToolStripMenuItem_Click);
+            this.dokumenteHinzufuegenMenuitem.Name = "dokumenteHinzufuegenMenuitem";
+            this.dokumenteHinzufuegenMenuitem.Size = new System.Drawing.Size(201, 22);
+            this.dokumenteHinzufuegenMenuitem.Text = "Dokumente hinzufügen";
+            this.dokumenteHinzufuegenMenuitem.Click += new System.EventHandler(this.dokumenteImportierenToolStripMenuItem_Click);
             // 
-            // dokumenteImportierenToolStripMenuItem1
+            // dokumenteImportierenMenuitem
             // 
-            this.dokumenteImportierenToolStripMenuItem1.Name = "dokumenteImportierenToolStripMenuItem1";
-            this.dokumenteImportierenToolStripMenuItem1.Size = new System.Drawing.Size(201, 22);
-            this.dokumenteImportierenToolStripMenuItem1.Text = "Dokumente importieren";
-            this.dokumenteImportierenToolStripMenuItem1.Click += new System.EventHandler(this.dokumenteImportierenToolStripMenuItem1_Click);
+            this.dokumenteImportierenMenuitem.Name = "dokumenteImportierenMenuitem";
+            this.dokumenteImportierenMenuitem.Size = new System.Drawing.Size(201, 22);
+            this.dokumenteImportierenMenuitem.Text = "Dokumente importieren";
+            this.dokumenteImportierenMenuitem.Click += new System.EventHandler(this.dokumenteImportierenToolStripMenuItem1_Click);
             // 
             // label1
             // 
@@ -539,8 +539,8 @@
         private System.Windows.Forms.TextBox txtVerschlagwortSuche;
         private System.Windows.Forms.TextBox txtPerSuche;
         private System.Windows.Forms.ToolStripMenuItem dokumentHinzufügenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dokumenteImportierenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dokumenteImportierenToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem dokumenteHinzufuegenMenuitem;
+        private System.Windows.Forms.ToolStripMenuItem dokumenteImportierenMenuitem;
         private System.Windows.Forms.ComboBox cbDokArt;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.ComboBox cbLieferant;

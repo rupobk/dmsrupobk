@@ -10,7 +10,7 @@
   "AnzahlArchivierteDokumente": 27,
   "DokDatengroesseInKB": 9223.25390625,
   "VolltextDatengroesseInKB": 48.4853515625,
-  "DokID": 79,
+  "DokID": 81,
   "Dokumentenstatus": [
     "erledigt",
     "bearbeitung"
@@ -83,6 +83,10 @@
     {
       "Key": 17,
       "Name": "vertrag"
+    },
+    {
+      "Key": 18,
+      "Name": "asdfasdfasdfasdf"
     }
   ],
   "AlleLieferanten": [

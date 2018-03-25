@@ -105,7 +105,7 @@ namespace DMSRupObk
             switch (this.Text)
             {
                 case "Dokumentenarten-Attribute bearbeiten":
-                    if (!string.IsNullOrEmpty(txtName.Text) && PrgPrm.AlleDokumentenarten.FindIndex(x => x.Name == txtName.Text) < -1)
+                    if (!string.IsNullOrEmpty(txtName.Text) && PrgPrm.AlleDokumentenarten.FindIndex(x => x.Name == txtName.Text) != -1)
                     {
                         MessageBox.Show("Das Attribut kann nicht doppelt angelegt werden!");
                         break;
@@ -135,7 +135,9 @@ namespace DMSRupObk
                 //    MessageBox.Show("Das Attribut kann nicht doppelt angelegt werden!");
                 //break;
                 case "Lieferanten-Attribute bearbeiten":
-                    if (!string.IsNullOrEmpty(txtName.Text) && PrgPrm.AlleLieferanten.FindIndex(x => x.Name == txtName.Text) < -1)
+                    if (!string.IsNullOrEmpty(txtName.Text) && PrgPrm.AlleLieferanten.FindIndex(x => x.Name == txtName.Text) != -1)
+                    //könnte man auch so schreiben:
+                    //if (!string.IsNullOrEmpty(txtName.Text) && PrgPrm.AlleLieferanten.Any(x => x.Name == txtName.Text))
                     {
                         MessageBox.Show("Das Attribut kann nicht doppelt angelegt werden!");
                         break;

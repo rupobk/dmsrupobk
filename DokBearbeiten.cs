@@ -50,6 +50,7 @@ namespace DMSRupObk
         /// Konstruktor der für zu importierende Dokumente aufgerufen wird
         public frmDokBearbeiten(string datei)
         {
+            extension = Path.GetExtension(datei);
             DokStatus = MomentanerDokumentenStatus.importiert;
             InitializeComponent();
             FormularClear();
@@ -125,7 +126,7 @@ namespace DMSRupObk
         private void FelderInitialisieren(MomentanerDokumentenStatus DokStatus)
         {
             if (DokStatus == MomentanerDokumentenStatus.neuesDokument || DokStatus == MomentanerDokumentenStatus.importiert)
-                lblDokID.Text = PrgPrm.DokIDGenerieren().ToString();
+                lblDokID.Text = PrgPrm.VorlaeufigeDokIDGenerieren().ToString();
 
             ComboboxenAufbauen();
             txtPeriode.Text = DateTime.Today.Year.ToString() + DateTime.Today.Month.ToString();
@@ -245,6 +246,7 @@ namespace DMSRupObk
                     if (documentViewer1.Created)
                         documentViewer1.CloseDocument();
 
+                    DokID = PrgPrm.EndgueltigeDokIDGenerieren();
                     Dokument dok = new Dokument(DokID, (int)cbDokArt.SelectedValue, cbDokArt.Text, cbZielpfad.Text, neuerDateiname, extension,
                                                 txtVerschlagwort.Text, int.Parse(txtJahr.Text), cbStatus.Text, dtpArchivierung.Value,
                                                 dtpAenderung.Value, LiefKey, LiefName, Per);
@@ -368,7 +370,7 @@ namespace DMSRupObk
 
         private void lblDokID_Enter(object sender, EventArgs e)
         {
-            lblDokID.Text = PrgPrm.DokIDGenerieren().ToString();
+            lblDokID.Text = PrgPrm.VorlaeufigeDokIDGenerieren().ToString();
         }
 
         //TODO: ist noch auszutesten!

@@ -83,7 +83,16 @@ namespace DMSRupObk
             return PrgPrm;
         }
 
-        public int DokIDGenerieren()
+        public int VorlaeufigeDokIDGenerieren()
+        {
+            //DokID++;
+            //iniDatenAktualisieren(DokID);
+            //Schreiben();
+            // wahrscheinliche neue DokID zurückgeben, die eigentliche DokID wird dann nochmals beim Speichern des Dokumentes neu gerechnet u. gespeichert
+            return DokID+1;
+        }
+
+        public int EndgueltigeDokIDGenerieren()
         {
             DokID++;
             //iniDatenAktualisieren(DokID);

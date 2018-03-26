@@ -32,6 +32,8 @@ namespace DMSRupObk
         {
             Archiv DokArchiv = Archiv.Erstellen();
 
+            //TODO: Fortlaufende Nummer neu programmieren. Wenn beim Import abgebrochen wird, dann wird falsche Nummer vergeben
+            //TODO: Beim Dokumentenimport wird die extension nicht gefüllt
             this.DokID = DokID;
             this.Pfad = Pfad;
             this.Dateiname = Dateiname;

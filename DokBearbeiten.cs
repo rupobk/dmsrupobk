@@ -55,6 +55,7 @@ namespace DMSRupObk
             InitializeComponent();
             FormularClear();
             FelderInitialisieren(DokStatus);
+            lblOrgDateiname.Text = datei;
             pfadOrgDatei = Path.Combine(PrgPrm.RootVerzeichnisDok, PrgPrm.ImportVerzeichnisDok, datei);
             documentViewer1.LoadDocument(pfadOrgDatei);
         }
@@ -121,6 +122,7 @@ namespace DMSRupObk
             txtVerschlagwort.Text = string.Empty;
             txtVolltext.Text = string.Empty;
             tableLayoutPanelLinks.Enabled = false;
+            lblOrgDateiname.Text = string.Empty;
         }
 
         private void FelderInitialisieren(MomentanerDokumentenStatus DokStatus)
@@ -129,7 +131,11 @@ namespace DMSRupObk
                 lblDokID.Text = PrgPrm.VorlaeufigeDokIDGenerieren().ToString();
 
             ComboboxenAufbauen();
-            txtPeriode.Text = DateTime.Today.Year.ToString() + DateTime.Today.Month.ToString();
+            txtPeriode.Text = DateTime.Today.Year.ToString();
+            if (DateTime.Today.Month.ToString().Length == 2)
+                txtPeriode.Text += DateTime.Today.Month.ToString();
+            else
+                txtPeriode.Text += "0" + DateTime.Today.Month.ToString();
             txtJahr.Text = DateTime.Today.Year.ToString();
             btnOCRScan.Enabled = false;
             cbStatus.SelectedIndex = 0;

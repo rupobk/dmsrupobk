@@ -1,5 +1,5 @@
 {
-  "RootVerzeichnisDok": "c:\\temp\\dmsrupobk_Archiv",
+  "RootVerzeichnisDok": "c:\\temp\\dmsrupobk_archiv",
   "PfadJSONDateiMetadaten": "metadaten.json",
   "PfadJSONDateiVolltext": "volltext.json",
   "ImportVerzeichnisDok": "import",
@@ -8,9 +8,9 @@
   "VolltextindizierungDefault": false,
   "AnzDokProVerzeichnis": 10000,
   "AnzahlArchivierteDokumente": 31,
-  "DokDatengroesseInKB": 10389.7158203125,
+  "DokDatengroesseInKB": 9412.0693359375,
   "VolltextDatengroesseInKB": 48.4853515625,
-  "DokID": 88,
+  "DokID": 52,
   "Dokumentenstatus": [
     "erledigt",
     "bearbeitung"
@@ -83,10 +83,6 @@
     {
       "Key": 17,
       "Name": "vertrag"
-    },
-    {
-      "Key": 18,
-      "Name": "asdfasdfasdfasdf"
     }
   ],
   "AlleLieferanten": [
@@ -228,19 +224,29 @@
     },
     {
       "Key": 35,
-      "Name": "scheisse"
+      "Name": "assibroker international"
+    },
+    {
+      "Key": 36,
+      "Name": "amazon"
+    },
+    {
+      "Key": 37,
+      "Name": "studio ergon"
+    },
+    {
+      "Key": 38,
+      "Name": "casa di cura bonvicini"
     }
   ],
   "Ordner": [
     "arbeit",
-    "arbeit\\affe",
-    "arbeit\\scheisse",
-    "arbeit\\test",
     "bestaetigung",
     "dokumentation",
     "garantie",
     "gesundheit",
     "hans",
+    "hans\\energie",
     "hans\\rechnung",
     "hans\\sonstiges",
     "hans\\vertrag",
@@ -258,7 +264,6 @@
     "vertrag\\energie",
     "vertrag\\kommunikation",
     "vertrag\\sonstiges",
-    "vertrag\\versicherung",
-    "welsch"
+    "vertrag\\versicherung"
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "RootVerzeichnisDok": "c:\\temp\\dmsrupobk_Archiv",
+  "RootVerzeichnisDok": "c:\\dmsrupobk\\archiv",
   "PfadJSONDateiMetadaten": "metadaten.json",
   "PfadJSONDateiVolltext": "volltext.json",
   "ImportVerzeichnisDok": "import",
@@ -7,10 +7,10 @@
   "IndexVerzeichnis": "index",
   "VolltextindizierungDefault": false,
   "AnzDokProVerzeichnis": 10000,
-  "AnzahlArchivierteDokumente": 7,
-  "DokDatengroesseInMB": 0.0,
-  "VolltextDatengroesseInMB": 0.0,
-  "DokID": 7,
+  "AnzahlArchivierteDokumente": 28,
+  "DokDatengroesseInKB": 7026.3388671875,
+  "VolltextDatengroesseInKB": 48.4853515625,
+  "DokID": 49,
   "Dokumentenstatus": [
     "erledigt",
     "bearbeitung"
@@ -217,6 +217,22 @@
     {
       "Key": 33,
       "Name": "innerhofer"
+    },
+    {
+      "Key": 34,
+      "Name": "genialloyd"
+    },
+    {
+      "Key": 35,
+      "Name": "assibroker international"
+    },
+    {
+      "Key": 36,
+      "Name": "amazon"
+    },
+    {
+      "Key": 37,
+      "Name": "studio ergon"
     }
   ],
   "Ordner": [
@@ -226,9 +242,11 @@
     "garantie",
     "gesundheit",
     "hans",
+    "hans\\energie",
     "hans\\rechnung",
     "hans\\sonstiges",
     "hans\\vertrag",
+    "import",
     "l_g",
     "lizenz",
     "rechnung",

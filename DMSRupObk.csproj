@@ -32,32 +32,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gnostice.Core, Version=17.4.0.0, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
-      <HintPath>..\packages\XtremeDocumentStudio.NETFree.17.4.0\lib\net40\Gnostice.Core.dll</HintPath>
+    <Reference Include="Gnostice.Core, Version=17.5.0.0, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>packages\XtremeDocumentStudio.NETFree.17.5.0\lib\net40\Gnostice.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Gnostice.Free.Documents, Version=17.4.0.0, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
-      <HintPath>..\packages\XtremeDocumentStudio.NETFree.17.4.0\lib\net40\Gnostice.Free.Documents.dll</HintPath>
+    <Reference Include="Gnostice.Free.Documents, Version=17.5.0.0, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>packages\XtremeDocumentStudio.NETFree.17.5.0\lib\net40\Gnostice.Free.Documents.dll</HintPath>
     </Reference>
-    <Reference Include="Gnostice.Free.Documents.Controls.WinForms, Version=17.4.0.0, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
-      <HintPath>..\packages\XtremeDocumentStudio.NETFree.17.4.0\lib\net40\Gnostice.Free.Documents.Controls.WinForms.dll</HintPath>
+    <Reference Include="Gnostice.Free.Documents.Controls.WinForms, Version=17.5.0.0, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>packages\XtremeDocumentStudio.NETFree.17.5.0\lib\net40\Gnostice.Free.Documents.Controls.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="Gnostice.XtremeFontEngine.4.0, Version=1.0.1921.420, Culture=neutral, PublicKeyToken=461de9da64be3a84, processorArchitecture=MSIL">
-      <HintPath>..\packages\XtremeDocumentStudio.NETFree.17.4.0\lib\net40\Gnostice.XtremeFontEngine.4.0.dll</HintPath>
+    <Reference Include="Gnostice.XtremeFontEngine.4.0, Version=1.0.1974.420, Culture=neutral, PublicKeyToken=461de9da64be3a84, processorArchitecture=MSIL">
+      <HintPath>packages\XtremeDocumentStudio.NETFree.17.5.0\lib\net40\Gnostice.XtremeFontEngine.4.0.dll</HintPath>
     </Reference>
-    <Reference Include="Gnostice.XtremeImageEngine, Version=12.0.1608.131, Culture=neutral, PublicKeyToken=67e9a3a7c22f1690, processorArchitecture=MSIL">
-      <HintPath>..\packages\XtremeDocumentStudio.NETFree.17.4.0\lib\net40\Gnostice.XtremeImageEngine.dll</HintPath>
+    <Reference Include="Gnostice.XtremeImageEngine, Version=12.0.1652.131, Culture=neutral, PublicKeyToken=67e9a3a7c22f1690, processorArchitecture=MSIL">
+      <HintPath>packages\XtremeDocumentStudio.NETFree.17.5.0\lib\net40\Gnostice.XtremeImageEngine.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip.Reduced, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
-      <HintPath>..\packages\XtremeDocumentStudio.NETFree.17.4.0\lib\net40\Ionic.Zip.Reduced.dll</HintPath>
+      <HintPath>packages\XtremeDocumentStudio.NETFree.17.5.0\lib\net40\Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
-    <Reference Include="IronOcr, Version=4.2.1.21297, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronOcr.4.2.1.5\lib\net40\IronOcr.dll</HintPath>
+    <Reference Include="IronOcr, Version=4.2.2.15525, Culture=neutral, PublicKeyToken=5f366048dc436899, processorArchitecture=MSIL">
+      <HintPath>packages\IronOcr.4.2.2.51\lib\net40\IronOcr.dll</HintPath>
     </Reference>
-    <Reference Include="IronOcr.German, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronOcr.Languages.German.4.0.0\lib\net40\IronOcr.German.dll</HintPath>
+    <Reference Include="IronOcr.German, Version=4.0.0.20745, Culture=neutral, PublicKeyToken=5f366048dc436899, processorArchitecture=MSIL">
+      <HintPath>packages\IronOcr.Languages.German.4.4.2.51\lib\net40\IronOcr.German.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

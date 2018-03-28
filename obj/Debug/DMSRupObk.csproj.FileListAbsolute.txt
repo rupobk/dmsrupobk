@@ -61,3 +61,15 @@ C:\Users\rupi\Documents\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\
 C:\Users\rupi\Documents\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\DMSRupObk.exe.lastcodeanalysissucceeded
 D:\daten\rupi\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\obj\Debug\DMSRupObk.csproj.CopyComplete
 D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\obj\Debug\DMSRupObk.csproj.CopyComplete
+D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\Gnostice.Core.dll
+D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\Gnostice.Free.Documents.Controls.WinForms.dll
+D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\Gnostice.Free.Documents.dll
+D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\Gnostice.XtremeFontEngine.4.0.dll
+D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\Gnostice.XtremeImageEngine.dll
+D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\Ionic.Zip.Reduced.dll
+D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\IronOcr.dll
+D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\IronOcr.German.dll
+D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\Newtonsoft.Json.dll
+D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\IronOcr.xml
+D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\IronOcr.German.xml
+D:\Daten\Dokumente\Visual Studio 2017\Projects\Private Tools\dmsrupobk\bin\Debug\Newtonsoft.Json.xml

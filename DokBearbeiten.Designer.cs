@@ -75,6 +75,7 @@
             this.dtpAenderung = new System.Windows.Forms.DateTimePicker();
             this.btnSpeichern = new System.Windows.Forms.Button();
             this.txtAbbrechen = new System.Windows.Forms.Button();
+            this.lblOrgDateiname = new System.Windows.Forms.Label();
             this.documentViewer1 = new Gnostice.Documents.Controls.WinForms.DocumentViewer();
             this.cbDokArt = new DMSRupObk.SearchableComboBox();
             this.cbZielpfad = new DMSRupObk.SearchableComboBox();
@@ -170,6 +171,7 @@
             this.tableLayoutPanelLinks.Controls.Add(this.dtpAenderung, 1, 11);
             this.tableLayoutPanelLinks.Controls.Add(this.btnSpeichern, 3, 22);
             this.tableLayoutPanelLinks.Controls.Add(this.txtAbbrechen, 4, 23);
+            this.tableLayoutPanelLinks.Controls.Add(this.lblOrgDateiname, 3, 9);
             this.tableLayoutPanelLinks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelLinks.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelLinks.Name = "tableLayoutPanelLinks";
@@ -524,6 +526,19 @@
             this.txtAbbrechen.UseVisualStyleBackColor = true;
             this.txtAbbrechen.Click += new System.EventHandler(this.txtAbbrechen_Click);
             // 
+            // lblOrgDateiname
+            // 
+            this.lblOrgDateiname.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblOrgDateiname.AutoSize = true;
+            this.tableLayoutPanelLinks.SetColumnSpan(this.lblOrgDateiname, 2);
+            this.lblOrgDateiname.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrgDateiname.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblOrgDateiname.Location = new System.Drawing.Point(365, 271);
+            this.lblOrgDateiname.Name = "lblOrgDateiname";
+            this.lblOrgDateiname.Size = new System.Drawing.Size(0, 9);
+            this.lblOrgDateiname.TabIndex = 1001;
+            this.lblOrgDateiname.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // documentViewer1
             // 
             this.documentViewer1.AutoScroll = true;
@@ -739,5 +754,6 @@
         private System.Windows.Forms.Label lblPeriodSyntax;
         private System.Windows.Forms.DateTimePicker dtpArchivierung;
         private System.Windows.Forms.DateTimePicker dtpAenderung;
+        private System.Windows.Forms.Label lblOrgDateiname;
     }
 }

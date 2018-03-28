@@ -227,7 +227,6 @@ namespace DMSRupObk
                 MessageBox.Show("Noch keine Datei zum archivieren gewählt!", "Fehler!");
         }
 
-        //TODO: ist noch zu testen!
         private void btnSpeichern_Click(object sender, EventArgs e)
         {
             if (FelderPruefungOk())
@@ -379,7 +378,6 @@ namespace DMSRupObk
             lblDokID.Text = PrgPrm.VorlaeufigeDokIDGenerieren().ToString();
         }
 
-        //TODO: ist noch auszutesten!
         private void btnDokuartBearbeiten_Click(object sender, EventArgs e)
         {
             frmAttributBearbeiten x = new frmAttributBearbeiten("Dokumentenart");
@@ -398,7 +396,6 @@ namespace DMSRupObk
             cbDokArt.SelectedIndex = y;
         }
 
-        //TODO: ist noch auszutesten!
         private void btnZielpfadBearbeiten_Click(object sender, EventArgs e)
         {
             frmAttributBearbeiten t = new frmAttributBearbeiten("Ordner");
@@ -408,7 +405,6 @@ namespace DMSRupObk
             cbZielpfad.SelectedIndex = cbZielpfad.Items.IndexOf(t.NeuerOrdner);
         }
 
-        //TODO: ist noch auszutesten!
         private void btnLiefBearbeiten_Click(object sender, EventArgs e)
         {
             frmAttributBearbeiten t = new frmAttributBearbeiten("Lieferant");

@@ -1,5 +1,5 @@
 {
-  "RootVerzeichnisDok": "c:\\dmsrupobk\\archiv",
+  "RootVerzeichnisDok": "c:\\temp\\dmsrupobk\\archiv",
   "PfadJSONDateiMetadaten": "metadaten.json",
   "PfadJSONDateiVolltext": "volltext.json",
   "ImportVerzeichnisDok": "import",
@@ -7,10 +7,10 @@
   "IndexVerzeichnis": "index",
   "VolltextindizierungDefault": false,
   "AnzDokProVerzeichnis": 10000,
-  "AnzahlArchivierteDokumente": 28,
-  "DokDatengroesseInKB": 7026.3388671875,
+  "AnzahlArchivierteDokumente": 87,
+  "DokDatengroesseInKB": 24247.1025390625,
   "VolltextDatengroesseInKB": 48.4853515625,
-  "DokID": 49,
+  "DokID": 111,
   "Dokumentenstatus": [
     "erledigt",
     "bearbeitung"
@@ -233,6 +233,62 @@
     {
       "Key": 37,
       "Name": "studio ergon"
+    },
+    {
+      "Key": 38,
+      "Name": "casa di cura bonvicini"
+    },
+    {
+      "Key": 39,
+      "Name": "digitrade"
+    },
+    {
+      "Key": 40,
+      "Name": "raiffeisen online"
+    },
+    {
+      "Key": 41,
+      "Name": "unternehmerverband südtirol"
+    },
+    {
+      "Key": 42,
+      "Name": "avs"
+    },
+    {
+      "Key": 43,
+      "Name": "fielmann"
+    },
+    {
+      "Key": 44,
+      "Name": "raiffeisenverband assimoco"
+    },
+    {
+      "Key": 45,
+      "Name": "ing direct"
+    },
+    {
+      "Key": 46,
+      "Name": "intini"
+    },
+    {
+      "Key": 47,
+      "Name": "studio tanzentra"
+    },
+    {
+      "Key": 48,
+      "Name": "menghini dr. fausta"
+    },
+    {
+      "Key": 49,
+      "Name": "autonome provinz bozen"
+    },
+    {
+      "Key": 50,
+      "Name": "generali"
+    },
+    {
+      "Key": 51,
+      "Name": "fotobuch.de"
     }
   ],
   "Ordner": [
@@ -247,11 +303,13 @@
     "hans\\sonstiges",
     "hans\\vertrag",
     "import",
+    "kurs",
     "l_g",
     "lizenz",
     "rechnung",
     "rechnung\\arzt",
     "rechnung\\energie",
+    "rechnung\\kommunikation",
     "sonstiges",
     "sport",
     "steuer",

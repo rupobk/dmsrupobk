@@ -440,5 +440,13 @@ namespace DMSRupObk
                 splitContainerHauptfenster.SplitterDistance = 520;
             }
         }
+
+        private void frmDokBearbeiten_Load(object sender, EventArgs e)
+        {
+            // auf Vollbild schalten
+            //this.FormBorderStyle = FormBorderStyle.None; // Rahmen ausblenden
+            this.TopMost = true; // Formular ganz im Vordergrund, also auch vor der Taskleiste anzeigen
+            this.Bounds = Screen.PrimaryScreen.Bounds; // Formulargröße auf Größe des Bildschirms festlegen
+        }
     }
 }

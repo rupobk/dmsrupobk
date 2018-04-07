@@ -426,5 +426,16 @@ namespace DMSRupObk
                 FormularClear();
             }
         }
+
+        private void frmHauptfenster_Load(object sender, EventArgs e)
+        {
+            // auf Vollbild schalten u. die Innenteile richtig dimensionieren
+            //this.FormBorderStyle = FormBorderStyle.None; // Rahmen ausblenden
+            this.TopMost = true; // Formular ganz im Vordergrund, also auch vor der Taskleiste anzeigen
+            this.Bounds = Screen.PrimaryScreen.Bounds; // Formulargröße auf Größe des Bildschirms festlegen
+            this.dgvListeDok.Size = new Size(925, dgvListeDok.Size.Height);
+            this.documentViewer1.Location = new Point(935, documentViewer1.Location.Y);
+            this.documentViewer1.Size = new Size(frmHauptfenster.ActiveForm.Size.Width - 935, dgvListeDok.Size.Height);
+        }
     }
 }

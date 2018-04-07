@@ -50,6 +50,7 @@
             this.lblDokID = new System.Windows.Forms.Label();
             this.lblGuid2 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.cbDokArt = new DMSRupObk.SearchableComboBox();
             this.lblVolltext = new System.Windows.Forms.Label();
             this.txtVolltext = new System.Windows.Forms.RichTextBox();
             this.txtDateiname = new System.Windows.Forms.TextBox();
@@ -60,13 +61,17 @@
             this.btnOCRScan = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblZielpfad = new System.Windows.Forms.Label();
+            this.cbZielpfad = new DMSRupObk.SearchableComboBox();
             this.btnZielpfadBearbeiten = new System.Windows.Forms.Button();
+            this.cbStatus = new DMSRupObk.SearchableComboBox();
             this.lblLieferant = new System.Windows.Forms.Label();
+            this.cbLieferant = new DMSRupObk.SearchableComboBox();
             this.btnLiefBearbeiten = new System.Windows.Forms.Button();
             this.txtVerschlagwort = new System.Windows.Forms.TextBox();
             this.lblVerschlagwort = new System.Windows.Forms.Label();
             this.lblPeriode = new System.Windows.Forms.Label();
             this.txtPeriode = new System.Windows.Forms.TextBox();
+            this.txtJahr = new DMSRupObk.NumTextBox();
             this.lblJahr = new System.Windows.Forms.Label();
             this.btnLaden = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
@@ -77,11 +82,6 @@
             this.txtAbbrechen = new System.Windows.Forms.Button();
             this.lblOrgDateiname = new System.Windows.Forms.Label();
             this.documentViewer1 = new Gnostice.Documents.Controls.WinForms.DocumentViewer();
-            this.cbDokArt = new DMSRupObk.SearchableComboBox();
-            this.cbZielpfad = new DMSRupObk.SearchableComboBox();
-            this.cbStatus = new DMSRupObk.SearchableComboBox();
-            this.cbLieferant = new DMSRupObk.SearchableComboBox();
-            this.txtJahr = new DMSRupObk.NumTextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHauptfenster)).BeginInit();
             this.splitContainerHauptfenster.Panel1.SuspendLayout();
@@ -255,6 +255,19 @@
             this.label12.TabIndex = 1;
             this.label12.Text = "Verschlagwortung";
             // 
+            // cbDokArt
+            // 
+            this.cbDokArt.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbDokArt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbDokArt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tableLayoutPanelLinks.SetColumnSpan(this.cbDokArt, 2);
+            this.cbDokArt.FormattingEnabled = true;
+            this.cbDokArt.Location = new System.Drawing.Point(118, 62);
+            this.cbDokArt.Margin = new System.Windows.Forms.Padding(2);
+            this.cbDokArt.Name = "cbDokArt";
+            this.cbDokArt.Size = new System.Drawing.Size(151, 21);
+            this.cbDokArt.TabIndex = 20;
+            // 
             // lblVolltext
             // 
             this.lblVolltext.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -363,6 +376,19 @@
             this.lblZielpfad.TabIndex = 1;
             this.lblZielpfad.Text = "Zielpfad: *";
             // 
+            // cbZielpfad
+            // 
+            this.cbZielpfad.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbZielpfad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbZielpfad.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tableLayoutPanelLinks.SetColumnSpan(this.cbZielpfad, 3);
+            this.cbZielpfad.FormattingEnabled = true;
+            this.cbZielpfad.Location = new System.Drawing.Point(118, 91);
+            this.cbZielpfad.Margin = new System.Windows.Forms.Padding(2);
+            this.cbZielpfad.Name = "cbZielpfad";
+            this.cbZielpfad.Size = new System.Drawing.Size(250, 21);
+            this.cbZielpfad.TabIndex = 30;
+            // 
             // btnZielpfadBearbeiten
             // 
             this.btnZielpfadBearbeiten.Location = new System.Drawing.Point(435, 89);
@@ -374,6 +400,19 @@
             this.btnZielpfadBearbeiten.UseVisualStyleBackColor = true;
             this.btnZielpfadBearbeiten.Click += new System.EventHandler(this.btnZielpfadBearbeiten_Click);
             // 
+            // cbStatus
+            // 
+            this.cbStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tableLayoutPanelLinks.SetColumnSpan(this.cbStatus, 2);
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Location = new System.Drawing.Point(118, 236);
+            this.cbStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(151, 21);
+            this.cbStatus.TabIndex = 80;
+            // 
             // lblLieferant
             // 
             this.lblLieferant.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -384,6 +423,19 @@
             this.lblLieferant.Size = new System.Drawing.Size(57, 13);
             this.lblLieferant.TabIndex = 1;
             this.lblLieferant.Text = "Lieferant:  ";
+            // 
+            // cbLieferant
+            // 
+            this.cbLieferant.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbLieferant.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbLieferant.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tableLayoutPanelLinks.SetColumnSpan(this.cbLieferant, 2);
+            this.cbLieferant.FormattingEnabled = true;
+            this.cbLieferant.Location = new System.Drawing.Point(118, 149);
+            this.cbLieferant.Margin = new System.Windows.Forms.Padding(2);
+            this.cbLieferant.Name = "cbLieferant";
+            this.cbLieferant.Size = new System.Drawing.Size(151, 21);
+            this.cbLieferant.TabIndex = 50;
             // 
             // btnLiefBearbeiten
             // 
@@ -434,6 +486,14 @@
             this.txtPeriode.Name = "txtPeriode";
             this.txtPeriode.Size = new System.Drawing.Size(150, 20);
             this.txtPeriode.TabIndex = 60;
+            // 
+            // txtJahr
+            // 
+            this.txtJahr.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtJahr.Location = new System.Drawing.Point(119, 207);
+            this.txtJahr.Name = "txtJahr";
+            this.txtJahr.Size = new System.Drawing.Size(48, 20);
+            this.txtJahr.TabIndex = 70;
             // 
             // lblJahr
             // 
@@ -628,66 +688,6 @@
             this.documentViewer1.Zoom.ZoomMode = Gnostice.Documents.Controls.WinForms.ZoomMode.FitPage;
             this.documentViewer1.Zoom.ZoomPercent = 100D;
             // 
-            // cbDokArt
-            // 
-            this.cbDokArt.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbDokArt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbDokArt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.tableLayoutPanelLinks.SetColumnSpan(this.cbDokArt, 2);
-            this.cbDokArt.FormattingEnabled = true;
-            this.cbDokArt.Location = new System.Drawing.Point(118, 62);
-            this.cbDokArt.Margin = new System.Windows.Forms.Padding(2);
-            this.cbDokArt.Name = "cbDokArt";
-            this.cbDokArt.Size = new System.Drawing.Size(151, 21);
-            this.cbDokArt.TabIndex = 20;
-            // 
-            // cbZielpfad
-            // 
-            this.cbZielpfad.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbZielpfad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbZielpfad.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.tableLayoutPanelLinks.SetColumnSpan(this.cbZielpfad, 3);
-            this.cbZielpfad.FormattingEnabled = true;
-            this.cbZielpfad.Location = new System.Drawing.Point(118, 91);
-            this.cbZielpfad.Margin = new System.Windows.Forms.Padding(2);
-            this.cbZielpfad.Name = "cbZielpfad";
-            this.cbZielpfad.Size = new System.Drawing.Size(250, 21);
-            this.cbZielpfad.TabIndex = 30;
-            // 
-            // cbStatus
-            // 
-            this.cbStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.tableLayoutPanelLinks.SetColumnSpan(this.cbStatus, 2);
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(118, 236);
-            this.cbStatus.Margin = new System.Windows.Forms.Padding(2);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(151, 21);
-            this.cbStatus.TabIndex = 80;
-            // 
-            // cbLieferant
-            // 
-            this.cbLieferant.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbLieferant.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbLieferant.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.tableLayoutPanelLinks.SetColumnSpan(this.cbLieferant, 2);
-            this.cbLieferant.FormattingEnabled = true;
-            this.cbLieferant.Location = new System.Drawing.Point(118, 149);
-            this.cbLieferant.Margin = new System.Windows.Forms.Padding(2);
-            this.cbLieferant.Name = "cbLieferant";
-            this.cbLieferant.Size = new System.Drawing.Size(151, 21);
-            this.cbLieferant.TabIndex = 50;
-            // 
-            // txtJahr
-            // 
-            this.txtJahr.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtJahr.Location = new System.Drawing.Point(119, 207);
-            this.txtJahr.Name = "txtJahr";
-            this.txtJahr.Size = new System.Drawing.Size(48, 20);
-            this.txtJahr.TabIndex = 70;
-            // 
             // frmDokBearbeiten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -699,6 +699,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmDokBearbeiten";
             this.Text = "Dokumente bearbeiten";
+            this.Load += new System.EventHandler(this.frmDokBearbeiten_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainerHauptfenster.Panel1.ResumeLayout(false);

@@ -419,7 +419,10 @@ namespace DMSRupObk
                 else
                     x++;
             }
-            cbLieferant.SelectedIndex = x;
+            if (x == cbLieferant.Items.Count)
+                cbLieferant.SelectedIndex = 1;
+            else
+                cbLieferant.SelectedIndex = x;
         }
 
         private void btnClear_Click(object sender, EventArgs e)

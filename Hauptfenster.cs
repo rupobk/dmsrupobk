@@ -35,6 +35,7 @@ namespace DMSRupObk
             btnOeffnen.Enabled = false;
             btnExport.Enabled = false;
             btnLoeschen.Enabled = false;
+            pfadDaten.Text = "Dokumentenpfad = " + PrgPrm.RootVerzeichnisDok;
         }
 
         private void ComboboxenAufbauen()
@@ -89,116 +90,6 @@ namespace DMSRupObk
             dgv_archdat.DataPropertyName = "Archivierungsdatum";
             dgv_statusdok.DataPropertyName = "Dokumentenstatus";
 
-            //if (dgvListeDok.ColumnCount == 0)
-            //{
-            //public int DokID { get; set; }
-            //public string Pfad { get; set; }
-            //public string Dateiname { get; set; }
-            //public string Dateityp { get; set; }
-            //public DateTime Archivierungsdatum { get; set; }
-            //public DateTime Aenderungsdatum { get; set; }
-            //public int Jahr { get; set; }
-            //public string Periode { get; set; }
-            //public int DokumentenartKey { get; set; }
-            //public string DokumentenartName { get; set; }
-            //public int LieferantKey { get; set; }
-            //public string LieferantName { get; set; }
-            //public string Verschlagwortung { get; set; }
-            //public string Dokumentenstatus { get; set; }
-
-            //ID
-            //dgv_id.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //dgv_id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            //DataGridViewColumn col1 = new DataGridViewTextBoxColumn();
-            //col1.DataPropertyName = "DokID";
-            //col1.HeaderText = "ID";
-            //col1.Name = "DokID";
-            //col1.Width = 50;
-            //col1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //col1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            //dgvListeDok.Columns.Add(col1);
-
-            // Dokumentenart
-            //DataGridViewColumn col2 = new DataGridViewTextBoxColumn();
-            //col2.DataPropertyName = "DokumentenartName";
-            //col2.HeaderText = "Dokum.art";
-            //col2.Name = "DokumentenartName";
-            //col2.Width = 140;
-            //col2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            //dgvListeDok.Columns.Add(col2);
-
-            // Lieferant
-            //DataGridViewColumn col3 = new DataGridViewTextBoxColumn();
-            //col3.DataPropertyName = "LieferantName";
-            //col3.HeaderText = "Lieferant";
-            //col3.Name = "LieferantName";
-            //col3.Width = 150;
-            //col3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            //dgvListeDok.Columns.Add(col3);
-
-            // Verschlagwortung
-            //DataGridViewColumn col4 = new DataGridViewTextBoxColumn();
-            //col4.DataPropertyName = "Verschlagwortung";
-            //col4.HeaderText = "Verschlagwortung";
-            //col4.Name = "Verschlagwortung";
-            //col4.Width = 250;
-            //col4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            //dgvListeDok.Columns.Add(col4);
-
-            // Periode
-            //DataGridViewColumn col5 = new DataGridViewTextBoxColumn();
-            //col5.DataPropertyName = "Periode";
-            //col5.HeaderText = "Periode";
-            //col5.Name = "Periode";
-            //col5.Width = 100;
-            //col5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            //dgvListeDok.Columns.Add(col5);
-
-            // Jahr
-            //DataGridViewColumn col6 = new DataGridViewTextBoxColumn();
-            //col6.DataPropertyName = "Jahr";
-            //col6.HeaderText = "Jahr";
-            //col6.Name = "Jahr";
-            //col6.Width = 40;
-            //col6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            //dgvListeDok.Columns.Add(col6);
-
-            // Archivierungsdatum
-            //DataGridViewColumn col7 = new DataGridViewTextBoxColumn();
-            //col7.DataPropertyName = "Archivierungsdatum";
-            //col7.HeaderText = "Arch.Datum";
-            //col7.Name = "Archivierungsdatum";
-            //col7.DefaultCellStyle.Format = "dd.MM.yyyy";
-            //col7.Width = 80;
-            //col7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            //dgvListeDok.Columns.Add(col7);
-
-            // Änderungsdatum
-            //DataGridViewColumn col8 = new DataGridViewTextBoxColumn();
-            //col8.DataPropertyName = "Aenderungsdatum";
-            //col8.HeaderText = "Änderdatum";
-            //col8.Name = "Aenderungsdatum";
-            //col8.DefaultCellStyle.Format = "dd.MM.yyyy";
-            //col8.Width = 80;
-            //col8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            //dgvListeDok.Columns.Add(col8);
-
-            // Pfad
-            //DataGridViewColumn col9 = new DataGridViewTextBoxColumn();
-            //col9.DataPropertyName = "Pfad";
-            //col9.Visible = false;
-            //dgvListeDok.Columns.Add(col9);
-
-            // Dateiname
-            //DataGridViewColumn col10 = new DataGridViewTextBoxColumn();
-            //col10.DataPropertyName = "Dateiname";
-            //col10.Visible = false;
-            //dgvListeDok.Columns.Add(col10);
-            //}
-
-            // Sortierung einstellen
-            //dgvListeDok.Sort(col1, ListSortDirection.Ascending);
-            //dgvListeDok.rowh
         }
 
         private DataTable Linq2DataTable<T>(IEnumerable<T> list)
@@ -431,11 +322,11 @@ namespace DMSRupObk
         {
             // auf Vollbild schalten u. die Innenteile richtig dimensionieren
             //this.FormBorderStyle = FormBorderStyle.None; // Rahmen ausblenden
-            this.TopMost = true; // Formular ganz im Vordergrund, also auch vor der Taskleiste anzeigen
+            //this.TopMost = true; // Formular ganz im Vordergrund, also auch vor der Taskleiste anzeigen
             this.Bounds = Screen.PrimaryScreen.Bounds; // Formulargröße auf Größe des Bildschirms festlegen
             this.dgvListeDok.Size = new Size(925, dgvListeDok.Size.Height);
             this.documentViewer1.Location = new Point(935, documentViewer1.Location.Y);
-            this.documentViewer1.Size = new Size(frmHauptfenster.ActiveForm.Size.Width - 935, dgvListeDok.Size.Height);
+            this.documentViewer1.Size = new Size(this.Width - 935, dgvListeDok.Size.Height);
         }
     }
 }

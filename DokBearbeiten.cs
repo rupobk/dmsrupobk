@@ -445,7 +445,7 @@ namespace DMSRupObk
         {
             // auf Vollbild schalten
             //this.FormBorderStyle = FormBorderStyle.None; // Rahmen ausblenden
-            this.TopMost = true; // Formular ganz im Vordergrund, also auch vor der Taskleiste anzeigen
+            //this.TopMost = true; // Formular ganz im Vordergrund, also auch vor der Taskleiste anzeigen
             this.Bounds = Screen.PrimaryScreen.Bounds; // Formulargröße auf Größe des Bildschirms festlegen
         }
     }

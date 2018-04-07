@@ -81,6 +81,7 @@
             this.documentViewer1 = new Gnostice.Documents.Controls.WinForms.DocumentViewer();
             this.btnNeu = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
+            this.pfadDaten = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeDok)).BeginInit();
             this.SuspendLayout();
@@ -490,11 +491,22 @@
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
+            // pfadDaten
+            // 
+            this.pfadDaten.AutoSize = true;
+            this.pfadDaten.ForeColor = System.Drawing.Color.DarkGray;
+            this.pfadDaten.Location = new System.Drawing.Point(939, 64);
+            this.pfadDaten.Name = "pfadDaten";
+            this.pfadDaten.Size = new System.Drawing.Size(35, 13);
+            this.pfadDaten.TabIndex = 20;
+            this.pfadDaten.Text = "label2";
+            // 
             // frmHauptfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1523, 659);
+            this.Controls.Add(this.pfadDaten);
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnNeu);
             this.Controls.Add(this.documentViewer1);
@@ -568,5 +580,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_statusdok;
         private System.Windows.Forms.Button btnNeu;
         private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Label pfadDaten;
     }
 }

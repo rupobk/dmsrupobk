@@ -84,12 +84,15 @@ namespace DMSRupObk
             cbDokArt.SelectedIndex = x;
 
             x = 0;
-            foreach (Lieferant li in cbLieferant.Items)
+            if (dok.LieferantKey != 0)
             {
-                if (li.Key == dok.LieferantKey)
-                    break;
-                else
-                    x++;
+                foreach (Lieferant li in cbLieferant.Items)
+                {
+                    if (li.Key == dok.LieferantKey)
+                        break;
+                    else
+                        x++;
+                }
             }
             cbLieferant.SelectedIndex = x;
 

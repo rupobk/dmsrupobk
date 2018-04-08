@@ -87,10 +87,6 @@
   ],
   "AlleLieferanten": [
     {
-      "Key": 0,
-      "Name": ""
-    },
-    {
       "Key": 1,
       "Name": "aci"
     },
@@ -317,11 +313,16 @@
     "sonstiges",
     "sport",
     "steuer",
+    "test",
+    "test2",
+    "test3",
+    "test4",
     "versicherung",
     "vertrag",
     "vertrag\\energie",
     "vertrag\\kommunikation",
     "vertrag\\sonstiges",
-    "vertrag\\versicherung"
+    "vertrag\\versicherung",
+    "test5"
   ]
 }

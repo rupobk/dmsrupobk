@@ -178,6 +178,7 @@ namespace DMSRupObk
                                                   orderby data
                                                   select new { Value = data }).ToList();
                         NeuerOrdner = txtName.Text;
+                        this.Close();
                         break;
                     }
                     else

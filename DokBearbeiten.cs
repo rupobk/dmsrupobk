@@ -405,6 +405,7 @@ namespace DMSRupObk
             t.ShowDialog();
             PrgPrm.Ordner.Sort();
             cbZielpfad.DataSource = PrgPrm.Ordner;
+            
             cbZielpfad.SelectedIndex = cbZielpfad.Items.IndexOf(t.NeuerOrdner);
         }
 

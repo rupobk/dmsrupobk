@@ -324,9 +324,9 @@ namespace DMSRupObk
             //this.FormBorderStyle = FormBorderStyle.None; // Rahmen ausblenden
             //this.TopMost = true; // Formular ganz im Vordergrund, also auch vor der Taskleiste anzeigen
             this.Bounds = Screen.PrimaryScreen.Bounds; // Formulargröße auf Größe des Bildschirms festlegen
-            this.dgvListeDok.Size = new Size(925, dgvListeDok.Size.Height);
+            this.dgvListeDok.Size = new Size(925, dgvListeDok.Height);
             this.documentViewer1.Location = new Point(935, documentViewer1.Location.Y);
-            this.documentViewer1.Size = new Size(this.Width - 935, dgvListeDok.Size.Height);
+            this.documentViewer1.Size = new Size(this.Width - 935, dgvListeDok.Height);
         }
     }
 }

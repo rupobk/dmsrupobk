@@ -300,7 +300,7 @@ namespace DMSRupObk
                         try
                         {
                             File.Move(Path.Combine(PrgPrm.RootVerzeichnisDok, tmpDok.Pfad, tmpDok.Dateiname),
-                                      Path.Combine(PrgPrm.RootVerzeichnisDok, cbZielpfad.Text, tmpDok.Dateiname));
+                                      Path.Combine(PrgPrm.RootVerzeichnisDok, cbZielpfad.Text, txtDateiname.Text));
                             tmpDok.Pfad = cbZielpfad.Text;
                             tmpDok.Dateiname = txtDateiname.Text;
                         }
@@ -385,48 +385,54 @@ namespace DMSRupObk
         {
             frmAttributBearbeiten x = new frmAttributBearbeiten("Dokumentenart");
             x.ShowDialog();
-
-            cbDokArt.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
-            // Relativen Index des Eintrages in der sortierten Combobox suchen
-            int y = 0;
-            foreach (Dokumentenart da in cbDokArt.Items)
+            if (x.ActiveControl.Text != "Abbrechen")
             {
-                if (da.Key == x.NeuerKey)
-                    break;
-                else
-                    y++;
+                cbDokArt.DataSource = PrgPrm.AlleDokumentenarten.OrderBy(o => o.Name).ToList();
+                // Relativen Index des Eintrages in der sortierten Combobox suchen
+                int y = 0;
+                foreach (Dokumentenart da in cbDokArt.Items)
+                {
+                    if (da.Key == x.NeuerKey)
+                        break;
+                    else
+                        y++;
+                }
+                cbDokArt.SelectedIndex = y;
             }
-            cbDokArt.SelectedIndex = y;
         }
 
         private void btnZielpfadBearbeiten_Click(object sender, EventArgs e)
         {
             frmAttributBearbeiten t = new frmAttributBearbeiten("Ordner");
             t.ShowDialog();
-            PrgPrm.Ordner.Sort();
-            cbZielpfad.DataSource = PrgPrm.Ordner;
-            
-            cbZielpfad.SelectedIndex = cbZielpfad.Items.IndexOf(t.NeuerOrdner);
+            if (t.ActiveControl.Text != "Abbrechen")
+            {
+                var sortedList = PrgPrm.Ordner.OrderBy(x => x).ToList();
+                cbZielpfad.DataSource = sortedList;
+                cbZielpfad.SelectedIndex = sortedList.IndexOf(t.NeuerOrdner);
+            }
         }
 
         private void btnLiefBearbeiten_Click(object sender, EventArgs e)
         {
             frmAttributBearbeiten t = new frmAttributBearbeiten("Lieferant");
             t.ShowDialog();
-
-            cbLieferant.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
-            int x = 0;
-            foreach (Lieferant li in cbLieferant.Items)
+            if (t.ActiveControl.Text != "Abbrechen")
             {
-                if (li.Key == t.NeuerKey)
-                    break;
+                cbLieferant.DataSource = PrgPrm.AlleLieferanten.OrderBy(o => o.Name).ToList();
+                int x = 0;
+                foreach (Lieferant li in cbLieferant.Items)
+                {
+                    if (li.Key == t.NeuerKey)
+                        break;
+                    else
+                        x++;
+                }
+                if (x == cbLieferant.Items.Count)
+                    cbLieferant.SelectedIndex = 1;
                 else
-                    x++;
+                    cbLieferant.SelectedIndex = x;
             }
-            if (x == cbLieferant.Items.Count)
-                cbLieferant.SelectedIndex = 1;
-            else
-                cbLieferant.SelectedIndex = x;
         }
 
         private void btnClear_Click(object sender, EventArgs e)

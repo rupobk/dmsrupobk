@@ -328,5 +328,13 @@ namespace DMSRupObk
             this.documentViewer1.Location = new Point(935, documentViewer1.Location.Y);
             this.documentViewer1.Size = new Size(this.Width - 935, dgvListeDok.Height);
         }
+
+        private void btnSuche_Click(object sender, EventArgs e)
+        {
+            if(txtSucheAlles.Text!="")
+            {
+
+            }
+        }
     }
 }

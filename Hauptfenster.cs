@@ -26,11 +26,11 @@ namespace DMSRupObk
         {
             //TODO: Vollbild einschalten u. die 2 Fenster entsprechend dimensionieren
             txtSucheAlles.Text = string.Empty;
-            txtPerSuche.Text = string.Empty;
-            txtVerschlagwortSuche.Text = string.Empty;
+            txtPer.Text = string.Empty;
+            txtVerschlagwort.Text = string.Empty;
             chboVolltext.Checked = false;
             ComboboxenAufbauen();
-            GridAnzeigen("");
+            GridAnzeigen("","", "", "", "", "");
             btnBearbeiten.Enabled = false;
             btnOeffnen.Enabled = false;
             btnExport.Enabled = false;
@@ -51,23 +51,27 @@ namespace DMSRupObk
             cbDokArt.ValueMember = "Key";
             cbDokArt.SelectedIndex = 0;
 
-            List<Dokumentenart> y = new List<Dokumentenart>();
-            y = PrgPrm.AlleDokumentenarten;
+            List<Lieferant> y = new List<Lieferant>();
+            y = PrgPrm.AlleLieferanten;
             if (!y.Any(d => d.Key == 0))
-                y.Add(new Dokumentenart(0, ""));
+                y.Add(new Lieferant(0, ""));
             cbLieferant.DataSource = y.OrderBy(o => o.Name).ToList();
             cbLieferant.DisplayMember = "Name";
             cbLieferant.ValueMember = "Key";
             cbLieferant.SelectedIndex = 0;
         }
 
-        private void GridAnzeigen(string suchstring)
+
+        private void GridAnzeigen(string SucheAlles, string DokArt, string Lieferant, string Verschlagwort, string Per, string ArcDat)
         {
             List<Dokument> query = new List<Dokument>();
 
-            if (suchstring == string.Empty)
+            if (SucheAlles == string.Empty)
             {
                 query = (from dok in Archiv.Erstellen().alleDokumente
+                         where (dok.DokumentenartName.ToUpper().Contains(DokArt.ToUpper()) && dok.LieferantName.ToUpper().Contains(Lieferant.ToUpper()) && 
+                         dok.Verschlagwortung.ToUpper().Contains(Verschlagwort.ToUpper()) && dok.Periode.ToUpper().Contains(Per.ToUpper()) &&
+                         dok.Archivierungsdatum.ToString().Contains(ArcDat))
                          orderby dok.Archivierungsdatum descending, dok.DokID descending
                          select dok).ToList();
             }
@@ -77,7 +81,10 @@ namespace DMSRupObk
                          where (dok.Aenderungsdatum.ToString().ToUpper() + dok.Archivierungsdatum.ToString().ToUpper() + dok.Dateiname.ToUpper() + dok.Dateityp.ToUpper() + 
                          dok.DokID.ToString().ToUpper() + dok.DokumentenartKey.ToString().ToUpper() + dok.DokumentenartName.ToUpper() + dok.Dokumentenstatus.ToUpper() +
                          dok.Jahr.ToString().ToUpper() + dok.LieferantKey.ToString().ToUpper() + dok.LieferantName.ToUpper() + dok.Periode.ToUpper() +
-                         dok.Verschlagwortung.ToUpper()).Contains(suchstring.ToUpper())
+                         dok.Verschlagwortung.ToUpper()).Contains(SucheAlles.ToUpper()) &&
+                         (dok.DokumentenartName.ToUpper().Contains(DokArt.ToUpper()) && dok.LieferantName.ToUpper().Contains(Lieferant.ToUpper()) &&
+                         dok.Verschlagwortung.ToUpper().Contains(Verschlagwort.ToUpper()) && dok.Periode.ToUpper().Contains(Per.ToUpper()) &&
+                         dok.Archivierungsdatum.ToString().Contains(ArcDat))
                          orderby dok.Archivierungsdatum descending, dok.DokID descending
                          select dok).ToList();
             }
@@ -346,39 +353,11 @@ namespace DMSRupObk
 
         private void btnSuche_Click(object sender, EventArgs e)
         {
-            if (txtSucheAlles.Text != "")
-                GridAnzeigen(txtSucheAlles.Text);
+            if (txtSucheAlles.Text != string.Empty || cbDokArt.Text != string.Empty || cbLieferant.Text != string.Empty || txtVerschlagwort.Text != string.Empty
+                || txtPer.Text != string.Empty || txtArcDat.Text != string.Empty)
+                GridAnzeigen(txtSucheAlles.Text, cbDokArt.Text, cbLieferant.Text, txtVerschlagwort.Text, txtPer.Text, txtArcDat.Text);
             else
-                GridAnzeigen("");
+                GridAnzeigen("","","","","","");
         }
-
-        //private string Datensatz(DataTable dt)
-        //{
-        //    foreach (DataRow row in dt.Rows)
-        //    {
-        //        string datensatz = row["name"].ToString();
-        //        string description = row["description"].ToString();
-        //        string icoFileName = row["iconFile"].ToString();
-        //        string installScript = row["installScript"].ToString();
-        //        //dgvListeDok.AutoGenerateColumns = false;
-        //        //dgvListeDok.DataSource = dv;
-        //        //dgv_id.DataPropertyName = "DokID";
-        //        //dgv_dokartkey.DataPropertyName = "DokumentenartKey";
-        //        //dgv_dokartkey.Visible = false;
-        //        //dgv_dokartname.DataPropertyName = "DokumentenartName";
-        //        //dgv_liefkey.DataPropertyName = "LieferantKey";
-        //        //dgv_liefkey.Visible = false;
-        //        //dgv_liefname.DataPropertyName = "LieferantName";
-        //        //dgv_period.DataPropertyName = "Periode";
-        //        //dgv_jahr.DataPropertyName = "Jahr";
-        //        //dgv_pfad.DataPropertyName = "Pfad";
-        //        //dgv_verschlagwort.DataPropertyName = "Verschlagwortung";
-        //        //dgv_dateiname.DataPropertyName = "Dateiname";
-        //        //dgv_AenderDat.DataPropertyName = "Aenderungsdatum";
-        //        //dgv_archdat.DataPropertyName = "Archivierungsdatum";
-        //        //dgv_statusdok.DataPropertyName = "Dokumentenstatus";
-        //    }
-        //    return ("");
-        //}
     }
 }
